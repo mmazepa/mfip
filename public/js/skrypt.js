@@ -14,6 +14,12 @@ document.onreadystatechange = function()
                     case "":
                         document.getElementById("homepage").classList.add("activeMenuOption");
                         break;
+                    case "firm":
+                        document.getElementById("firm").classList.add("activeMenuOption");
+                        break;
+                    case "worker":
+                        document.getElementById("worker").classList.add("activeMenuOption");
+                        break;
                     case "signup":
                         document.getElementById("signup").classList.add("activeMenuOption");
                         break;
@@ -29,6 +35,12 @@ document.onreadystatechange = function()
                 {
                     case "homepage":
                         location.replace("/");
+                        break;
+                    case "firm":
+                        location.replace("/firm");
+                        break;
+                    case "worker":
+                        location.replace("/worker");
                         break;
                     case "signup":
                         location.replace("/signup");

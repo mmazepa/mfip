@@ -4,26 +4,53 @@
 
 html
 {
-  header
-  {
-    .headerFooterStyle;
-
-    #loginPanel
-    {
-      .form-group
-      {
-        input
-        {
-          width: 150px;
-        }
-      }
-    }
-  }
-
   body
   {
     width: 125vh;
     .centerBox;
+
+    header
+    {
+      .headerFooterStyle;
+
+      #loginPanel
+      {
+        .form-group
+        {
+          display: inline-block;
+          margin: 0 auto;
+
+          input#login, input#password
+          {
+            width: 175px;
+          }
+        }
+
+        #loginButton, #signupButton
+        {
+          width: 100px;
+          transition: 0.5s;
+        }
+
+        #loginButton
+        {
+          .buttonStyle(darkgreen, white);
+          &:hover
+          {
+            .buttonStyle(white, darkgreen);
+          }
+        }
+
+        #signupButton
+        {
+          .buttonStyle(darkblue, white);
+          &:hover
+          {
+            .buttonStyle(white, darkblue);
+          }
+        }
+      }
+    }
 
     main
     {
@@ -36,12 +63,14 @@ html
         background-color: lighten(@mainColor, 10%);
         color: lighten(@mainColor, 75%);
         padding: 10px;
+        .shadow;
       }
 
       .col-sm-9
       {
         background-color: lighten(@mainColor, 5%);
         color: lighten(@mainColor, 60%);
+        .shadow;
 
         p
         {
@@ -88,4 +117,32 @@ html
 {
   margin-left: auto;
   margin-right: auto;
+}
+
+#signupFrame
+{
+  padding: 25px;
+  color: darken(@mainColor, 15%);
+}
+
+.shadow
+{
+  box-shadow: -1px 3px 3px 3px darken(@mainColor, 10%);
+}
+
+.mainHeader
+{
+  text-align: center;
+
+  .appTitle
+  {
+    font-weight: bold;
+  }
+}
+
+.buttonStyle(@main, @other)
+{
+  background-color: @main;
+  color: @other;
+  border: 1px solid @other;
 }

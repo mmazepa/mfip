@@ -25,6 +25,24 @@ router.get('/signup', function(req, res)
   });
 });
 
+router.get('/firm', function(req,res)
+{
+    session = req.session || session;
+    res.render('firm.ejs',
+    {
+        session: session
+    });
+});
+
+router.get('/worker', function(req,res)
+{
+    session = req.session || session;
+    res.render('worker.ejs',
+    {
+        session: session
+    });
+});
+
 router.get('/logout', function(req, res)
 {
   session = req.session || session;
