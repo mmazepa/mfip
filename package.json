@@ -14,7 +14,7 @@
     "bcrypt-nodejs": "latest",
     "connect-flash": "latest",
     "serve-favicon": "~2.3.2",
-    "jquery": "2.2.3",
+    "jquery": "latest",
     "nodemon": "^1.17.3",
     "body-parser": "^1.18.2",
     "connect": "^3.4.1",
