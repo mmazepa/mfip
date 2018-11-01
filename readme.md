@@ -6,7 +6,13 @@
 Menedżer firm i pracowników będzie aplikacją webową do zarządzania danymi osób
 szukających zatrudnienia, pracowników w firmie oraz samych firm jako takich.
 
+**Uruchamiane**
+
+1) npm install
+2) npm start
+
 **Podział obowiązków**
+
 Projekt będzie realizowany w zespole dwuosobowym. Każdy z członków zespołu,
 na podstawie przydzielonych mu ról, będzie odpowiedzialny za pewne części
 implementacji tworzonej aplikacji webowej. Finalny zakres wykonanych zadań

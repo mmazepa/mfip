@@ -1,0 +1,32 @@
+{
+  "name": "MFiP",
+  "version": "1.0.0",
+  "author": "Mazepa Mariusz, Pilkou Matsvei",
+  "description": "mfip app",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js",
+    "clear": "rm -R node_modules"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-session": "latest",
+    "bcrypt-nodejs": "latest",
+    "connect-flash": "latest",
+    "serve-favicon": "~2.3.2",
+    "jquery": "2.2.3",
+    "nodemon": "^1.17.3",
+    "body-parser": "^1.18.2",
+    "connect": "^3.4.1",
+    "cookie-session": "^2.0.0-beta.3",
+    "cookie-parser": "latest",
+    "ejs": "^2.6.1",
+    "errorhandler": "^1.5.0",
+    "morgan": "^1.9.0",
+    "serve-static": "^1.10.2",
+    "debug": "~2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  }
+}

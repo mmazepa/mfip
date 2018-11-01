@@ -1,0 +1,38 @@
+<div class="col-sm-2">
+    <div id="homepage" class="menuElement">
+        <span class="glyphicon glyphicon-record"></span>
+        Strona główna
+    </div>
+    <div id="tmpAction1" class="menuElement">
+        <span class="glyphicon glyphicon-record"></span>
+        Tymczasowa Akcja 1
+    </div>
+    <div id="tmpAction2" class="menuElement">
+        <span class="glyphicon glyphicon-record"></span>
+        Tymczasowa Akcja 2
+    </div>
+    <div id="signup" class="menuElement">
+        <span class="glyphicon glyphicon-record"></span>
+        Rejestracja
+    </div>
+    <div id="profile" class="menuElement">
+        <span class="glyphicon glyphicon-record"></span>
+        Profil
+    </div>
+    <script>
+    <%
+        if (session.activeUser == null)
+        {
+    %>
+            document.getElementById("profile").style.display = "none";
+    <%
+        }
+        else
+        {
+    %>
+            document.getElementById("signup").style.display = "none";
+    <%
+        }
+    %>
+    </script>
+</div>

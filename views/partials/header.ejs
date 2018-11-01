@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>MFIP</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel='stylesheet' href='/css/style.css' />
+            <script src='/jquery/dist/jquery.min.js'></script>
+            <script src='/js/skrypt.js'></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+        <body>
+          <header>
+              <span id="loginPanel">
+                  <form action="/login" method="post">
+                    <div class="myCol">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon transparent">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                <input  id="login"
+                                        class="form-control left-border-none"
+                                        type="email"
+                                        name="email"
+                                        placeholder="E-mail"
+                                        required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="myCol">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon transparent">
+                                    <span class="glyphicon glyphicon-lock"></span>
+                                </span>
+                                <input  id="password"
+                                        class="form-control left-border-none"
+                                        type="password"
+                                        name="password"
+                                        placeholder="Hasło"
+                                        required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="myCol">
+                        <button id="loginButton"
+                                class="btn btn-success"
+                                type="submit">
+                            <span class="glyphicon glyphicon-log-in"></span>
+                            Zaloguj
+                        </button>
+                    </div>
+                    <div class="myCol">
+                        <a href="/signup" id="signupButton" class="btn btn-default">
+                            <span class="glyphicon glyphicon-hand-right"></span>
+                            Dołącz
+                        </a>
+                    </div>
+                  </form>
+              </span>
+              <!-- TYMCZASOWE WYŚWIETLANIE SESJI -->
+              <div style="display:absolute;margin-top:50px;color:darkred;font-size:smaller;line-height:15px;z-index:1">
+                  <%= JSON.stringify(session) %><br/>
+                  <br/>
+              </div>
+          </header>
+          <script>
+              var loginPanel = document.getElementById("loginPanel");
+              <%
+                  if (session.activeUser != null)
+                  {
+              %>
+                      let signout = "<span style='float:left;text-indent:50px;'>Witaj <%= session.activeUser.split('@')[0] %>!</span> <span id='logoutButton'><a href='/logout'><span class='glyphicon glyphicon-log-out'></span>Wyloguj</a></span>";
+                      loginPanel.innerHTML = signout;
+              <%
+                  }
+              %>
+          </script>

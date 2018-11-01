@@ -1,0 +1,57 @@
+<% include partials/header %>
+
+    <!-- main section -->
+    <main id="mainContent">
+      <h1 class="mainHeader">
+          Dołącz do nas już <span class="appTitle">teraz</span>
+      </h1>
+
+      <div class="containter-fluid">
+          <div class="row">
+
+            <% include partials/menu %>
+
+            <div class="col-sm-10">
+                <div id="signupFrame" class="containter-fluid">
+                  <div class="text-center">
+                    <h1>
+                        <span class="glyphicon glyphicon-hand-right"></span>
+                        Rejestracja
+                    </h1>
+
+                    <% if (message != null && message != "") { %>
+                      <div class="alert-danger"
+                           style="margin-top:5px; margin-bottom:10px;">
+                        <%= message %>
+                      </div>
+                    <% } %>
+
+                    <form action="/signup" method="post">
+                      <div class="form-group">
+                          <span class="glyphicon glyphicon-user"></span>
+                          <input  id="login"
+                                  type="email"
+                                  name="email"
+                                  placeholder="E-mail"/>
+                      </div>
+                      <div class="form-group">
+                          <span class="glyphicon glyphicon-lock"></span>
+                          <input  id="password"
+                                  type="password"
+                                  name="password"
+                                  placeholder="Hasło"/>
+                      </div>
+                      <div>
+                        <input type="submit" id="signupButton" value="Zatwierdź" />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <% include partials/footer %>
+  </body>
+</html>
