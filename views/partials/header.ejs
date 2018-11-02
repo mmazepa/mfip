@@ -14,6 +14,24 @@
               <span id="loginPanel">
                   <form action="/login" method="post">
                     <div class="myCol">
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon transparent">
+                                  <span class="glyphicon glyphicon-asterisk"></span>
+                              </span>
+                              <select id="type"
+                                      class="form-control left-border-none"
+                                      name="type"
+                                      required />
+                                  <option disabled>Wybierz typ konta:</option>
+                                  <option value="admin">Administrator</option>
+                                  <option value="firm">Konto firmowe</option>
+                                  <option value"worker" selected>Konto pracownicze</option>
+                              </select>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="myCol">
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon transparent">
@@ -43,19 +61,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="myCol">
-                        <button id="loginButton"
-                                class="btn btn-success"
-                                type="submit">
-                            <span class="glyphicon glyphicon-log-in"></span>
-                            Zaloguj
-                        </button>
-                    </div>
-                    <div class="myCol">
-                        <a href="/signup" id="signupButton" class="btn btn-default">
-                            <span class="glyphicon glyphicon-hand-right"></span>
-                            Dołącz
-                        </a>
+                    <div class="buttonGroup">
+                        <div class="myCol">
+                            <button id="loginButton"
+                                    class="btn btn-success"
+                                    type="submit">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                Zaloguj
+                            </button>
+                        </div>
+                        <div class="myCol">
+                            <a href="/signup" id="signupButton" class="btn btn-default">
+                                <span class="glyphicon glyphicon-hand-right"></span>
+                                Dołącz
+                            </a>
+                        </div>
                     </div>
                   </form>
               </span>

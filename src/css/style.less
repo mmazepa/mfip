@@ -1,28 +1,62 @@
 // out: ../../public/css/style.css, compress: true
 
-@mainColor: darkgreen;
+@mainColor: darkolivegreen;
+@secondColor: olive;
+@borderRadius: 25px;
 
 html
 {
+  background-color: silver;
+  background-image:
+    linear-gradient(335deg, darken(@secondColor, 5%) 23px, transparent 23px),
+    linear-gradient(155deg, darken(@secondColor, 2%) 23px, transparent 23px),
+    linear-gradient(335deg, darken(@secondColor, 10%) 23px, transparent 23px),
+    linear-gradient(155deg, darken(@secondColor, 7%) 23px, transparent 23px);
+  background-size: 58px 58px;
+  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+
   body
   {
     width: 125vh;
     .centerBox;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: @borderRadius;
+    .shadow;
 
     header
     {
       .headerFooterStyle;
+      border-top-left-radius: @borderRadius;
+      border-top-right-radius: @borderRadius;
 
       #loginPanel
       {
-        .form-group
+        form
         {
           display: inline-block;
           margin: 0 auto;
 
-          input#login, input#password
+          .myCol
           {
+            display: inline-block;
+          }
+
+          .buttonGroup
+          {
+            display: block;
+          }
+
+          select#type, input#login, input#password
+          {
+            background-color: lighten(@secondColor, 55%);
+            color: darken(@secondColor, 10%);
             width: 175px;
+            &:focus
+            {
+              background-color: lighten(@secondColor, 40%);
+              color: darken(@secondColor, 15%);
+            }
           }
         }
 
@@ -84,6 +118,8 @@ html
   footer
   {
     .headerFooterStyle;
+    border-bottom-left-radius: @borderRadius;
+    border-bottom-right-radius: @borderRadius;
   }
 }
 
@@ -111,6 +147,7 @@ html
 {
   background-color: @mainColor;
   color: lighten(@mainColor, 25%);
+  .shadow;
 }
 
 .centerBox
