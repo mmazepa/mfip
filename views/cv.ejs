@@ -1,0 +1,206 @@
+<% include partials/header %>
+
+    <!-- main section -->
+    <main id="mainContent">
+      <h1 class="mainHeader">
+          Witaj na <span class="appTitle">MFiP</span>!
+      </h1>
+
+      <div class="containter-fluid">
+          <div class="row">
+
+            <% include partials/menu %>
+
+            <div class="col-sm-9">
+                <div id="cvPanel">
+                    <h3 style="font-family:'Sofia';font-size:32px;border-bottom:1px solid silver;">
+                        Curriculum Vitae
+                    </h3>
+
+                    <!-- DANE PERSONALNE -->
+                    <h4 id="personalTitle" class="cvTitle">
+                        Dane personalne
+                        <span id="personalGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                    </h4>
+                    <table id="cvTable" class="personalTable">
+                      <tr>
+                        <td>Imię</td>
+                        <td>Jan</td>
+                      </tr>
+                      <tr>
+                        <td>Nazwisko</td>
+                        <td>Kowalski</td>
+                      </tr>
+                      <tr>
+                        <td>Data urodzenia</td>
+                        <td>1964-07-15</td>
+                      </tr>
+                      <tr>
+                        <td>Telefon</td>
+                        <td>610 341 005</td>
+                      </tr>
+                      <tr>
+                        <td>E-mail</td>
+                        <td>jankowalski@gmail.com</td>
+                      </tr>
+                    </table>
+
+                    <!-- DOŚWIADCZENIE -->
+                    <h4 id="expTitle" class="cvTitle">
+                        Doświadczenie
+                        <span id="expGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                    </h4>
+                    <table id="cvTable" class="expTable">
+                        <tr>
+                            <td>01.01.2010 - 09.11.2018</td>
+                            <td>Database Administrator</td>
+                            <td>Oracle</td>
+                        </tr>
+                        <tr>
+                            <td>01.01.1995 - 31.12.2010</td>
+                            <td>Project Manager</td>
+                            <td>Microsoft</td>
+                        </tr>
+                        <tr>
+                            <td>01.01.1987 - 31.12.1995</td>
+                            <td>Front-end Developer</td>
+                            <td>Intel</td>
+                        </tr>
+                    </table>
+
+                    <!-- WYKSZTAŁCENIE -->
+                    <h4 id="eduTitle" class="cvTitle">
+                        Wykształcenie
+                        <span id="eduGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                    </h4>
+                    <table id="cvTable" class="eduTable">
+                        <tr>
+                            <td>01.10.1982 - 30.09.1987</td>
+                            <td>Informatyka</td>
+                            <td>Uniwersytet Gdański</td>
+                        </tr>
+                    </table>
+
+                    <!-- JĘZYKI -->
+                    <h4 id="langTitle" class="cvTitle">
+                        Języki
+                        <span id="langGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                    </h4>
+                    <table id="cvTable" class="langTable">
+                        <tr>
+                            <td>Angielski</td>
+                            <td>B2</td>
+                        </tr>
+                        <tr>
+                            <td>Niemiecki</td>
+                            <td>A2</td>
+                        </tr>
+                    </table>
+
+                    <!-- UMIEJĘTNOŚCI -->
+                    <h4 id="skillTitle" class="cvTitle">
+                        Umiejętności
+                        <span id="skillGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                    </h4>
+                    <table id="cvTable" class="skillTable">
+                        <tr>
+                            <td>Projektowanie aplikacji webowych</td>
+                            <td>
+                                Projektowanie programu komputerowego, który
+                                pracuje na serwerze i komunikuje się poprzez
+                                sieć komputerową z hostem użytkownika komputera
+                                z wykorzystaniem przeglądarki internetowej użytkownika,
+                                będącego w takim przypadku interaktywnym klientem
+                                aplikacji internetowej.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Zarządzanie projektem biznesowym</td>
+                            <td>
+                                Zbiór czynności wykonywanych w celu osiągnięcia
+                                wyznaczonych celów głównych i pośrednich w skończonym
+                                czasie. Zawiera się w nim między innymi inicjowanie,
+                                planowanie (w tym harmonogramowanie, budżetowanie),
+                                realizacja i kontrola zadań potrzebnych do osiągnięcia
+                                celów projektu.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Administracja bazami danych</td>
+                            <td>
+                                Odpowiedzialność za środowiskowy aspekt baz danych,
+                                w tym: tworzenie i testowanie kopii zapasowych,
+                                weryfikowanie lub pomoc w weryfikowaniu integralności
+                                danych, definiowanie oraz przydzielanie dostępu do
+                                danych, gwarantowanie maksymalnego czasu bezawaryjnej pracy,
+                                gwarantowanie maksymalnej wydajności dla danych ograniczeń
+                                budżetowych, pomaganie programistom i inżynierom w wydajnym
+                                wykorzystywaniu bazy danych.
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- KURSY, SZKOLENIA, CERTYFIKATY -->
+                    <h4 id="courseTitle" class="cvTitle">
+                        Kursy, szkolenia, certyfikaty
+                        <span id="courseGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                    </h4>
+                    <table id="cvTable" class="courseTable">
+                        <tr>
+                            <td>01.10.1983 - 30.09.1987</td>
+                            <td>Kurs projektowania aplikacji webowych</td>
+                        </tr>
+                        <tr>
+                            <td>01.01.1994 - 31.12.1995</td>
+                            <td>Szkolenie z zakresu zarządzania projektem biznesowym</td>
+                        </tr>
+                        <tr>
+                            <td>10.05.2016</td>
+                            <td>Certyfikat "Oracle Certified Associate, Java SE 8 Programmer Certification"</td>
+                        </tr>
+                    </table>
+
+                    <!-- ZAINTERESOWANIA -->
+                    <h4 id="intTitle" class="cvTitle">
+                        Zainteresowania
+                        <span id="intGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                    </h4>
+                    <table id="cvTable" class="intTable">
+                        <tr>
+                            <td>
+                                Nowe technologie (szczególnie rozwój sztucznej inteligencji)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Biografie znanych wynalazców
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Nauka nowych języków programowania
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- AKTUALNA KLAUZULA ZGODNA Z RODO -->
+                    <p style="font-size:smaller;font-style:italic;">
+                        Wyrażam zgodę na przetwarzanie danych osobowych zawartych
+                        w niniejszym dokumencie do realizacji procesu rekrutacji
+                        zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych
+                        osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z
+                        Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679
+                        z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych
+                        w związku z przetwarzaniem danych osobowych i w sprawie
+                        swobodnego przepływu takich danych oraz uchylenia dyrektywy
+                        95/46/WE (RODO).
+                    </p>
+                </div>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <% include partials/footer %>
+  </body>
+</html>

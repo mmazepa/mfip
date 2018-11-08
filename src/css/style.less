@@ -14,6 +14,7 @@ html
     linear-gradient(155deg, darken(@secondColor, 7%) 23px, transparent 23px);
   background-size: 58px 58px;
   background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+  opacity: 0.98;
 
   body
   {
@@ -111,6 +112,61 @@ html
           text-align: justify;
           margin: 10px 50px;
         }
+
+        #cvPanel
+        {
+          background-color: whitesmoke;
+          color: lighten(black, 25%);
+          border: 1px solid darkgray;
+          border-radius: 5px;
+          margin: 15px;
+          padding: 15px;
+
+          .cvTitle
+          {
+            background-color: lighten(silver, 15%);
+            padding: 5px;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom: 1px solid silver;
+          }
+
+          #cvTable
+          {
+            border-collapse: collapse;
+            width: 100%;
+            display: none;
+
+            th, td
+            {
+              padding: 8px;
+              text-align: left;
+              border-bottom: 1px solid #ddd;
+
+            }
+
+            tr td:first-child
+            {
+              font-weight: bold;
+              color: dimgray;
+              width: 200px;
+            }
+
+            tr
+            {
+              &:hover
+              {
+                background-color: lighten(black, 75%);
+                // color: darken(whitesmoke, 5%);
+
+                td:first-child
+                {
+                  // color: whitesmoke;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -148,6 +204,7 @@ html
   background-color: @mainColor;
   color: lighten(@mainColor, 25%);
   .shadow;
+  border-bottom: 1px solid darken(@mainColor, 25%);
 }
 
 .centerBox

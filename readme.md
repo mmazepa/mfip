@@ -8,8 +8,8 @@ szukających zatrudnienia, pracowników w firmie oraz samych firm jako takich.
 
 **Uruchamiane**
 
-1) npm install
-2) npm start
+1. npm install
+2. npm start
 
 **Podział obowiązków**
 

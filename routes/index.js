@@ -15,16 +15,6 @@ router.get('/', function(req, res, next)
   });
 });
 
-router.get('/signup', function(req, res)
-{
-  session = req.session || session;
-  res.render('signup.ejs',
-  {
-      message: req.flash('signupMessage'),
-      session: session
-  });
-});
-
 router.get('/firm', function(req,res)
 {
     session = req.session || session;
@@ -41,6 +31,25 @@ router.get('/worker', function(req,res)
     {
         session: session
     });
+});
+
+router.get('/cv', function(req, res)
+{
+  session = req.session || session;
+  res.render('cv.ejs',
+  {
+      session: session
+  });
+});
+
+router.get('/signup', function(req, res)
+{
+  session = req.session || session;
+  res.render('signup.ejs',
+  {
+      message: req.flash('signupMessage'),
+      session: session
+  });
 });
 
 router.get('/logout', function(req, res)
