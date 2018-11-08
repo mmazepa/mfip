@@ -15,6 +15,7 @@ if !(psql -U postgres -lqt | cut -d \| -f 1 | grep -qw "mfip"); then
     echo "mfip created"
 fi
 
+echo "mfip existed"
 
 psql -U postgres mfip < sql_script.sql
 

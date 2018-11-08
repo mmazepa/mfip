@@ -21,6 +21,7 @@ DROP TABLE IF EXISTS "Skill";
 DROP TABLE IF EXISTS "Company";
 DROP TABLE IF EXISTS "Workstation";
 DROP TABLE IF EXISTS "Employee";
+DROP TABLE IF EXISTS "Group_History";
 DROP TABLE IF EXISTS "Work_History";
 DROP TABLE IF EXISTS "Vacation_History";
 DROP TABLE IF EXISTS "Adres";
@@ -33,13 +34,6 @@ CREATE TABLE "Vacation_History" (
         "description" varchar(50)
 );
 
-CREATE TABLE "Group_History" (
-        "id" SERIAL PRIMARY KEY,
-        "id_work_history" SERIAL,
-        "id_vocation_history" SERIAL,
-        FOREIGN KEY ("id_vacation") REFERENCES "Vacation_History"("id"),
-        FOREIGN KEY ("id_work_history") REFERENCES "Work_History"("id")
-);
 
 CREATE TABLE "Work_History" (
         "id" SERIAL PRIMARY KEY,
@@ -51,10 +45,17 @@ CREATE TABLE "Work_History" (
         "description" varchar(50),
         FOREIGN KEY ("id_vacation") REFERENCES "Vacation_History"("id")
 );
-
 CREATE INDEX "Work_History_id_company"
         ON "Work_History" ("id_company");
 
+
+CREATE TABLE "Group_History" (
+        "id" SERIAL PRIMARY KEY,
+        "id_work_history" SERIAL,
+        "id_vocation_history" SERIAL,
+        FOREIGN KEY ("id_vocation_history") REFERENCES "Vacation_History"("id"),
+        FOREIGN KEY ("id_work_history") REFERENCES "Work_History"("id")
+);
 
 CREATE TABLE "Adres" (
         "id" SERIAL PRIMARY KEY,
