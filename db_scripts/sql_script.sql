@@ -1,6 +1,6 @@
 -- create db
---DROP DATABASE IF EXISTS mfip;
---CREATE DATABASE mfip;
+DROP DATABASE IF EXISTS mfip;
+CREATE DATABASE mfip;
 -- create admin
 -- DROP ROLE IF EXISTS "admin";
 
@@ -15,6 +15,7 @@ GRANT ALL ON DATABASE mfip TO mfip_admin;
 
 DROP INDEX IF EXISTS "Work_History_id_company";
 DROP INDEX IF EXISTS "Workstation_id_company";
+DROP INDEX IF EXISTS "List_Skills_id_list_skills";
 
 DROP TABLE IF EXISTS "List_Skills";
 DROP TABLE IF EXISTS "Skill";
@@ -84,7 +85,6 @@ CREATE TABLE "Workstation" (
         "id" SERIAL PRIMARY KEY,
         "id_company" SERIAL UNIQUE NOT NULL,
         "id_adres" SERIAL,
-        --"id_employee" SERIAL,
         "name" varchar(30),
         "phone_number" varchar(20),
         "email" varchar(30),
@@ -130,3 +130,5 @@ CREATE TABLE "List_Skills" (
         FOREIGN KEY ("id_list_skills") REFERENCES "Employee"("id"),
         FOREIGN KEY ("id_list_skills") REFERENCES "Workstation"("id")
 );
+CREATE INDEX "List_Skills_id_list_skills"
+        ON "List_Skills" ("id_list_skills");
