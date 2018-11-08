@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "If you see error you need to change /etc/postgresql/*/main/pg_hba.conf \n local   all     postgress   peer(=> md5 or trust)"
+# Drop DB name: mfip
+#sudo -u postgres dropdb mfip
+
+# Create DB name: mfip
+#sudo -u postgres createdb mfip
+
+psql -U postgres mfip < sql_script.sql
+
+# For database admin MFiP 
+# sudo psql -U mfip_admin -d mfip
