@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "For database admin MFiP use:"
+echo "sudo psql -U mfip_admin -d mfip"
+
 echo "If you see error you need to change /etc/postgresql/*/main/pg_hba.conf \n local   all     postgress   peer(=> md5 or trust)"
 
 
@@ -15,5 +18,3 @@ fi
 
 psql -U postgres mfip < sql_script.sql
 
-# For database admin MFiP 
-# sudo psql -U mfip_admin -d mfip
