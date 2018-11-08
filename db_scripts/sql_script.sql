@@ -33,6 +33,20 @@ CREATE TABLE "Vacation_History" (
         "description" varchar(50)
 );
 
+/*
+CREATE TABLE "Group_History" (
+        "id_work" SERIAL PRIMARY KEY,
+        "id_vocation" SERIAL,
+
+        "id_vacation" SERIAL,
+        "from" date,
+        "to" date,
+        "salary" money,
+        "description" varchar(50),
+        FOREIGN KEY ("id_vacation") REFERENCES "Vacation_History"("id")
+);
+*/
+
 CREATE TABLE "Work_History" (
         "id" SERIAL PRIMARY KEY,
         "id_company" SERIAL,
@@ -61,6 +75,7 @@ CREATE TABLE "Employee" (
         "id" SERIAL PRIMARY KEY,
         "id_adres" SERIAL,
         "id_history" SERIAL,
+        "password" varchar(32),
         "first_name" varchar(20),
         "last_name" varchar(20),
         "birth" date,
@@ -83,7 +98,6 @@ CREATE TABLE "Workstation" (
         FOREIGN KEY ("id") REFERENCES "Employee"("id"),
         FOREIGN KEY ("id_adres") REFERENCES "Adres"("id")
 );
-
 CREATE INDEX "Workstation_id_company"
         ON "Workstation" ("id_company");
 
@@ -91,8 +105,10 @@ CREATE INDEX "Workstation_id_company"
 CREATE TABLE "Company" (
         "id" SERIAL PRIMARY KEY,
         "id_adres" SERIAL,
+        "password" varchar(32),
         "name" varchar(50),
-        "global_id" varchar(100),
+        "email" varchar(30),
+        "global_id" varchar(100),       -- NIP or same
         "specialization" varchar(100),
         "description" varchar(500),
         "website" varchar(100),
@@ -111,7 +127,10 @@ CREATE TABLE "Skill" (
 CREATE TABLE "List_Skills" (
         "id" SERIAL PRIMARY KEY,
         "id_skill" SERIAL,
+        "id_list_skills" SERIAL,
         "name" varchar(30),
         "description" varchar(50),
-        FOREIGN KEY ("id_skill") REFERENCES "Skill"("id")
+        FOREIGN KEY ("id_skill") REFERENCES "Skill"("id"),
+        FOREIGN KEY ("id_list_skills") REFERENCES "Employee"("id"),
+        FOREIGN KEY ("id_list_skills") REFERENCES "Workstation"("id")
 );
