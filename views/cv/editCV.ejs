@@ -1,0 +1,235 @@
+<% include ../partials/header %>
+
+    <!-- main section -->
+    <main id="mainContent">
+      <h1 class="mainHeader">
+          Edytuj swój <span class="appTitle">życiorys zawodowy</span>!
+      </h1>
+
+      <div class="containter-fluid">
+          <div class="row">
+
+            <% include ../partials/menu %>
+
+            <div class="col-sm-9">
+                <div id="cvPanel">
+                    <h3 style="border-bottom:1px solid silver;">
+                        <span style="font-family:'Sofia';font-size:32px;">
+                            Curriculum Vitae
+                        </span>
+                    </h3>
+
+                    <!-- DANE PERSONALNE -->
+                    <h4 id="personalTitle" class="cvTitle">
+                        Dane personalne
+                    </h4>
+                    <table id="cvTable" style="display:table;">
+                      <tr>
+                        <td>Imię</td>
+                        <td><input type="text" value="Jan"/></td>
+                      </tr>
+                      <tr>
+                        <td>Nazwisko</td>
+                        <td><input type="text" value="Kowalski"/></td>
+                      </tr>
+                      <tr>
+                        <td>Data urodzenia</td>
+                        <td><input type="date" value="1964-07-15"/></td>
+                      </tr>
+                      <tr>
+                        <td>Telefon</td>
+                        <td>
+                            <input type="tel"
+                                   pattern="([0-9]{3} [0-9]{3} [0-9]{3})|([0-9]{9})"
+                                   value="610 341 005" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>E-mail</td>
+                        <td><input type="email" value="jan.kowalski@gmail.com"/></td>
+                      </tr>
+                    </table>
+
+                    <!-- DOŚWIADCZENIE -->
+                    <h4 id="expTitle" class="cvTitle">
+                        Doświadczenie
+                    </h4>
+                    <table id="cvTable" style="display:table;">
+                        <tr>
+                            <td>
+                                Od: <input type="date" value="2010-01-01"/><br/>
+                                Do: <input type="date" value="2018-11-09"/>
+                            </td>
+                            <td><input type="text" value="Database Administrator"/></td>
+                            <td><input type="text" value="Oracle"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Od: <input type="date" value="1995-01-01"/><br/>
+                                Do: <input type="date" value="2010-12-31"/>
+                            </td>
+                            <td><input type="text" value="Project Manager"/></td>
+                            <td><input type="text" value="Microsoft"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Od: <input type="date" value="1987-01-01"/><br/>
+                                Do: <input type="date" value="1995-12-31"/>
+                            </td>
+                            <td><input type="text" value="Front-end Developer"/></td>
+                            <td><input type="text" value="Intel"/></td>
+                        </tr>
+                    </table>
+
+                    <!-- WYKSZTAŁCENIE -->
+                    <h4 id="eduTitle" class="cvTitle">
+                        Wykształcenie
+                    </h4>
+                    <table id="cvTable" style="display:table;">
+                        <tr>
+                            <td>
+                                Od: <input type="date" value="1982-10-01"/><br/>
+                                Do: <input type="date" value="1987-09-30"/>
+                            </td>
+                            <td><input type="text" value="Informatyka"/></td>
+                            <td><input type="text" value="Uniwersytet Gdański"/></td>
+                        </tr>
+                    </table>
+
+                    <!-- JĘZYKI -->
+                    <h4 id="langTitle" class="cvTitle">
+                        Języki
+                    </h4>
+                    <table id="cvTable" style="display:table;">
+                        <tr>
+                            <td><input type="text" value="Angielski"/></td>
+                            <td>
+                                <select>
+                                    <option value="c2">C2</option>
+                                    <option value="c1">C1</option>
+                                    <option value="b2" selected>B2</option>
+                                    <option value="b1">B1</option>
+                                    <option value="a2">A2</option>
+                                    <option value="a1">A1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="Niemiecki"/></td>
+                            <td>
+                                <select>
+                                    <option value="c2">C2</option>
+                                    <option value="c1">C1</option>
+                                    <option value="b2">B2</option>
+                                    <option value="b1">B1</option>
+                                    <option value="a2" selected>A2</option>
+                                    <option value="a1">A1</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- UMIEJĘTNOŚCI -->
+                    <h4 id="skillTitle" class="cvTitle">
+                        Umiejętności
+                    </h4>
+                    <table id="cvTable" style="display:table;">
+                        <tr>
+                            <td><input type="text" value="Projektowanie aplikacji webowych"/></td>
+                            <td>
+                                <textarea rows="5" cols="30">Projektowanie programu komputerowego, który pracuje na serwerze i komunikuje się poprzez sieć komputerową z hostem użytkownika komputera z wykorzystaniem przeglądarki internetowej użytkownika, będącego w takim przypadku interaktywnym klientem aplikacji internetowej.</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="Zarządzanie projektem biznesowym"/></td>
+                            <td>
+                                <textarea rows="5" cols="30">Zbiór czynności wykonywanych w celu osiągnięcia wyznaczonych celów głównych i pośrednich w skończonym czasie. Zawiera się w nim między innymi inicjowanie, planowanie (w tym harmonogramowanie, budżetowanie), realizacja i kontrola zadań potrzebnych do osiągnięcia celów projektu.</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" value="Administracja bazami danych"/></td>
+                            <td>
+                                <textarea rows="5" cols="30">
+                                    Odpowiedzialność za środowiskowy aspekt baz danych, w tym: tworzenie i testowanie kopii zapasowych, weryfikowanie lub pomoc w weryfikowaniu integralności danych, definiowanie oraz przydzielanie dostępu do danych, gwarantowanie maksymalnego czasu bezawaryjnej pracy, gwarantowanie maksymalnej wydajności dla danych ograniczeń budżetowych, pomaganie programistom i inżynierom w wydajnym wykorzystywaniu bazy danych.</textarea>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- KURSY, SZKOLENIA, CERTYFIKATY -->
+                    <h4 id="courseTitle" class="cvTitle">
+                        Kursy, szkolenia, certyfikaty
+                    </h4>
+                    <table id="cvTable" style="display:table;">
+                        <tr>
+                            <td>
+                                Od: <input type="date" value="1983-10-01"/><br/>
+                                Do: <input type="date" value="1987-09-30"/>
+                            </td>
+                            <td><input  type="text"
+                                        style="width:100%;"
+                                        value="Kurs projektowania aplikacji webowych"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Od: <input type="date" value="1994-01-01"/><br/>
+                                Do: <input type="date" value="1995-12-31"/>
+                            </td>
+                            <td><input  type="text"
+                                        style="width:100%;"
+                                        value="Szkolenie z zakresu zarządzania projektem biznesowym"/></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Kiedy: <input type="date" value="2016-05-10"/>
+                            </td>
+                            <!-- cudzysłów do poprawki !!! -->
+                            <td><input  type="text"
+                                        style="width:100%;"
+                                        value='Certyfikat "Oracle Certified Associate, Java SE 8 Programmer Certification"'/></td>
+                        </tr>
+                    </table>
+
+                    <!-- ZAINTERESOWANIA -->
+                    <h4 id="intTitle" class="cvTitle">
+                        Zainteresowania
+                    </h4>
+                    <table id="cvTable" style="display:table;">
+                        <tr>
+                            <td>
+                                <input  type="text"
+                                        style="width:100%;"
+                                        value="Nowe technologie (szczególnie rozwój sztucznej inteligencji)"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input  type="text"
+                                        style="width:100%;"
+                                        value="Biografie znanych wynalazców"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input  type="text"
+                                        style="width:100%;"
+                                        value="Nauka nowych języków programowania"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button id="saveCVButton"
+                            style="margin-top: 15px;"
+                            class="btn btn-primary"
+                            type="submit">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        Zapisz CV
+                    </button>
+                </div>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <% include ../partials/footer %>
+  </body>
+</html>

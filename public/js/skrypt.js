@@ -93,6 +93,17 @@ document.onreadystatechange = function()
                     }
                 });
             });
+
+            $("#editCVButton").on("click", function()
+            {
+                location.replace("/cv/edit");
+            });
+
+            $("#saveCVButton").on("click", function()
+            {
+                alertUndone("Edycja CV");
+                return false;
+            });
         });
     }
 };

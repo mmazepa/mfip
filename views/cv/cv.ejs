@@ -1,20 +1,29 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
     <!-- main section -->
     <main id="mainContent">
       <h1 class="mainHeader">
-          Witaj na <span class="appTitle">MFiP</span>!
+          Stwórz swój <span class="appTitle">życiorys zawodowy</span>!
       </h1>
 
       <div class="containter-fluid">
           <div class="row">
 
-            <% include partials/menu %>
+            <% include ../partials/menu %>
 
             <div class="col-sm-9">
                 <div id="cvPanel">
-                    <h3 style="font-family:'Sofia';font-size:32px;border-bottom:1px solid silver;">
-                        Curriculum Vitae
+                    <h3 style="border-bottom:1px solid silver;">
+                        <span style="font-family:'Sofia';font-size:32px;">
+                            Curriculum Vitae
+                        </span>
+                        <button id="editCVButton"
+                                style="float:right;"
+                                class="btn btn-success"
+                                type="submit">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            Edytuj CV
+                        </button>
                     </h3>
 
                     <!-- DANE PERSONALNE -->
@@ -41,7 +50,7 @@
                       </tr>
                       <tr>
                         <td>E-mail</td>
-                        <td>jankowalski@gmail.com</td>
+                        <td><a href="mailto:jan.kowalski@gmail.com">jan.kowalski@gmail.com</a></td>
                       </tr>
                     </table>
 
@@ -201,6 +210,6 @@
       </div>
     </main>
 
-    <% include partials/footer %>
+    <% include ../partials/footer %>
   </body>
 </html>

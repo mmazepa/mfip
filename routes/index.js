@@ -36,7 +36,16 @@ router.get('/worker', function(req,res)
 router.get('/cv', function(req, res)
 {
   session = req.session || session;
-  res.render('cv.ejs',
+  res.render('cv/cv.ejs',
+  {
+      session: session
+  });
+});
+
+router.get('/cv/edit', function(req, res)
+{
+  session = req.session || session;
+  res.render('cv/editCV.ejs',
   {
       session: session
   });
