@@ -14,19 +14,16 @@ GRANT ALL ON DATABASE mfip TO mfip_admin;
 
 
 DROP INDEX IF EXISTS "Work_History_id_company";
+DROP INDEX IF EXISTS "Workstation_id_company";
 
-
+DROP TABLE IF EXISTS "List_Skills";
+DROP TABLE IF EXISTS "Skill";
 DROP TABLE IF EXISTS "Company";
 DROP TABLE IF EXISTS "Workstation";
 DROP TABLE IF EXISTS "Employee";
 DROP TABLE IF EXISTS "Work_History";
 DROP TABLE IF EXISTS "Vacation_History";
 DROP TABLE IF EXISTS "Adres";
-
-/*
-DROP TABLE IF EXISTS "Company";
-DROP TABLE IF EXISTS "Adres";
-*/
 
 CREATE TABLE "Vacation_History" (
         "id" SERIAL PRIMARY KEY,
@@ -105,13 +102,16 @@ CREATE TABLE "Company" (
 );
 
 
-/*
+CREATE TABLE "Skill" (
+        "id" SERIAL PRIMARY KEY,
+        "name" varchar(30),
+        "description" varchar(50)
+);
+
 CREATE TABLE "List_Skills" (
         "id" SERIAL PRIMARY KEY,
-        --"id_adres" SERIAL,
-        --"id_employee" SERIAL,
+        "id_skill" SERIAL,
         "name" varchar(30),
         "description" varchar(50),
-        FOREIGN KEY ("id") REFERENCES "Employee"("id")
+        FOREIGN KEY ("id_skill") REFERENCES "Skill"("id")
 );
-*/
