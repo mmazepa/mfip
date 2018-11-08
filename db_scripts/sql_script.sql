@@ -33,19 +33,13 @@ CREATE TABLE "Vacation_History" (
         "description" varchar(50)
 );
 
-/*
 CREATE TABLE "Group_History" (
-        "id_work" SERIAL PRIMARY KEY,
-        "id_vocation" SERIAL,
-
-        "id_vacation" SERIAL,
-        "from" date,
-        "to" date,
-        "salary" money,
-        "description" varchar(50),
-        FOREIGN KEY ("id_vacation") REFERENCES "Vacation_History"("id")
+        "id" SERIAL PRIMARY KEY,
+        "id_work_history" SERIAL,
+        "id_vocation_history" SERIAL,
+        FOREIGN KEY ("id_vacation") REFERENCES "Vacation_History"("id"),
+        FOREIGN KEY ("id_work_history") REFERENCES "Work_History"("id")
 );
-*/
 
 CREATE TABLE "Work_History" (
         "id" SERIAL PRIMARY KEY,
@@ -130,6 +124,7 @@ CREATE TABLE "List_Skills" (
         "id_list_skills" SERIAL,
         "name" varchar(30),
         "description" varchar(50),
+        "is_company" boolean,
         FOREIGN KEY ("id_skill") REFERENCES "Skill"("id"),
         FOREIGN KEY ("id_list_skills") REFERENCES "Employee"("id"),
         FOREIGN KEY ("id_list_skills") REFERENCES "Workstation"("id")
