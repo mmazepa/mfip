@@ -104,6 +104,20 @@ document.onreadystatechange = function()
                 alertUndone("Edycja CV");
                 return false;
             });
+
+            $("#addExpButton").on("click", function() { alertUndone("Dodawanie doświadczenia"); return false; });
+            $("#addEduButton").on("click", function() { alertUndone("Dodawanie wykształcenia"); return false; });
+            $("#addLangButton").on("click", function() { alertUndone("Dodawanie języków"); return false; });
+            $("#addSkillButton").on("click", function() { alertUndone("Dodawanie umiejętności"); return false; });
+            $("#addCourseButton").on("click", function() { alertUndone("Dodawanie kursów, szkoleń, certyfikatów"); return false; });
+            $("#addIntButton").on("click", function() { alertUndone("Dodawanie zainteresowań"); return false; });
+
+            $(".delExpButton").on("click", function() { alertUndone("Usuwanie doświadczenia"); return false; });
+            $(".delEduButton").on("click", function() { alertUndone("Usuwanie wykształcenia"); return false; });
+            $(".delLangButton").on("click", function() { alertUndone("Usuwanie języków"); return false; });
+            $(".delSkillButton").on("click", function() { alertUndone("Usuwanie umiejętności"); return false; });
+            $(".delCourseButton").on("click", function() { alertUndone("Usuwanie kursów, szkoleń, certyfikatów"); return false; });
+            $(".delIntButton").on("click", function() { alertUndone("Usuwanie zainteresowań"); return false; });
         });
     }
 };
