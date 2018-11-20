@@ -175,12 +175,14 @@ html
 {
   border-radius: 10px;
   padding-left: 10px;
-}
+  transition: 0.2s;
 
-.menuElement:hover
-{
-  .colorize(lighten(@secondColor, 25%), @mainColor);
-  cursor: pointer;
+  &:hover
+  {
+    .colorize(lighten(@secondColor, 25%), @mainColor);
+    cursor: pointer;
+    transition: 0.2s;
+  }
 }
 
 .activeMenuOption
@@ -252,9 +254,11 @@ html
 {
   .colorize(whitesmoke, dimgray);
   display: table;
+  border-collapse: collapse;
   width: 100%;
   max-width: 100%;
-  border: 2.5px solid black;
+  border: 2px solid darken(dimgray, 25%);
+  .shadow;
 
   tr, th, td
   {
@@ -263,11 +267,53 @@ html
 
   tr:first-child
   {
-    .colorize(silver, black);
+    .colorize(silver, black) !important;
+  }
+
+  tr:nth-child(odd)
+  {
+    background-color: darken(whitesmoke, 5%);
   }
 
   tr:not(:first-child):hover
   {
-    .colorize(lighten(silver, 10%), black);
+    .colorize(lightgreen, black);
+  }
+}
+
+.tableHeader
+{
+  text-align: center;
+  font-weight: bold;
+  display: block;
+  margin-top: 20px;
+}
+
+#clock
+{
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  bottom: 10px;
+  width: 90%;
+  padding: 5px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  .colorize(@mainColor, lighten(@secondColor, 40%));
+  border: 1px solid @secondColor;
+  height: 30px;
+  line-height: 20px;
+  font-size: 14px;
+  transition: 0.5s;
+
+  &:hover
+  {
+    .colorize(lighten(@secondColor, 40%), @mainColor);
+    border: 1px solid @mainColor;
+    height: 50px;
+    line-height: 40px;
+    font-size: 24px;
+    transition: 0.5s;
   }
 }

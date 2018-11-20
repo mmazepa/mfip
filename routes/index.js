@@ -9,6 +9,22 @@ var session;
 router.get('/', function(req, res, next)
 {
   session = req.session || session;
+
+  // db.one('SELECT * FROM "Employee" WHERE email=\'' + req.email + '\'', [true])
+  // .then(function(data)
+  // {
+  //     console.log(data);
+  //     res.render('workers.ejs',
+  //     {
+  //         session: session,
+  //         activeUser: data
+  //     });
+  // })
+  // .catch(function(error)
+  // {
+  //     console.log(error);
+  // });
+
   res.render('index',
   {
       session: req.session,

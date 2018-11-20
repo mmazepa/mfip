@@ -106,6 +106,24 @@ document.onreadystatechange = function()
             $(".delSkillButton").on("click", function() { alertUndone("Usuwanie umiejętności"); return false; });
             $(".delCourseButton").on("click", function() { alertUndone("Usuwanie kursów, szkoleń, certyfikatów"); return false; });
             $(".delIntButton").on("click", function() { alertUndone("Usuwanie zainteresowań"); return false; });
+
+            function refreshClock()
+            {
+                let clock = document.getElementById("clock");
+                let now = new Date();
+
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+                let seconds = now.getSeconds();
+
+                if (hours < 10) hours = '0' + hours;
+                if (minutes < 10) minutes = '0' + minutes;
+                if (seconds < 10) seconds = '0' + seconds;
+
+                clock.innerHTML = hours + ":" + minutes + ":" + seconds;
+                setTimeout(refreshClock, 500);
+            }
+            refreshClock();
         });
     }
 };
