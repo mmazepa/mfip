@@ -6,6 +6,9 @@ document.onreadystatechange = function()
     {
         $(function()
         {
+            $("#loginType").val("worker");
+            $("#signupType").val("worker");
+
             function selectMenuOption()
             {
                 let currentLocation = window.location.href.split("/").pop();

@@ -93,6 +93,7 @@ html
 
       .col-sm-9
       {
+        background-image: url("../images/crossed_stripes.png");
         .colorize(lighten(@mainColor, 5%), lighten(@mainColor, 60%));
         .shadow;
 
@@ -199,6 +200,9 @@ html
 {
   .colorize(lighten(@mainColor, 15%), darken(@mainColor, 15%));
   padding: 25px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-top: 3px solid @mainColor;
 
   #firmData, #userData
   {
@@ -237,4 +241,9 @@ html
 {
   background-color: @back;
   color: @front;
+}
+
+#menu, .col-sm-9
+{
+  min-height: 69.75vh !important;
 }
