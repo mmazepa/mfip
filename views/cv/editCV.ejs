@@ -23,8 +23,13 @@
                     <h4 id="personalTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-user"></span>
                         Dane personalne
+                        <span id="personalGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
-                    <table id="cvTable" style="display:table;">
+                    <table id="cvTable" class="personalTable">
+                      <tr>
+                        <th>Dana</th>
+                        <th>Wartość</th>
+                      </tr>
                       <tr>
                         <td>Imię</td>
                         <td><input type="text" value="Jan"/></td>
@@ -55,8 +60,9 @@
                     <h4 id="expTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-flag"></span>
                         Doświadczenie
+                        <span id="expGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
-                    <table id="cvTable" style="display:table;">
+                    <table id="cvTable" class="expTable">
                         <tr>
                             <th>Zakres</th>
                             <th>Stanowisko</th>
@@ -108,7 +114,7 @@
                     </table>
                     <button id="addExpButton"
                             style="margin-top: 15px;"
-                            class="btn btn-primary"
+                            class="btn btn-primary hideButton"
                             type="submit">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
@@ -117,8 +123,9 @@
                     <h4 id="eduTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-education"></span>
                         Wykształcenie
+                        <span id="eduGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
-                    <table id="cvTable" style="display:table;">
+                    <table id="cvTable" class="eduTable">
                         <tr>
                             <th>Zakres</th>
                             <th>Kierunek</th>
@@ -142,7 +149,7 @@
                     </table>
                     <button id="addEduButton"
                             style="margin-top: 15px;"
-                            class="btn btn-primary"
+                            class="btn btn-primary hideButton"
                             type="submit">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
@@ -151,8 +158,9 @@
                     <h4 id="langTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-book"></span>
                         Języki
+                        <span id="langGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
-                    <table id="cvTable" style="display:table;">
+                    <table id="cvTable" class="langTable">
                         <tr>
                             <th>Język</th>
                             <th>Poziom</th>
@@ -199,7 +207,7 @@
                     </table>
                     <button id="addLangButton"
                             style="margin-top: 15px;"
-                            class="btn btn-primary"
+                            class="btn btn-primary hideButton"
                             type="submit">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
@@ -208,8 +216,9 @@
                     <h4 id="skillTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-star-empty"></span>
                         Umiejętności
+                        <span id="skillGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
-                    <table id="cvTable" style="display:table;">
+                    <table id="cvTable" class="skillTable">
                         <tr>
                             <th>Umiejętność</th>
                             <th>Opis</th>
@@ -255,7 +264,7 @@
                     </table>
                     <button id="addSkillButton"
                             style="margin-top: 15px;"
-                            class="btn btn-primary"
+                            class="btn btn-primary hideButton"
                             type="submit">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
@@ -264,8 +273,9 @@
                     <h4 id="courseTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-certificate"></span>
                         Kursy, szkolenia, certyfikaty
+                        <span id="courseGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
-                    <table id="cvTable" style="display:table;">
+                    <table id="cvTable" class="courseTable">
                         <tr>
                             <th>Zakres</th>
                             <th>Krótki opis</th>
@@ -325,7 +335,7 @@
                     </table>
                     <button id="addCourseButton"
                             style="margin-top: 15px;"
-                            class="btn btn-primary"
+                            class="btn btn-primary hideButton"
                             type="submit">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>
@@ -334,8 +344,9 @@
                     <h4 id="intTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-headphones"></span>
                         Zainteresowania
+                        <span id="intGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
-                    <table id="cvTable" style="display:table;">
+                    <table id="cvTable" class="intTable">
                         <tr>
                             <th>Zainteresowanie</th>
                             <th>Usuń</th>
@@ -382,7 +393,7 @@
                     </table>
                     <button id="addIntButton"
                             style="margin-top: 15px;"
-                            class="btn btn-primary"
+                            class="btn btn-primary hideButton"
                             type="submit">
                         <span class="glyphicon glyphicon-plus"></span>
                     </button>

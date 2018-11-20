@@ -1,35 +1,41 @@
 // out: ../../public/css/style.css, compress: true
 
-@mainColor: darkolivegreen;
-@secondColor: olive;
-@borderRadius: 25px;
+@mainColor: lighten(black, 25%);
+@secondColor: darken(silver, 35%);
+
+header
+{
+  height: 12.5vh;
+  line-height: 3vh;
+  border-bottom: 3px solid lighten(@secondColor, 35%);
+}
+
+main
+{
+  min-height: 77.5vh;
+}
+
+footer
+{
+  height: 10vh;
+  line-height: 3vh;
+  border-top: 3px solid lighten(@secondColor, 35%);
+}
 
 html
 {
-  background-color: silver;
-  background-image:
-    linear-gradient(335deg, darken(@secondColor, 5%) 23px, transparent 23px),
-    linear-gradient(155deg, darken(@secondColor, 2%) 23px, transparent 23px),
-    linear-gradient(335deg, darken(@secondColor, 10%) 23px, transparent 23px),
-    linear-gradient(155deg, darken(@secondColor, 7%) 23px, transparent 23px);
-  background-size: 58px 58px;
-  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
-  opacity: 0.98;
+  height: 100%;
 
   body
   {
-    width: 125vh;
+    width: 100%;
+    height: 100%;
     .centerBox;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    border-radius: @borderRadius;
     .shadow;
 
     header
     {
       .headerFooterStyle;
-      border-top-left-radius: @borderRadius;
-      border-top-right-radius: @borderRadius;
 
       #loginPanel
       {
@@ -45,7 +51,9 @@ html
 
           .buttonGroup
           {
-            display: block;
+            display: inline-block;
+            float: right;
+            margin-left: 20px;
           }
 
           select#type, input#login, input#password
@@ -90,6 +98,7 @@ html
     main
     {
       background-color: lighten(@mainColor, 50%);
+      background-image: url("../images/silver_pattern.jpg");
       color: darken(@mainColor, 10%);
       padding: 25px;
 
@@ -154,15 +163,9 @@ html
 
             tr
             {
-              &:hover
+              &:hover:not(:first-child)
               {
                 background-color: lighten(black, 75%);
-                // color: darken(whitesmoke, 5%);
-
-                &:first-child
-                {
-                  // color: whitesmoke;
-                }
               }
             }
           }
@@ -174,14 +177,13 @@ html
   footer
   {
     .headerFooterStyle;
-    border-bottom-left-radius: @borderRadius;
-    border-bottom-right-radius: @borderRadius;
   }
 }
 
 .headerFooterStyle
 {
   background-color: darken(@mainColor, 15%);
+  background-image: url("../images/black_pattern.jpg");
   color: white;
   padding: 15px;
   text-align: center;
@@ -190,11 +192,12 @@ html
 .menuElement
 {
   border-radius: 10px;
+  padding-left: 10px;
 }
 
 .menuElement:hover
 {
-  background-color: lighten(@mainColor, 25%);
+  background-color: lighten(@secondColor, 25%);
   color: @mainColor;
   cursor: pointer;
 }
@@ -202,9 +205,9 @@ html
 .activeMenuOption
 {
   background-color: @mainColor;
-  color: lighten(@mainColor, 25%);
+  color: lighten(@secondColor, 25%);
   .shadow;
-  border-bottom: 1px solid darken(@mainColor, 25%);
+  border-bottom: 1px solid darken(@secondColor, 25%);
 }
 
 .centerBox
@@ -239,4 +242,9 @@ html
   background-color: @main;
   color: @other;
   border: 1px solid @other;
+}
+
+.hideButton
+{
+  display: none !important;
 }

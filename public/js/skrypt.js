@@ -77,6 +77,7 @@ document.onreadystatechange = function()
             {
                 tableName = (this.id).replace("Title","Table");
                 glyphName = (this.id).replace("Title","Glyph");
+                addButtonName = "add" + (this.id).charAt(0).toUpperCase() + (this.id).replace("Title","Button").slice(1);
                 $("." + tableName).toggle("slow", function()
                 {
                     if($("." + tableName).is(":visible"))
@@ -84,12 +85,14 @@ document.onreadystatechange = function()
                         // alert(tableName + " : visible");
                         $("#" + glyphName).removeClass("glyphicon-chevron-down");
                         $("#" + glyphName).addClass("glyphicon-chevron-up");
+                        $("#" + addButtonName).removeClass("hideButton");
                     }
                     else
                     {
                         // alert(tableName + " : hidden");
                         $("#" + glyphName).removeClass("glyphicon-chevron-up");
                         $("#" + glyphName).addClass("glyphicon-chevron-down");
+                        $("#" + addButtonName).addClass("hideButton");
                     }
                 });
             });
