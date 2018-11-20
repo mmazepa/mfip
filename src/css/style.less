@@ -3,25 +3,6 @@
 @mainColor: lighten(black, 25%);
 @secondColor: darken(silver, 35%);
 
-header
-{
-  height: 12.5vh;
-  line-height: 3vh;
-  border-bottom: 3px solid lighten(@secondColor, 35%);
-}
-
-main
-{
-  min-height: 77.5vh;
-}
-
-footer
-{
-  height: 10vh;
-  line-height: 3vh;
-  border-top: 3px solid lighten(@secondColor, 35%);
-}
-
 html
 {
   height: 100%;
@@ -36,6 +17,9 @@ html
     header
     {
       .headerFooterStyle;
+      height: 12.5vh;
+      line-height: 3vh;
+      border-bottom: 3px solid lighten(@secondColor, 35%);
 
       #loginPanel
       {
@@ -56,15 +40,13 @@ html
             margin-left: 20px;
           }
 
-          select#type, input#login, input#password
+          select#loginType, input#login, input#password
           {
-            background-color: lighten(@secondColor, 55%);
-            color: darken(@secondColor, 10%);
+            .colorize(lighten(@secondColor, 55%), darken(@secondColor, 10%));
             width: 175px;
             &:focus
             {
-              background-color: lighten(@secondColor, 40%);
-              color: darken(@secondColor, 15%);
+              .colorize(lighten(@secondColor, 40%), darken(@secondColor, 15%))
             }
           }
         }
@@ -97,23 +79,21 @@ html
 
     main
     {
-      background-color: lighten(@mainColor, 50%);
       background-image: url("../images/silver_pattern.jpg");
-      color: darken(@mainColor, 10%);
+      .colorize(lighten(@mainColor, 50%), darken(@mainColor, 10%));
       padding: 25px;
+      min-height: 77.5vh;
 
       .col-sm-3
       {
-        background-color: lighten(@mainColor, 10%);
-        color: lighten(@mainColor, 75%);
+        .colorize(lighten(@mainColor, 10%), lighten(@mainColor, 75%));
         padding: 10px;
         .shadow;
       }
 
       .col-sm-9
       {
-        background-color: lighten(@mainColor, 5%);
-        color: lighten(@mainColor, 60%);
+        .colorize(lighten(@mainColor, 5%), lighten(@mainColor, 60%));
         .shadow;
 
         p
@@ -124,8 +104,7 @@ html
 
         #cvPanel
         {
-          background-color: whitesmoke;
-          color: lighten(black, 25%);
+          .colorize(whitesmoke, lighten(black, 25%));
           border: 1px solid darkgray;
           border-radius: 5px;
           margin: 15px;
@@ -177,14 +156,16 @@ html
   footer
   {
     .headerFooterStyle;
+    height: 10vh;
+    line-height: 3vh;
+    border-top: 3px solid lighten(@secondColor, 35%);
   }
 }
 
 .headerFooterStyle
 {
-  background-color: darken(@mainColor, 15%);
   background-image: url("../images/black_pattern.jpg");
-  color: white;
+  .colorize(darken(@mainColor, 15%), whitesmoke);
   padding: 15px;
   text-align: center;
 }
@@ -197,15 +178,13 @@ html
 
 .menuElement:hover
 {
-  background-color: lighten(@secondColor, 25%);
-  color: @mainColor;
+  .colorize(lighten(@secondColor, 25%), @mainColor);
   cursor: pointer;
 }
 
 .activeMenuOption
 {
-  background-color: @mainColor;
-  color: lighten(@secondColor, 25%);
+  .colorize(@mainColor, lighten(@secondColor, 25%));
   .shadow;
   border-bottom: 1px solid darken(@secondColor, 25%);
 }
@@ -218,8 +197,14 @@ html
 
 #signupFrame
 {
+  .colorize(lighten(@mainColor, 15%), darken(@mainColor, 15%));
   padding: 25px;
-  color: darken(@mainColor, 15%);
+
+  #firmData, #userData
+  {
+    font-weight: bold;
+    text-align: center;
+  }
 }
 
 .shadow
@@ -239,12 +224,17 @@ html
 
 .buttonStyle(@main, @other)
 {
-  background-color: @main;
-  color: @other;
+  .colorize(@main, @other);
   border: 1px solid @other;
 }
 
-.hideButton
+.hideMe
 {
   display: none !important;
+}
+
+.colorize(@back, @front)
+{
+  background-color: @back;
+  color: @front;
 }
