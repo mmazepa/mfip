@@ -247,3 +247,27 @@ html
 {
   min-height: 69.75vh !important;
 }
+
+.listTable
+{
+  .colorize(whitesmoke, dimgray);
+  display: table;
+  width: 100%;
+  max-width: 100%;
+  border: 2.5px solid black;
+
+  tr, th, td
+  {
+    padding: 5px;
+  }
+
+  tr:first-child
+  {
+    .colorize(silver, black);
+  }
+
+  tr:not(:first-child):hover
+  {
+    .colorize(lighten(silver, 10%), black);
+  }
+}
