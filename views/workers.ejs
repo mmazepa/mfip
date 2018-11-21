@@ -1,0 +1,64 @@
+<% include partials/header %>
+
+    <!-- main section -->
+    <main id="mainContent">
+
+      <div class="containter-fluid">
+          <div class="row">
+
+            <% include partials/menu %>
+
+            <div class="col-sm-9">
+                <h1 class="mainHeader">
+                    Lista <span class="appTitle">Pracowników</span>!
+                </h1>
+                <p style="text-align:center;">
+                    <!-- LISTA PRACOWNIKÓW -->
+                    <table class="listTable">
+                    <%
+                        if (employees.length > 0) {
+                    %>
+                        <tr>
+                            <th>L.P.</th>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
+                            <th>Data urodzenia</th>
+                            <th>Numer telefonu</th>
+                            <th>E-mail</th>
+                            <th>Hasło</th>
+                        </tr>
+                    <%
+                            for (e in employees)
+                            {
+                    %>
+                                <tr>
+                                    <td><%= parseInt(e)+1 %></td>
+                                    <td><%= employees[e].first_name %></td>
+                                    <td><%= employees[e].last_name %></td>
+                                    <td><%= employees[e].birth.toString().substring(0,15); %></td>
+                                    <td><%= employees[e].phone_number %></td>
+                                    <td>
+                                        <a href="mailto:<%= employees[e].email %>">
+                                            <%= employees[e].email %>
+                                        </a>
+                                    </td>
+                                    <td><%= employees[e].password.toString().replace(/./g, '*'); %></td>
+                                </tr>
+                    <%
+                            }
+                        } else {
+                    %>
+                            Brak Pracowników.
+                    <%
+                        }
+                    %>
+                    </table>
+                </p>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <% include partials/footer %>
+  </body>
+</html>

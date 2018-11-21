@@ -2,9 +2,6 @@
 
     <!-- main section -->
     <main id="mainContent">
-      <h1 class="mainHeader">
-          Dołącz do nas już <span class="appTitle">teraz</span>!
-      </h1>
 
       <div class="containter-fluid">
           <div class="row">
@@ -12,6 +9,10 @@
             <% include partials/menu %>
 
             <div class="col-sm-9">
+                <h1 class="mainHeader">
+                    Dołącz do nas już <span class="appTitle">teraz</span>!
+                </h1>
+
                 <div id="signupFrame" class="containter-fluid">
                   <div class="text-center">
                     <h1>
@@ -28,6 +29,41 @@
 
                     <form id="signupform" method="post">
                     <!-- <form action="/signup" method="post"> -->
+                        <div class="myCol" style="width:250px;margin:0 auto;">
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <span class="input-group-addon transparent">
+                                      <span class="glyphicon glyphicon-asterisk"></span>
+                                  </span>
+                                  <select id="signupType"
+                                          class="form-control left-border-none"
+                                          name="type"
+                                          required />
+                                      <option disabled>Wybierz typ konta:</option>
+                                      <!-- <option value="admin">Administrator</option> -->
+                                      <option value="firm">Konto firmowe</option>
+                                      <option value="worker" selected>Konto pracownicze</option>
+                                  </select>
+                              </div>
+                          </div>
+                        </div>
+
+                        <p id="firmData" class="hideMe">
+                            Dane firmy:
+                        </p>
+
+                        <div id="firmInput" class="form-group hideMe">
+                            <span class="glyphicon glyphicon-briefcase"></span>
+                            <input  id="login"
+                                    type="text"
+                                    name="firmName"
+                                    placeholder="Nazwa firmy"/>
+                        </div>
+
+                        <p id="userData">
+                            Dane pracownika:
+                        </p>
+
                         <div class="form-group">
                             <span class="glyphicon glyphicon-asterisk"></span>
                             <input  id="login"

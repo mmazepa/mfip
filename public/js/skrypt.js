@@ -6,54 +6,25 @@ document.onreadystatechange = function()
     {
         $(function()
         {
+            $("#loginType").val("worker");
+            $("#signupType").val("worker");
+
             function selectMenuOption()
             {
                 let currentLocation = window.location.href.split("/").pop();
-                switch (currentLocation)
-                {
-                    case "":
-                        document.getElementById("homepage").classList.add("activeMenuOption");
-                        break;
-                    case "firm":
-                        document.getElementById("firm").classList.add("activeMenuOption");
-                        break;
-                    case "worker":
-                        document.getElementById("worker").classList.add("activeMenuOption");
-                        break;
-                    case "cv":
-                        document.getElementById("cv").classList.add("activeMenuOption");
-                        break;
-                    case "signup":
-                        document.getElementById("signup").classList.add("activeMenuOption");
-                        break;
-                    default:
-                        break;
-                }
+                if (currentLocation == "")
+                    document.getElementById("homepage").classList.add("activeMenuOption");
+                else if (currentLocation == "edit")
+                    document.getElementById("cv").classList.add("activeMenuOption");
+                else
+                    document.getElementById(currentLocation).classList.add("activeMenuOption");
             }
             selectMenuOption();
 
             $(".menuElement").on("click", function()
             {
-                switch (this.id)
-                {
-                    case "homepage":
-                        location.replace("/");
-                        break;
-                    case "firm":
-                        location.replace("/firm");
-                        break;
-                    case "worker":
-                        location.replace("/worker");
-                        break;
-                    case "cv":
-                        location.replace("/cv");
-                        break;
-                    case "signup":
-                        location.replace("/signup");
-                        break;
-                    default:
-                        break;
-                }
+                if (this.id == "homepage") location.replace("/");
+                else location.replace("/" + this.id);
             });
 
             $("#loginform").on("submit", function()
@@ -77,19 +48,20 @@ document.onreadystatechange = function()
             {
                 tableName = (this.id).replace("Title","Table");
                 glyphName = (this.id).replace("Title","Glyph");
+                addButtonName = "add" + (this.id).charAt(0).toUpperCase() + (this.id).replace("Title","Button").slice(1);
                 $("." + tableName).toggle("slow", function()
                 {
                     if($("." + tableName).is(":visible"))
                     {
-                        // alert(tableName + " : visible");
                         $("#" + glyphName).removeClass("glyphicon-chevron-down");
                         $("#" + glyphName).addClass("glyphicon-chevron-up");
+                        $("#" + addButtonName).removeClass("hideButton");
                     }
                     else
                     {
-                        // alert(tableName + " : hidden");
                         $("#" + glyphName).removeClass("glyphicon-chevron-up");
                         $("#" + glyphName).addClass("glyphicon-chevron-down");
+                        $("#" + addButtonName).addClass("hideButton");
                     }
                 });
             });
@@ -105,6 +77,22 @@ document.onreadystatechange = function()
                 return false;
             });
 
+            $("#signupType").change(function()
+            {
+                if ($("#" + this.id).val() == "firm")
+                {
+                    $("#userData").html("Dane kierownika:");
+                    $("#firmData").removeClass("hideMe");
+                    $("#firmInput").removeClass("hideMe");
+                }
+                else if ($("#" + this.id).val() == "worker")
+                {
+                    $("#userData").html("Dane pracownika:");
+                    $("#firmData").addClass("hideMe");
+                    $("#firmInput").addClass("hideMe");
+                }
+            });
+
             $("#addExpButton").on("click", function() { alertUndone("Dodawanie doświadczenia"); return false; });
             $("#addEduButton").on("click", function() { alertUndone("Dodawanie wykształcenia"); return false; });
             $("#addLangButton").on("click", function() { alertUndone("Dodawanie języków"); return false; });
@@ -118,6 +106,24 @@ document.onreadystatechange = function()
             $(".delSkillButton").on("click", function() { alertUndone("Usuwanie umiejętności"); return false; });
             $(".delCourseButton").on("click", function() { alertUndone("Usuwanie kursów, szkoleń, certyfikatów"); return false; });
             $(".delIntButton").on("click", function() { alertUndone("Usuwanie zainteresowań"); return false; });
+
+            function refreshClock()
+            {
+                let clock = document.getElementById("clock");
+                let now = new Date();
+
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+                let seconds = now.getSeconds();
+
+                if (hours < 10) hours = '0' + hours;
+                if (minutes < 10) minutes = '0' + minutes;
+                if (seconds < 10) seconds = '0' + seconds;
+
+                clock.innerHTML = hours + ":" + minutes + ":" + seconds;
+                setTimeout(refreshClock, 500);
+            }
+            refreshClock();
         });
     }
 };

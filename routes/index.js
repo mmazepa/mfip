@@ -1,13 +1,30 @@
 //jshint node: true, esversion: 6
 
 var express = require('express');
-
 var router = express.Router();
+var pgp = require('pg-promise')();
+var db = pgp("postgres://postgres:postgres@localhost:5432/mfip");
 
 var session;
 router.get('/', function(req, res, next)
 {
   session = req.session || session;
+
+  // db.one('SELECT * FROM "Employee" WHERE email=\'' + req.email + '\'', [true])
+  // .then(function(data)
+  // {
+  //     console.log(data);
+  //     res.render('workers.ejs',
+  //     {
+  //         session: session,
+  //         activeUser: data
+  //     });
+  // })
+  // .catch(function(error)
+  // {
+  //     console.log(error);
+  // });
+
   res.render('index',
   {
       session: req.session,
@@ -24,12 +41,56 @@ router.get('/firm', function(req,res)
     });
 });
 
+router.get('/firms', function(req,res)
+{
+    session = req.session || session;
+    var firms = req.firms || firms;
+
+    db.any('SELECT * FROM "Company"', [true])
+    .then(function(data)
+    {
+        console.log(data);
+        firms = data;
+        res.render('firms.ejs',
+        {
+            session: session,
+            firms: firms
+        });
+    })
+    .catch(function(error)
+    {
+        console.log(error);
+    });
+});
+
 router.get('/worker', function(req,res)
 {
     session = req.session || session;
     res.render('worker.ejs',
     {
         session: session
+    });
+});
+
+router.get('/workers', function(req,res)
+{
+    session = req.session || session;
+    var employees = req.employees || employees;
+
+    db.any('SELECT * FROM "Employee"', [true])
+    .then(function(data)
+    {
+        console.log(data);
+        employees = data;
+        res.render('workers.ejs',
+        {
+            session: session,
+            employees: employees
+        });
+    })
+    .catch(function(error)
+    {
+        console.log(error);
     });
 });
 

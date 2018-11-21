@@ -2,9 +2,6 @@
 
     <!-- main section -->
     <main id="mainContent">
-      <h1 class="mainHeader">
-          Profil <span class="appTitle">Pracownika</span>!
-      </h1>
 
       <div class="containter-fluid">
           <div class="row">
@@ -12,17 +9,81 @@
             <% include partials/menu %>
 
             <div class="col-sm-9">
+                <h1 class="mainHeader">
+                    Profil <span class="appTitle">Pracownika</span>!
+                </h1>
+
                 <h3>Uszanowanie, pracowniku!</h3>
                 <p>
                     Pracowniku, aktualnie jesteś zalogowany jako
                     <strong>imię_nazwisko_i_inne_takie</strong>.
                     (dalszy opis...)
                 </p>
+
+                <h4 class="tableHeader">
+                    <span class="glyphicon glyphicon-user"></span>
+                    Dane Pracownika
+                </h4>
                 <p>
-                    (dane pracownika)
+                    <table class="listTable">
+                        <tr>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
+                            <th>Data urodzenia</th>
+                            <th>Numer telefonu</th>
+                            <th>E-mail</th>
+                            <th>Hasło</th>
+                        </tr>
+                        <tr>
+                            <td>Jan</td>
+                            <td>Kowalski</td>
+                            <td>1964-07-15</td>
+                            <td>610 341 005</td>
+                            <td><a href="mailto:jan.kowalski@gmail.com">jan.kowalski@gmail.com</a></td>
+                            <td>*******</td>
+                        </tr>
+                    </table>
                 </p>
+
+                <h4 class="tableHeader">
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                    Informacje o zatrudnieniu
+                </h4>
                 <p>
-                    (informacje o zatrudnieniu)
+                    <table class="listTable">
+                        <tr>
+                            <th>L.P.</th>
+                            <th>Firma</th>
+                            <th>Stanowisko</th>
+                            <th>W firmie od</th>
+                            <th>Pensja</th>
+                            <th>E-mail służbowy</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Oracle</td>
+                            <td>Database Administrator</td>
+                            <td>01.01.2010</td>
+                            <td>5000.00</td>
+                            <td><a href="mailto:db.admin@oracle.com">db.admin@oracle.com</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Microsoft</td>
+                            <td>Project Manager</td>
+                            <td>01.01.1995</td>
+                            <td>3500.00</td>
+                            <td><a href="mailto:project.manager@microsoft.com">project.manager@microsoft.com</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Intel</td>
+                            <td>Front-end Developer</td>
+                            <td>01.01.1987</td>
+                            <td>2000.00</td>
+                            <td><a href="mailto:front.dev@intel.com">front.dev@intel.com</a></td>
+                        </tr>
+                    </table>
                 </p>
             </div>
           </div>
