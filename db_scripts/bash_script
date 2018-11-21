@@ -7,7 +7,7 @@ echo "If you see error you need to change /etc/postgresql/*/main/pg_hba.conf \n 
 
 
 # Drop DB name: mfip
-#sudo -u postgres dropdb mfip
+sudo -u postgres dropdb mfip
 
 if !(psql -U postgres -lqt | cut -d \| -f 1 | grep -qw "mfip"); then
     #Create DB name: mfip
@@ -19,3 +19,4 @@ echo "mfip existed"
 
 psql -U postgres mfip < sql_script.sql
 
+sudo service postgresql restart
