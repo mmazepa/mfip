@@ -1,26 +1,26 @@
 /*jshint node: true, esversion: 6 */
 
-var express = require("express");
-var path = require("path");
-var favicon = require("serve-favicon");
-var logger = require("morgan");
-var cookieParser = require("cookie-parser");
-var bodyParser = require("body-parser");
-var ejs = require("ejs");
-var errorHandler = require("errorhandler");
+const express = require("express");
+const path = require("path");
+const favicon = require("serve-favicon");
+const logger = require("morgan");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const ejs = require("ejs");
+const errorHandler = require("errorhandler");
 
-var routes = require("./routes/index");
-var users = require("./routes/users");
+const routes = require("./routes/index");
+const users = require("./routes/users");
 
-var port = process.env.PORT || 3000;
-var env = process.env.NODE_ENV || "development";
-var secret = process.env.SECRET || "$uper $ecret";
+let port = process.env.PORT || 3000;
+let env = process.env.NODE_ENV || "development";
+let secret = process.env.SECRET || "$uper $ecret";
 
-var flash = require('connect-flash');
-var session = require('express-session');
+const flash = require('connect-flash');
+const session = require('express-session');
 
-var app = express();
-var http = require("http").Server(app);
+const app = express();
+const http = require("http").Server(app);
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
