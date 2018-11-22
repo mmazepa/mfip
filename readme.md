@@ -46,3 +46,17 @@ poszczególnych studentów obrazuje poniższa tabela.
     </td>
   </tr>
 </table>
+
+### Projekt bazy danych
+
+**Diagram związków encji**
+
+Diagram związków encji (ang. _Entity-Relationship Diagram_), zwany również
+diagramem ERD, przygotowany na podstawie zaprojektowanej bazy danych
+przedstawia się w sposób następujący:
+
+![ERD](db_scripts/database ERD)
+
+Został on wygenerowany przy pomocy odpowiednich narzędzi automatyzujących
+ilustrowanie diagramów ERD na podstawie kodu źródłowego napisanego
+w oparciu o PostgreSQL.

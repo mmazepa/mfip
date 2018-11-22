@@ -55,13 +55,13 @@ document.onreadystatechange = function()
                     {
                         $("#" + glyphName).removeClass("glyphicon-chevron-down");
                         $("#" + glyphName).addClass("glyphicon-chevron-up");
-                        $("#" + addButtonName).removeClass("hideButton");
+                        $("#" + addButtonName).removeClass("hideMe");
                     }
                     else
                     {
                         $("#" + glyphName).removeClass("glyphicon-chevron-up");
                         $("#" + glyphName).addClass("glyphicon-chevron-down");
-                        $("#" + addButtonName).addClass("hideButton");
+                        $("#" + addButtonName).addClass("hideMe");
                     }
                 });
             });
