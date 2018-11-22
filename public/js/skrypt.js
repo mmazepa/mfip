@@ -371,6 +371,10 @@ document.onreadystatechange = function()
 
                 button.setAttribute("class", "delIntButton btn btn-danger");
                 button.setAttribute("type", "submit");
+                button.addEventListener("click", function delThisRecord()
+                {
+                    delIntButton(button);
+                });
                 span.setAttribute("class", "glyphicon glyphicon-remove");
 
                 td_input.appendChild(input);
@@ -384,12 +388,12 @@ document.onreadystatechange = function()
 
             // --- DYNAMICZNE USUWANIE REKORDÓW Z CV ---------------------------
 
-            $(".delExpButton").on("click", function() { alertUndone("Usuwanie doświadczenia"); return false; });
-            $(".delEduButton").on("click", function() { alertUndone("Usuwanie wykształcenia"); return false; });
-            $(".delLangButton").on("click", function() { alertUndone("Usuwanie języków"); return false; });
-            $(".delSkillButton").on("click", function() { alertUndone("Usuwanie umiejętności"); return false; });
-            $(".delCourseButton").on("click", function() { alertUndone("Usuwanie kursów, szkoleń, certyfikatów"); return false; });
-            $(".delIntButton").on("click", function() { alertUndone("Usuwanie zainteresowań"); return false; });
+            deleteCurrentRow = (elem) =>
+            {
+                const row = elem.parentElement.parentElement;
+                const table = row.parentElement;
+                table.removeChild(row);
+            };
 
             // --- ODŚWIEŻANIE ZEGARKA -----------------------------------------
 
