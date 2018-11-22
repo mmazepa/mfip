@@ -138,6 +138,10 @@ document.onreadystatechange = function()
 
                 button.setAttribute("class", "delExpButton btn btn-danger");
                 button.setAttribute("type", "submit");
+                button.addEventListener("click", function delThisRecord()
+                {
+                    deleteCurrentRow(button);
+                });
                 span.setAttribute("class", "glyphicon glyphicon-remove");
 
                 td_input_range.appendChild(text_range_from);
@@ -191,6 +195,10 @@ document.onreadystatechange = function()
 
                 button.setAttribute("class", "delEduButton btn btn-danger");
                 button.setAttribute("type", "submit");
+                button.addEventListener("click", function delThisRecord()
+                {
+                    deleteCurrentRow(button);
+                });
                 span.setAttribute("class", "glyphicon glyphicon-remove");
 
                 td_input_range.appendChild(text_range_from);
@@ -244,6 +252,10 @@ document.onreadystatechange = function()
 
                 button.setAttribute("class", "delLangButton btn btn-danger");
                 button.setAttribute("type", "submit");
+                button.addEventListener("click", function delThisRecord()
+                {
+                    deleteCurrentRow(button);
+                });
                 span.setAttribute("class", "glyphicon glyphicon-remove");
 
                 td_input.appendChild(input);
@@ -294,6 +306,10 @@ document.onreadystatechange = function()
 
                 button.setAttribute("class", "delLangButton btn btn-danger");
                 button.setAttribute("type", "submit");
+                button.addEventListener("click", function delThisRecord()
+                {
+                    deleteCurrentRow(button);
+                });
                 span.setAttribute("class", "glyphicon glyphicon-remove");
 
                 td_input.appendChild(input);
@@ -334,6 +350,10 @@ document.onreadystatechange = function()
 
                 button.setAttribute("class", "delEduButton btn btn-danger");
                 button.setAttribute("type", "submit");
+                button.addEventListener("click", function delThisRecord()
+                {
+                    deleteCurrentRow(button);
+                });
                 span.setAttribute("class", "glyphicon glyphicon-remove");
 
                 td_input_range.appendChild(text_range_from);
@@ -373,7 +393,7 @@ document.onreadystatechange = function()
                 button.setAttribute("type", "submit");
                 button.addEventListener("click", function delThisRecord()
                 {
-                    delIntButton(button);
+                    deleteCurrentRow(button);
                 });
                 span.setAttribute("class", "glyphicon glyphicon-remove");
 
