@@ -25,7 +25,7 @@
                             <th>Data urodzenia</th>
                             <th>Numer telefonu</th>
                             <th>E-mail</th>
-                            <!-- <th>Hasło</th> -->
+                            <th>Adres</th>
                         </tr>
                     <%
                             for (e in employees)
@@ -54,7 +54,15 @@
                                             <%= employees[e].email %>
                                         </a>
                                     </td>
-                                    <!-- <td><%= employees[e].password.toString().replace(/./g, '*'); %></td> -->
+                                    <td>
+                                        <%=
+                                            employees[e].street + " " +
+                                            employees[e].house_number + ", " +
+                                            employees[e].zip_code + " " +
+                                            employees[e].city + ", " +
+                                            employees[e].country;
+                                        %>
+                                    </td>
                                 </tr>
                     <%
                             }

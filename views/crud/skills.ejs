@@ -20,6 +20,7 @@
                     %>
                         <tr>
                             <th>L.P.</th>
+                            <th>Pracownik</th>
                             <th>Typ</th>
                             <th>Nazwa</th>
                             <th>Opis</th>
@@ -30,6 +31,7 @@
                     %>
                                 <tr>
                                     <td><%= parseInt(s)+1 %></td>
+                                    <td><%= skills[s].first_name + " " + skills[s].last_name %></td>
                                     <td><%= skills[s].type %></td>
                                     <td><%= skills[s].name %></td>
                                     <td><%= skills[s].description %></td>

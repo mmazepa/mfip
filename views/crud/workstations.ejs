@@ -20,11 +20,13 @@
                     %>
                         <tr>
                             <th>L.P.</th>
-                            <th>Nazwa</th>
+                            <th>Firma</th>
+                            <th>Stanowisko</th>
                             <th>Numer telefonu</th>
                             <th>E-mail</th>
                             <th>Limit</th>
                             <th>Opis</th>
+                            <th>Adres</th>
                         </tr>
                     <%
                             for (w in workstations)
@@ -32,7 +34,8 @@
                     %>
                                 <tr>
                                     <td><%= parseInt(w)+1 %></td>
-                                    <td><%= workstations[w].name %></td>
+                                    <td><%= workstations[w].company_name %></td>
+                                    <td><%= workstations[w].workstation_name %></td>
                                     <td><%= workstations[w].phone_number %></td>
                                     <td>
                                         <a href="mailto:<%= workstations[w].email %>">
@@ -41,6 +44,15 @@
                                     </td>
                                     <td><%= workstations[w].limit %></td>
                                     <td><%= workstations[w].description %></td>
+                                    <td>
+                                        <%=
+                                            workstations[w].street + " " +
+                                            workstations[w].house_number + ", " +
+                                            workstations[w].zip_code + " " +
+                                            workstations[w].city + ", " +
+                                            workstations[w].country;
+                                        %>
+                                    </td>
                                 </tr>
                     <%
                             }

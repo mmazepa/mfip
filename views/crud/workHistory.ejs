@@ -1,0 +1,100 @@
+<% include ../partials/header %>
+
+    <!-- main section -->
+    <main id="mainContent">
+
+      <div class="containter-fluid">
+          <div class="row">
+
+            <% include ../partials/menu %>
+
+            <div class="col-sm-9">
+                <h1 class="mainHeader">
+                    Lista <span class="appTitle">Historii Zatrudnienia</span>!
+                </h1>
+                <p style="text-align:center;">
+                    <!-- LISTA HISTORII ZATRUDNIENIA -->
+                    <table class="listTable">
+                    <%
+                        if (workHistory.length > 0) {
+                    %>
+                        <tr>
+                            <th>L.P.</th>
+                            <th>Pracownik</th>
+                            <th>Firma</th>
+                            <th>Data zatrudnienia</th>
+                            <th>Data zwolnienia</th>
+                            <th>Opis</th>
+                        </tr>
+                    <%
+                            for (wh in workHistory)
+                            {
+                    %>
+                                <tr>
+                                    <td><%= parseInt(wh)+1 %></td>
+                                    <td><%= workHistory[wh].first_name + " " + workHistory[wh].last_name %></td>
+                                    <td><%= workHistory[wh].name %></td>
+                                    <!-- <td><%= workHistory[wh].from %></td> -->
+                                    <td class="date">
+                                        <%
+                                            var date;
+                                            if (workHistory[wh].from)
+                                            {
+                                                var day = workHistory[wh].from.getDate();
+                                                var month = workHistory[wh].from.getMonth()+1;
+                                                const year = workHistory[wh].from.getFullYear();
+
+                                                if (day < 10) day = "0" + day;
+                                                if (month < 10) month = "0" + month;
+
+                                                date = day + "." + month + "." + year;
+                                            }
+                                            else
+                                            {
+                                                date = "";
+                                            }
+                                        %>
+                                        <%= date %>
+                                    </td>
+                                    <!-- <td><%= workHistory[wh].to %></td> -->
+                                    <td class="date">
+                                        <%
+                                            var date2;
+                                            if (workHistory[wh].to)
+                                            {
+                                                var day2 = workHistory[wh].to.getDate();
+                                                var month2 = workHistory[wh].to.getMonth()+1;
+                                                const year2 = workHistory[wh].to.getFullYear();
+
+                                                if (day2 < 10) day2 = "0" + day2;
+                                                if (month2 < 10) month2 = "0" + month2;
+
+                                                date2 = day2 + "." + month2 + "." + year2;
+                                            }
+                                            else
+                                            {
+                                                date2 = "";
+                                            }
+                                        %>
+                                        <%= date2 %>
+                                    </td>
+                                    <td><%= workHistory[wh].description %></td>
+                                </tr>
+                    <%
+                            }
+                        } else {
+                    %>
+                            Brak Historii Zatrudnienia.
+                    <%
+                        }
+                    %>
+                    </table>
+                </p>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <% include ../partials/footer %>
+  </body>
+</html>

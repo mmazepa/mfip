@@ -22,7 +22,6 @@
                             <th>L.P.</th>
                             <th>Nazwa</th>
                             <th>Specjalizacja</th>
-                            <th>NIP</th>
                             <th>Opis</th>
                             <th>Email</th>
                             <th>WWW</th>
@@ -35,8 +34,7 @@
                                     <td><%= parseInt(f)+1 %></td>
                                     <td><%= firms[f].name %></td>
                                     <td><%= firms[f].specialization %></td>
-                                    <td><%= firms[f].global_id %></td>
-                                    <td><%= firms[f].desctiption %></td>
+                                    <td><%= firms[f].description %></td>
                                     <td>
                                         <a href="mailto:<%= firms[f].email %>">
                                             <%= firms[f].email %>
