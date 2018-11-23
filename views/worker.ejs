@@ -35,12 +35,51 @@
                             <th>Hasło</th>
                         </tr>
                         <tr>
-                            <td>Jan</td>
-                            <td>Kowalski</td>
-                            <td>15.07.1964</td>
-                            <td>610 341 005</td>
-                            <td><a href="mailto:jan.kowalski@gmail.com">jan.kowalski@gmail.com</a></td>
+                            <td><%= employees[0].first_name %></td>
+                            <td><%= employees[0].last_name %></td>
+                            <td class="date">
+                                <%
+                                    var day = employees[0].birth.getDate();
+                                    var month = employees[0].birth.getMonth()+1;
+                                    const year = employees[0].birth.getFullYear();
+
+                                    if (day < 10) day = "0" + day;
+                                    if (month < 10) month = "0" + month;
+
+                                    const date = day + "." + month + "." + year;
+                                %>
+                                <%= date %>
+                            </td>
+                            <td><%= employees[0].phone_number %></td>
+                            <td>
+                                <a href="mailto:<%= employees[0].email %>">
+                                    <%= employees[0].email %>
+                                </a>
+                            </td>
                             <td>*******</td>
+                        </tr>
+                    </table>
+                </p>
+
+                <h4 class="tableHeader">
+                    <span class="glyphicon glyphicon-home"></span>
+                    Adres Pracownika
+                </h4>
+                <p>
+                    <table class="listTable">
+                        <tr>
+                            <th>Kraj</th>
+                            <th>Miasto</th>
+                            <th>Ulica</th>
+                            <th>Nr domu</th>
+                            <th>Kod pocztowy</th>
+                        </tr>
+                        <tr>
+                            <td><%= employees[0].country %></td>
+                            <td><%= employees[0].city %></td>
+                            <td><%= employees[0].street %></td>
+                            <td><%= employees[0].house_number %></td>
+                            <td><%= employees[0].zip_code %></td>
                         </tr>
                     </table>
                 </p>
@@ -51,38 +90,75 @@
                 </h4>
                 <p>
                     <table class="listTable">
+                    <%
+                        if (employees.length > 0) {
+                    %>
                         <tr>
                             <th>L.P.</th>
                             <th>Firma</th>
-                            <th>Stanowisko</th>
-                            <th>W firmie od</th>
-                            <th>Pensja</th>
-                            <th>E-mail służbowy</th>
+                            <th>Data zatrudnienia</th>
+                            <th>Data zwolnienia</th>
+                            <th>Opis</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Oracle</td>
-                            <td>Database Administrator</td>
-                            <td>01.01.2010</td>
-                            <td>5000.00</td>
-                            <td><a href="mailto:db.admin@oracle.com">db.admin@oracle.com</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Microsoft</td>
-                            <td>Project Manager</td>
-                            <td>01.01.1995</td>
-                            <td>3500.00</td>
-                            <td><a href="mailto:project.manager@microsoft.com">project.manager@microsoft.com</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Intel</td>
-                            <td>Front-end Developer</td>
-                            <td>01.01.1987</td>
-                            <td>2000.00</td>
-                            <td><a href="mailto:front.dev@intel.com">front.dev@intel.com</a></td>
-                        </tr>
+                    <%
+                            for (wh in employees)
+                            {
+                    %>
+                                <tr>
+                                    <td><%= parseInt(wh)+1 %></td>
+                                    <td><%= employees[wh].company_name %></td>
+                                    <td class="date">
+                                        <%
+                                            var date2;
+                                            if (employees[wh].from)
+                                            {
+                                                var day = employees[wh].from.getDate();
+                                                var month = employees[wh].from.getMonth()+1;
+                                                const year = employees[wh].from.getFullYear();
+
+                                                if (day < 10) day = "0" + day;
+                                                if (month < 10) month = "0" + month;
+
+                                                date2 = day + "." + month + "." + year;
+                                            }
+                                            else
+                                            {
+                                                date2 = "";
+                                            }
+                                        %>
+                                        <%= date2 %>
+                                    </td>
+                                    <td class="date">
+                                        <%
+                                            var date3;
+                                            if (employees[wh].to)
+                                            {
+                                                var day2 = employees[wh].to.getDate();
+                                                var month2 = employees[wh].to.getMonth()+1;
+                                                const year2 = employees[wh].to.getFullYear();
+
+                                                if (day2 < 10) day2 = "0" + day2;
+                                                if (month2 < 10) month2 = "0" + month2;
+
+                                                date3 = day2 + "." + month2 + "." + year2;
+                                            }
+                                            else
+                                            {
+                                                date3 = "";
+                                            }
+                                        %>
+                                        <%= date3 %>
+                                    </td>
+                                    <td><%= employees[wh].description %></td>
+                                </tr>
+                    <%
+                            }
+                        } else {
+                    %>
+                            Brak Historii Zatrudnienia.
+                    <%
+                        }
+                    %>
                     </table>
                 </p>
             </div>

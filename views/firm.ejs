@@ -32,12 +32,24 @@
                             <tr>
                                 <th>Nazwa</th>
                                 <th>Specjalizacja</th>
-                                <th>E-mail</th>
+                                <th>Opis</th>
+                                <th>Email</th>
+                                <th>WWW</th>
                             </tr>
                             <tr>
-                                <td>Intel</td>
-                                <td>IT Development</td>
-                                <td><a href="mailto:intel@gmail.com">intel@gmail.com</a></td>
+                                <td><%= firms[0].name %></td>
+                                <td><%= firms[0].specialization %></td>
+                                <td><%= firms[0].description %></td>
+                                <td>
+                                    <a href="mailto:<%= firms[0].email %>">
+                                        <%= firms[0].email %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="http://<%= firms[0].website %>">
+                                        <%= firms[0].website %>
+                                    </a>
+                                </td>
                             </tr>
                         </table>
                     </p>
