@@ -80,12 +80,12 @@ router.get('/worker', function(req,res)
     var employees = req.employees || employees;
 
     db.any('SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
-    'e.password, a.country, a.city, a.street, a.house_number, a.zip_code, ' +
-    'c.name AS company_name, c.specialization, wh.from, wh.to, wh.description ' +
-    'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ' +
-    'ON wh.id_company = c.id INNER JOIN "Employee" AS "e" ' +
-    'ON wh.id_emplyee = e.id INNER JOIN "Adres" AS a ' +
-    'ON e.id_adres = a.id WHERE e.last_name=\'Kowalski\'', [true])
+            'e.password, a.country, a.city, a.street, a.house_number, a.zip_code, ' +
+            'c.name AS company_name, c.specialization, wh.from, wh.to, wh.description ' +
+            'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ' +
+            'ON wh.id_company = c.id INNER JOIN "Employee" AS "e" ' +
+            'ON wh.id_emplyee = e.id INNER JOIN "Adres" AS a ' +
+            'ON e.id_adres = a.id WHERE e.last_name=\'Kowalski\'', [true])
     .then(function(data)
     {
         employees = data;
@@ -151,9 +151,9 @@ router.get('/skills', function(req,res)
     var skills = req.skills || skills;
 
     db.any('SELECT e.first_name, e.last_name, s.type, s.name, s.description ' +
-        'FROM "List_Skills" AS ls INNER JOIN "Employee" AS e ON ls.id_owner = e.id ' +
-        'INNER JOIN "Skill" AS s ON ls.id_skill = s.id ' +
-        'ORDER BY e.last_name, e.first_name, s.type, s.name', [true])
+            'FROM "List_Skills" AS ls INNER JOIN "Employee" AS e ON ls.id_owner = e.id ' +
+            'INNER JOIN "Skill" AS s ON ls.id_skill = s.id ' +
+            'ORDER BY e.last_name, e.first_name, s.type, s.name', [true])
     .then(function(data)
     {
         skills = data;
@@ -200,8 +200,9 @@ router.get('/workHistory', function(req,res)
     var workHistory = req.workHistory || workHistory;
 
     db.any('SELECT c.name, e.first_name, e.last_name, wh.from, wh.to, wh.description ' +
-        'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ON wh.id_company = c.id ' +
-        'INNER JOIN "Employee" AS "e" ON wh.id_emplyee = e.id', [true])
+            'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ' +
+            'ON wh.id_company = c.id INNER JOIN "Employee" AS "e" ' +
+            'ON wh.id_emplyee = e.id', [true])
     .then(function(data)
     {
         console.log(data);
