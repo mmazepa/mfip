@@ -113,9 +113,9 @@ document.onreadystatechange = function()
 
                 const td_input_range = document.createElement("td");
                 const input_range_from = document.createElement("input");
-                const text_range_from = document.createTextNode("Od:");
+                const text_range_from = document.createTextNode("Od: ");
                 const input_range_to = document.createElement("input");
-                const text_range_to = document.createTextNode("Do:");
+                const text_range_to = document.createTextNode("Do: ");
 
                 const td_input_workstation = document.createElement("td");
                 const input_workstation = document.createElement("input");
@@ -170,9 +170,9 @@ document.onreadystatechange = function()
 
                 const td_input_range = document.createElement("td");
                 const input_range_from = document.createElement("input");
-                const text_range_from = document.createTextNode("Od:");
+                const text_range_from = document.createTextNode("Od: ");
                 const input_range_to = document.createElement("input");
-                const text_range_to = document.createTextNode("Do:");
+                const text_range_to = document.createTextNode("Do: ");
 
                 const td_input_faculty = document.createElement("td");
                 const input_faculty = document.createElement("input");
@@ -331,9 +331,9 @@ document.onreadystatechange = function()
 
                 const td_input_range = document.createElement("td");
                 const input_range_from = document.createElement("input");
-                const text_range_from = document.createTextNode("Od:");
+                const text_range_from = document.createTextNode("Od: ");
                 const input_range_to = document.createElement("input");
-                const text_range_to = document.createTextNode("Do:");
+                const text_range_to = document.createTextNode("Do: ");
 
                 const td_input_description = document.createElement("td");
                 const input_description = document.createElement("input");

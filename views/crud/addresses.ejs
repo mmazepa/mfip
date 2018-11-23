@@ -1,0 +1,58 @@
+<% include ../partials/header %>
+
+    <!-- main section -->
+    <main id="mainContent">
+
+      <div class="containter-fluid">
+          <div class="row">
+
+            <% include ../partials/menu %>
+
+            <div class="col-sm-9">
+                <h1 class="mainHeader">
+                    Lista <span class="appTitle">Adresów</span>!
+                </h1>
+                <p style="text-align:center;">
+                    <!-- LISTA ADRESÓW -->
+                    <table class="listTable">
+                    <%
+                        if (addresses.length > 0) {
+                    %>
+                        <tr>
+                            <th>L.P.</th>
+                            <th>Kraj</th>
+                            <th>Miasto</th>
+                            <th>Ulica</th>
+                            <th>Nr domu</th>
+                            <th>Kod pocztowy</th>
+                        </tr>
+                    <%
+                            for (a in addresses)
+                            {
+                    %>
+                                <tr>
+                                    <td><%= parseInt(a)+1 %></td>
+                                    <td><%= addresses[a].country %></td>
+                                    <td><%= addresses[a].city %></td>
+                                    <td><%= addresses[a].street %></td>
+                                    <td><%= addresses[a].house_number %></td>
+                                    <td><%= addresses[a].zip_code %></td>
+                                </tr>
+                    <%
+                            }
+                        } else {
+                    %>
+                            Brak Adresów.
+                    <%
+                        }
+                    %>
+                    </table>
+                </p>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <% include ../partials/footer %>
+  </body>
+</html>

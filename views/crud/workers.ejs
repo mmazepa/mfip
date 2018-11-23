@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
     <!-- main section -->
     <main id="mainContent">
@@ -6,7 +6,7 @@
       <div class="containter-fluid">
           <div class="row">
 
-            <% include partials/menu %>
+            <% include ../partials/menu %>
 
             <div class="col-sm-9">
                 <h1 class="mainHeader">
@@ -35,7 +35,19 @@
                                     <td><%= parseInt(e)+1 %></td>
                                     <td><%= employees[e].first_name %></td>
                                     <td><%= employees[e].last_name %></td>
-                                    <td><%= employees[e].birth.toString().substring(0,15); %></td>
+                                    <td class="date">
+                                        <%
+                                            var day = employees[e].birth.getDate();
+                                            var month = employees[e].birth.getMonth()+1;
+                                            const year = employees[e].birth.getFullYear();
+
+                                            if (day < 10) day = "0" + day;
+                                            if (month < 10) month = "0" + month;
+
+                                            const date = day + "." + month + "." + year;
+                                        %>
+                                        <%= date %>
+                                    </td>
                                     <td><%= employees[e].phone_number %></td>
                                     <td>
                                         <a href="mailto:<%= employees[e].email %>">
@@ -59,6 +71,6 @@
       </div>
     </main>
 
-    <% include partials/footer %>
+    <% include ../partials/footer %>
   </body>
 </html>

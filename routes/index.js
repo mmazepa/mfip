@@ -49,9 +49,8 @@ router.get('/firms', function(req,res)
     db.any('SELECT * FROM "Company"', [true])
     .then(function(data)
     {
-        console.log(data);
         firms = data;
-        res.render('firms.ejs',
+        res.render('crud/firms.ejs',
         {
             session: session,
             firms: firms
@@ -80,12 +79,74 @@ router.get('/workers', function(req,res)
     db.any('SELECT * FROM "Employee"', [true])
     .then(function(data)
     {
-        console.log(data);
         employees = data;
-        res.render('workers.ejs',
+        res.render('crud/workers.ejs',
         {
             session: session,
             employees: employees
+        });
+    })
+    .catch(function(error)
+    {
+        console.log(error);
+    });
+});
+
+router.get('/addresses', function(req,res)
+{
+    session = req.session || session;
+    var addresses = req.addresses || addresses;
+
+    db.any('SELECT * FROM "Adres"', [true])
+    .then(function(data)
+    {
+        addresses = data;
+        res.render('crud/addresses.ejs',
+        {
+            session: session,
+            addresses: addresses
+        });
+    })
+    .catch(function(error)
+    {
+        console.log(error);
+    });
+});
+
+router.get('/skills', function(req,res)
+{
+    session = req.session || session;
+    var skills = req.skills || skills;
+
+    db.any('SELECT * FROM "Skill"', [true])
+    .then(function(data)
+    {
+        skills = data;
+        res.render('crud/skills.ejs',
+        {
+            session: session,
+            skills: skills
+        });
+    })
+    .catch(function(error)
+    {
+        console.log(error);
+    });
+});
+
+router.get('/workstations', function(req,res)
+{
+    session = req.session || session;
+    var workstations = req.workstations || workstations;
+
+    db.any('SELECT * FROM "Workstation"', [true])
+    .then(function(data)
+    {
+        workstations = data;
+        res.render('crud/workstations.ejs',
+        {
+            session: session,
+            workstations: workstations
         });
     })
     .catch(function(error)

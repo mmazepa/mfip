@@ -1,0 +1,62 @@
+<% include ../partials/header %>
+
+    <!-- main section -->
+    <main id="mainContent">
+
+      <div class="containter-fluid">
+          <div class="row">
+
+            <% include ../partials/menu %>
+
+            <div class="col-sm-9">
+                <h1 class="mainHeader">
+                    Lista <span class="appTitle">Stanowisk</span>!
+                </h1>
+                <p style="text-align:center;">
+                    <!-- LISTA STANOWISK -->
+                    <table class="listTable">
+                    <%
+                        if (workstations.length > 0) {
+                    %>
+                        <tr>
+                            <th>L.P.</th>
+                            <th>Nazwa</th>
+                            <th>Numer telefonu</th>
+                            <th>E-mail</th>
+                            <th>Limit</th>
+                            <th>Opis</th>
+                        </tr>
+                    <%
+                            for (w in workstations)
+                            {
+                    %>
+                                <tr>
+                                    <td><%= parseInt(w)+1 %></td>
+                                    <td><%= workstations[w].name %></td>
+                                    <td><%= workstations[w].phone_number %></td>
+                                    <td>
+                                        <a href="mailto:<%= workstations[w].email %>">
+                                            <%= workstations[w].email %>
+                                        </a>
+                                    </td>
+                                    <td><%= workstations[w].limit %></td>
+                                    <td><%= workstations[w].description %></td>
+                                </tr>
+                    <%
+                            }
+                        } else {
+                    %>
+                            Brak Stanowisk.
+                    <%
+                        }
+                    %>
+                    </table>
+                </p>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <% include ../partials/footer %>
+  </body>
+</html>
