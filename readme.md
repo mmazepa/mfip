@@ -55,7 +55,7 @@ Diagram związków encji (ang. _Entity-Relationship Diagram_), zwany również
 diagramem ERD, przygotowany na podstawie zaprojektowanej bazy danych
 przedstawia się w sposób następujący:
 
-![ERD](db_scripts/database ERD)
+![ERD](db_scripts/databaseERD)
 
 Został on wygenerowany przy pomocy odpowiednich narzędzi automatyzujących
 ilustrowanie diagramów ERD na podstawie kodu źródłowego napisanego
