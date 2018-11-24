@@ -38,6 +38,9 @@ app.use(flash());
 app.use("/", routes);
 app.use("/users", users);
 
+// plik do testowania połączenia z bazą
+app.use("/test", require("./routes/test"));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
