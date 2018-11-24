@@ -134,19 +134,28 @@ INSERT INTO public."Adres"(
         VALUES (
         'Poland', 'Gdansk', 'Grunwaldzka', '23', '81-304', FALSE);
 
+\set c1 `cat b_c_1`
+\set c2 `cat b_c_2`
+\set c3 `cat b_c_3`
+
 -- Company (rounds:15)
 -- intel        $2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy
 INSERT INTO public."Company"(
-	password, name, email, specialization, description, website)
-	VALUES ('$2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy','Intel', 'intel@mail.com', 'processors & e.t.c.', 'big company', 'www.intel.com');
+	password, name, email, specialization, description, website, image)
+	VALUES ('$2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy','Intel', 'intel@mail.com', 'processors & e.t.c.', 'big company', 'www.intel.com',
+        :'c1');
+        --make_lo('/home/matt/mfip/db_scripts/image_c_1.png')
+        --loread(lo_open(\loread, 131072)
 -- microsoft    $2y$15$UciW4TzqSkYgb8gLjIkqFeyXQ3.ki0ux8R/HC8AgmE5ErNcB4OSvO
 INSERT INTO public."Company"(
-	password, name, email, specialization, description, website)
-	VALUES ('$2y$15$UciW4TzqSkYgb8gLjIkqFeyXQ3.ki0ux8R/HC8AgmE5ErNcB4OSvO','microsoft', 'microsoft@mail.com', 'OS & e.t.c.', 'big company', 'www.microsoft.com');
+	password, name, email, specialization, description, website, image)
+	VALUES ('$2y$15$UciW4TzqSkYgb8gLjIkqFeyXQ3.ki0ux8R/HC8AgmE5ErNcB4OSvO','microsoft', 'microsoft@mail.com', 'OS & e.t.c.', 'big company', 'www.microsoft.com',
+        :'c2');
 -- oracle       $2y$15$ZnJCM7ZpXF17kDlxsmaQX.elF6E0aTqufb0DfKes0QRgPWrSyvNi2
 INSERT INTO public."Company"(
-	password, name, email, specialization, description, website)
-	VALUES ('$2y$15$ZnJCM7ZpXF17kDlxsmaQX.elF6E0aTqufb0DfKes0QRgPWrSyvNi2','oracle', 'oracle@mail.com', 'JAVA & e.t.c.', 'big company', 'www.oracle.com');
+	password, name, email, specialization, description, website, image)
+	VALUES ('$2y$15$ZnJCM7ZpXF17kDlxsmaQX.elF6E0aTqufb0DfKes0QRgPWrSyvNi2','oracle', 'oracle@mail.com', 'JAVA & e.t.c.', 'big company', 'www.oracle.com',
+        :'c3');
 
 -- Skill
 INSERT INTO public."Skill"(
@@ -241,3 +250,4 @@ INSERT INTO public."Work_History"(
 INSERT INTO public."Work_History"(
 	id_company, id_emplyee, "from", "to", description)
 	VALUES (2, 2, to_date('2010-02-03','YYYY-MM-DD'), NULL, 'first job');
+
