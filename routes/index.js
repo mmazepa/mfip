@@ -1,7 +1,9 @@
 //jshint node: true, esversion: 6
 
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const Company = require('../model/company');
+
 var pgp = require('pg-promise')();
 var db = pgp("postgres://postgres:postgres@localhost:5432/mfip");
 
@@ -37,15 +39,29 @@ router.get('/firm', function(req,res)
     session = req.session || session;
     var firms = req.firms || firms;
 
-    db.any('SELECT * FROM "Company"', [true])
-    .then(function(data)
+    // db.any('SELECT * FROM "Company"', [true])
+    // .then(function(data)
+    // {
+    //     firms = data;
+    //     res.render('firm.ejs',
+    //     {
+    //         session: session,
+    //         firms: firms
+    //     });
+    // })
+    // .catch(function(error)
+    // {
+    //     console.log(error);
+    // });
+
+    Company.findAll().then((data) =>
     {
-        firms = data;
         res.render('firm.ejs',
         {
             session: session,
-            firms: firms
+            firms: data
         });
+        //res.json(JSON.stringify(data[0]));
     })
     .catch(function(error)
     {

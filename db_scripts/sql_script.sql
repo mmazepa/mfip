@@ -142,7 +142,7 @@ INSERT INTO public."Adres"(
 -- intel        $2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy
 INSERT INTO public."Company"(
 	password, name, email, specialization, description, website, image)
-	VALUES ('$2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy','Intel', 'intel@mail.com', 'processors & e.t.c.', 'big company', 'www.intel.com',
+	VALUES ('$2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy','intel', 'intel@mail.com', 'processors & e.t.c.', 'big company', 'www.intel.com',
         :'c1');
         --make_lo('/home/matt/mfip/db_scripts/image_c_1.png')
         --loread(lo_open(\loread, 131072)
