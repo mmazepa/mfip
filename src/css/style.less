@@ -3,116 +3,152 @@
 @mainColor: lighten(black, 25%);
 @secondColor: darken(silver, 35%);
 
-html
-{
-  height: 100%;
+html {
+  .helper > .size(auto, 100%);
 
-  body
-  {
-    width: 100%;
-    height: 100%;
-    .centerBox;
-    .shadow;
+  body {
+    .helper > .size(100%, 100%);
+    .helper > .centerBox;
+    .helper > .shadow;
 
-    header
-    {
+    header {
       .headerFooterStyle;
-      height: 12.5vh;
+      .helper > .size(auto, 12.5vh);
       line-height: 3vh;
       border-bottom: 3px solid lighten(@secondColor, 35%);
 
-      #loginPanel
-      {
-        form
-        {
+      #loginPanel {
+        form {
           display: inline-block;
           margin: 0 auto;
 
-          .myCol
-          {
+          .myCol {
             display: inline-block;
           }
 
-          .buttonGroup
-          {
+          .buttonGroup {
             display: inline-block;
             float: right;
             margin-left: 20px;
           }
 
-          select#loginType, input#login, input#password
-          {
-            .colorize(lighten(@secondColor, 55%), darken(@secondColor, 10%));
-            width: 175px;
-            &:focus
-            {
-              .colorize(lighten(@secondColor, 40%), darken(@secondColor, 15%))
+          select#loginType, input#login, input#password {
+            .helper > .colorize(lighten(@secondColor, 55%), darken(@secondColor, 10%));
+            .helper > .size(175px, auto);
+
+            &:focus {
+              .helper > .colorize(lighten(@secondColor, 40%), darken(@secondColor, 15%))
             }
           }
         }
 
-        #loginButton, #signupButton
-        {
-          width: 100px;
+        #loginButton, #signupButton {
+          .helper > .size(100px, auto);
           transition: 0.5s;
         }
 
-        #loginButton
-        {
-          .buttonStyle(darkgreen, white);
-          &:hover
-          {
-            .buttonStyle(white, darkgreen);
+        #loginButton {
+          .helper > .buttonStyle(darkgreen, white);
+
+          &:hover {
+            .helper > .buttonStyle(white, darkgreen);
           }
         }
 
-        #signupButton
-        {
-          .buttonStyle(darkblue, white);
-          &:hover
-          {
-            .buttonStyle(white, darkblue);
+        #signupButton {
+          .helper > .buttonStyle(darkblue, white);
+
+          &:hover {
+            .helper > .buttonStyle(white, darkblue);
           }
         }
       }
     }
 
-    main
-    {
+    main {
       background-image: url("../images/silver_pattern.jpg");
-      .colorize(lighten(@mainColor, 50%), darken(@mainColor, 10%));
+      .helper > .colorize(lighten(@mainColor, 50%), darken(@mainColor, 10%));
       padding: 25px;
       min-height: 77.5vh;
 
-      .col-sm-3
-      {
-        .colorize(lighten(@mainColor, 10%), lighten(@mainColor, 75%));
+      .col-sm-3 {
+        .helper > .colorize(lighten(@mainColor, 10%), lighten(@mainColor, 75%));
         padding: 10px;
-        .shadow;
+        .helper > .shadow;
       }
 
-      .col-sm-9
-      {
+      .col-sm-9 {
         background-image: url("../images/crossed_stripes.png");
-        .colorize(lighten(@mainColor, 5%), lighten(@mainColor, 60%));
-        .shadow;
+        .helper > .colorize(lighten(@mainColor, 5%), lighten(@mainColor, 60%));
+        .helper > .shadow;
 
-        p
-        {
+        .mainHeader {
+          .helper > .centerTextOptionalBold(normal);
+
+          .appTitle {
+            font-weight: bold;
+          }
+        }
+
+        p {
           text-align: justify;
           margin: 10px 50px;
         }
 
-        #cvPanel
-        {
-          .colorize(whitesmoke, lighten(black, 25%));
+        #signupFrame {
+          .helper > .colorize(lighten(@mainColor, 15%), darken(@mainColor, 15%));
+          padding: 25px;
+          border-top-left-radius: 25px;
+          border-top-right-radius: 25px;
+          border-top: 3px solid @mainColor;
+
+          #firmData, #userData {
+            .helper > .centerTextOptionalBold(bold);
+          }
+        }
+
+        .tableHeader {
+          .helper > .centerTextOptionalBold(bold);
+          display: block;
+          margin-top: 20px;
+          background-color: dimgray;
+          padding: 3px;
+        }
+
+        .listTable {
+          .helper > .colorize(whitesmoke, dimgray);
+          display: table;
+          border-collapse: collapse;
+          .helper > .size(100%, auto);
+          max-width: 100%;
+          border: 2px solid darken(dimgray, 25%);
+          .helper > .shadow;
+
+          tr, th, td {
+            padding: 5px;
+          }
+
+          tr:first-child {
+            .helper > .colorize(silver, black) !important;
+          }
+
+          tr:nth-child(odd) {
+            background-color: darken(whitesmoke, 5%);
+          }
+
+          tr:not(:first-child):hover {
+            .helper > .colorize(lightgreen, black);
+          }
+        }
+
+        #cvPanel {
+          .helper > .colorize(whitesmoke, lighten(black, 25%));
           border: 1px solid darkgray;
           border-radius: 5px;
           margin: 15px;
           padding: 15px;
 
-          .cvTitle
-          {
+          .cvTitle {
             background-color: lighten(silver, 15%);
             padding: 5px;
             border-top-right-radius: 10px;
@@ -120,200 +156,128 @@ html
             border-bottom: 1px solid silver;
           }
 
-          #cvTable
-          {
+          #cvTable {
             border-collapse: collapse;
-            width: 100%;
+            .helper > .size(100%, auto);
             display: none;
 
-            th, td
-            {
+            th, td {
               padding: 8px;
               text-align: left;
               border-bottom: 1px solid #ddd;
 
             }
 
-            tr td:first-child
-            {
+            tr td:first-child {
               font-weight: bold;
               color: dimgray;
-              width: 200px;
+              .helper > .size(200px, auto);
             }
 
-            tr
-            {
-              &:hover:not(:first-child)
-              {
+            tr {
+              &:hover:not(:first-child) {
                 background-color: lighten(black, 75%);
               }
             }
           }
         }
       }
+
+      #menu, .col-sm-9 {
+        min-height: 69.75vh !important;
+
+        .menuElement {
+          border-radius: 10px;
+          padding-left: 10px;
+          transition: 0.2s;
+
+          &:hover {
+            .helper > .colorize(lighten(@secondColor, 25%), @mainColor);
+            cursor: pointer;
+            transition: 0.2s;
+          }
+        }
+
+        .activeMenuOption {
+          .helper > .colorize(@mainColor, lighten(@secondColor, 25%));
+          .helper > .shadow;
+          border-bottom: 1px solid darken(@secondColor, 25%);
+        }
+
+        #clock {
+          .helper > .centerTextOptionalBold(bold);
+          position: absolute;
+          bottom: 10px;
+          padding: 5px;
+          border-top-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+
+          @lghtCol: lighten(@secondColor, 40%);
+          .clockAnimation(@mainColor, @lghtCol, @secondColor, 30px, 20px, 14px);
+
+          &:hover {
+            .clockAnimation(@lghtCol, @mainColor, @mainColor, 40px, 30px, 24px);
+          }
+        }
+      }
     }
   }
 
-  footer
-  {
+  footer {
     .headerFooterStyle;
-    height: 10vh;
+    .helper > .size(auto, 10vh);
     line-height: 3vh;
     border-top: 3px solid lighten(@secondColor, 35%);
   }
 }
 
-.headerFooterStyle
-{
+.headerFooterStyle {
   background-image: url("../images/black_pattern.jpg");
-  .colorize(darken(@mainColor, 15%), whitesmoke);
+  .helper > .colorize(darken(@mainColor, 15%), whitesmoke);
   padding: 15px;
-  text-align: center;
+  .helper > .centerTextOptionalBold(normal);
 }
 
-.menuElement
-{
-  border-radius: 10px;
-  padding-left: 10px;
-  transition: 0.2s;
-
-  &:hover
-  {
-    .colorize(lighten(@secondColor, 25%), @mainColor);
-    cursor: pointer;
-    transition: 0.2s;
+.helper {
+  .size(@width, @height) {
+    width: @width;
+    height: @height;
   }
-}
 
-.activeMenuOption
-{
-  .colorize(@mainColor, lighten(@secondColor, 25%));
-  .shadow;
-  border-bottom: 1px solid darken(@secondColor, 25%);
-}
+  .centerBox {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.centerBox
-{
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#signupFrame
-{
-  .colorize(lighten(@mainColor, 15%), darken(@mainColor, 15%));
-  padding: 25px;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  border-top: 3px solid @mainColor;
-
-  #firmData, #userData
-  {
-    font-weight: bold;
+  .centerTextOptionalBold(@boldOrNot) {
     text-align: center;
+    font-weight: @boldOrNot;
+  }
+
+  .shadow {
+    box-shadow: -1px 3px 3px 3px darken(@mainColor, 10%);
+  }
+
+  .buttonStyle(@main, @other) {
+    .helper > .colorize(@main, @other);
+    border: 1px solid @other;
+  }
+
+  .colorize(@back, @front) {
+    background-color: @back;
+    color: @front;
   }
 }
 
-.shadow
-{
-  box-shadow: -1px 3px 3px 3px darken(@mainColor, 10%);
-}
-
-.mainHeader
-{
-  text-align: center;
-
-  .appTitle
-  {
-    font-weight: bold;
-  }
-}
-
-.buttonStyle(@main, @other)
-{
-  .colorize(@main, @other);
-  border: 1px solid @other;
-}
-
-.hideMe
-{
+.hideMe {
   display: none !important;
 }
 
-.colorize(@back, @front)
-{
-  background-color: @back;
-  color: @front;
-}
-
-#menu, .col-sm-9
-{
-  min-height: 69.75vh !important;
-}
-
-.listTable
-{
-  .colorize(whitesmoke, dimgray);
-  display: table;
-  border-collapse: collapse;
-  width: 100%;
-  max-width: 100%;
-  border: 2px solid darken(dimgray, 25%);
-  .shadow;
-
-  tr, th, td
-  {
-    padding: 5px;
-  }
-
-  tr:first-child
-  {
-    .colorize(silver, black) !important;
-  }
-
-  tr:nth-child(odd)
-  {
-    background-color: darken(whitesmoke, 5%);
-  }
-
-  tr:not(:first-child):hover
-  {
-    .colorize(lightgreen, black);
-  }
-}
-
-.tableHeader
-{
-  text-align: center;
-  font-weight: bold;
-  display: block;
-  margin-top: 20px;
-}
-
-#clock
-{
-  text-align: center;
-  font-weight: bold;
-  position: absolute;
-  bottom: 10px;
-  width: 90%;
-  padding: 5px;
-  border-top-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-
-  .colorize(@mainColor, lighten(@secondColor, 40%));
-  border: 1px solid @secondColor;
-  height: 30px;
-  line-height: 20px;
-  font-size: 14px;
+.clockAnimation(@color1, @color2, @color3, @height, @lineHeight, @fontSize) {
+  .helper > .colorize(@color1, @color2);
+  border: 1px solid @color3;
+  .helper > .size(90%, @height);
+  line-height: @lineHeight;
+  font-size: @fontSize;
   transition: 0.5s;
-
-  &:hover
-  {
-    .colorize(lighten(@secondColor, 40%), @mainColor);
-    border: 1px solid @mainColor;
-    height: 50px;
-    line-height: 40px;
-    font-size: 24px;
-    transition: 0.5s;
-  }
 }
