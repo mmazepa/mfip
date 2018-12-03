@@ -2,14 +2,28 @@
 const pgp = require('pg-promise')();
 const db = pgp("postgres://mfip_admin:root@localhost:5432/mfip");
 
+const bcrypt = require('bcrypt');
+
 const Employee = module.exports;
 
+// C
+Employee.createEmployee = (paramerts_json) => {
+    
+    paramerts_json.password = bcrypt.hashSync(paramerts_json.password, 10);
+    console.log(paramerts_json);
+
+    return db.one(
+        'INSERT INTO "Employee"(password, first_name, last_name, birth, phone_number, email) ' + 
+        'VALUES(${password}, ${first_name}, ${last_name}, ${birth}, ${phone_number}, ${email}) RETURNING id',
+            paramerts_json);
+};
+
 // R
-module.exports.findAll = () => {
+Employee.findAll = () => {
     return db.any('SELECT * FROM "Employee"');
 };
 
-module.exports.findById = (id) => {
+Employee.findById = (id) => {
     return db.one(
         'SELECT * FROM "Employee" AS "e" ' + 
         'WHERE e.id = $1', 
@@ -24,17 +38,7 @@ module.exports.findById = (id) => {
     //     'ON e.id_adres = a.id WHERE e.id=$1', [id]);
 };
 
-// module.exports.findAllInfoById = (id) => {
-//     console.log("AAAAAAAAAAAAAAAAAAAAAAa");
-//     return db.any(
-//         'SELECT * ' + 
-//         'FROM "Employee" AS "e" INNER JOIN "Work_History" AS "wh" ' +
-//         'ON wh.id_emplyee = e.id ' + 
-//         'WHERE e.id = $1 ', 
-//         id);
-//     };
-
-module.exports.findByName = (last_name) => {
+Employee.findByName = (last_name) => {
     return db.any('SELECT * FROM "Employee" AS "e" ' +
         ' WHERE e.last_name = $1', last_name);
 };

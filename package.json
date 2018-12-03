@@ -25,7 +25,8 @@
     "morgan": "^1.9.0",
     "serve-static": "^1.10.2",
     "debug": "~2.6.0",
-    "pg-promise": "latest"
+    "pg-promise": "latest",
+    "bcrypt": "latest"
   },
   "devDependencies": {
     "nodemon": "^1.17.4"

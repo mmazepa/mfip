@@ -2,26 +2,34 @@
 const pgp = require('pg-promise')();
 const db = pgp("postgres://mfip_admin:root@localhost:5432/mfip");
 
+const bcrypt = require('bcrypt');
+
 const Company = module.exports;
 
-module.exports.createCompany = (paramerts_json) => {
-    //console.log(paramerts_json);
+// C
+Company.createCompany = (paramerts_json) => {
     
+    paramerts_json.password = bcrypt.hashSync(paramerts_json.password, 15);
+    console.log(paramerts_json);
 
+    return db.one(
+        'INSERT INTO "Company"(password, name, email, specialization, description, website) ' + 
+        'VALUES(${password}, ${name}, ${email}, ${specialization}, ${description}, ${website}) RETURNING id',
+            paramerts_json);
 };
 
 // R
-module.exports.findAll = () => {
+Company.findAll = () => {
     return db.any('SELECT * FROM "Company" AS "c"', [true]);
 };
 
-module.exports.findByName = (name) => {
+Company.findByName = (name) => {
     return db.one('SELECT c.id, c.name, c.email, c.specialization, c.description, c.website, c.image ' +
         'FROM "Company" AS "c" ' +
         'WHERE c.name = $1', [name]);
 };
 
-module.exports.findById = (id) => {
+Company.findById = (id) => {
     return db.one('SELECT c.id, c.name, c.email, c.specialization, c.description, c.website, c.image ' +
         'FROM "Company" AS "c" ' +
         'WHERE c.id = $1', [id]);
@@ -29,9 +37,12 @@ module.exports.findById = (id) => {
 
 
 
-module.exports.findAllWithAdres = () => {
-    return db.any(' SELECT * FROM "Company" AS "c" ', [true]);
-};
-
+// bcrypt.compare('somePassword', hash, function(err, res) {
+//     if(res) {
+//      // Passwords match
+//     } else {
+//      // Passwords don't match
+//     } 
+// });
 
 

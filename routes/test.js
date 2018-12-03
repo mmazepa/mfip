@@ -20,12 +20,14 @@ router.put('/company/create', function(req, res)
     // {
     //     console.log(error);
     // });
-    Company.createCompany(req.params).then((data) => {
-        res.json(req.data);
+    // console.log(req.body);
+    Company.createCompany(req.body).then((data) => {
+        res.json(data);
     }).catch(function(error)
     {
         console.log(error);
     });
+    // res.json(Company.createCompany(req.body));
 });
 
 // R
