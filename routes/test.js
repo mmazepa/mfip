@@ -5,29 +5,18 @@ const router = express.Router();
 const Company = require('../model/company');
 const Employee = require('../model/employee');
 const Adres = require('../model/adres');
+const Workstation = require('../model/workstation');
 
 // Company
+// C
 router.put('/company/create', function(req, res)
 {
-    //let name = req.params;
-    //console.log(req.body);
-    // Company.createCompany(req.params).then((data) =>
-    // {
-    //     console.log(data);
-    //     res.json(data);
-    // })
-    // .catch(function(error)
-    // {
-    //     console.log(error);
-    // });
-    // console.log(req.body);
     Company.createCompany(req.body).then((data) => {
         res.json(data);
     }).catch(function(error)
     {
         console.log(error);
     });
-    // res.json(Company.createCompany(req.body));
 });
 
 // R
@@ -72,6 +61,17 @@ router.get('/company/name/:name', function(req, res)
 });
 
 // Employee
+// C
+router.put('/employee/create', function(req, res)
+{
+    Employee.createEmployee(req.body).then((data) => {
+        res.json(data);
+    }).catch(function(error)
+    {
+        console.log(error);
+    });
+});
+
 // R
 router.get('/employee', (req, res) => {
     Employee.findAll().then((data) => {
@@ -104,6 +104,7 @@ router.get('/employee/name/:last_name', (req, res) => {
 });
 
 // Adres
+// R
 router.get('/adres', (req,res) => {
     Adres.findAll().then((data) => {
         res.json(data);
@@ -134,8 +135,17 @@ router.get('/adres/country/:country', (req, res) => {
     });
 });
 
-// Workspace
-
+// Workstation
+// C
+router.put('/workstation/create', function(req, res)
+{
+    Workstation.createWorkstationByIdCompany(req.body).then((data) => {
+        res.json(data);
+    }).catch(function(error)
+    {
+        console.log(error);
+    });
+});
 
 
 

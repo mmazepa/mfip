@@ -8,10 +8,7 @@ const Employee = module.exports;
 
 // C
 Employee.createEmployee = (paramerts_json) => {
-    
     paramerts_json.password = bcrypt.hashSync(paramerts_json.password, 10);
-    console.log(paramerts_json);
-
     return db.one(
         'INSERT INTO "Employee"(password, first_name, last_name, birth, phone_number, email) ' + 
         'VALUES(${password}, ${first_name}, ${last_name}, ${birth}, ${phone_number}, ${email}) RETURNING id',
