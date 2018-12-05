@@ -9,10 +9,18 @@ const Employee = module.exports;
 // C
 Employee.createEmployee = (paramerts_json) => {
     paramerts_json.password = bcrypt.hashSync(paramerts_json.password, 10);
-    return db.one(
-        'INSERT INTO "Employee"(password, first_name, last_name, birth, phone_number, email) ' + 
-        'VALUES(${password}, ${first_name}, ${last_name}, ${birth}, ${phone_number}, ${email}) RETURNING id',
-            paramerts_json);
+
+    return db.tx(transaction => {
+        return transaction.one(
+            'INSERT INTO "Adres"(country) VALUES(NULL) RETURNING id')
+            .then(data => {
+                paramerts_json.id_adres = data.id;
+                return transaction.one(
+                    'INSERT INTO "Employee"(id_adres, password, first_name, last_name, birth, phone_number, email) ' + 
+                    'VALUES(${id_adres}, ${password}, ${first_name}, ${last_name}, ${birth}, ${phone_number}, ${email}) RETURNING id',
+                    paramerts_json);
+            });
+    });
 };
 
 // R
@@ -38,4 +46,11 @@ Employee.findById = (id) => {
 Employee.findByName = (last_name) => {
     return db.any('SELECT * FROM "Employee" AS "e" ' +
         ' WHERE e.last_name = $1', last_name);
+};
+
+//hash
+Employee.getHashByEmail = (email) => {
+    return db.one('SELECT e.password ' +
+        'FROM "Employee" AS "e" ' +
+        'WHERE e.email = $1', [email]);
 };

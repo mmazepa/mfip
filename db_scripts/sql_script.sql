@@ -23,11 +23,11 @@ CREATE USER mfip_admin WITH ENCRYPTED PASSWORD 'root';
 
 CREATE TABLE "Adres" (
         "id" SERIAL PRIMARY KEY,
-        "country" varchar(20) NOT NULL,
-        "city" varchar(30) NOT NULL,
-        "street" varchar(40) NOT NULL,
+        "country" varchar(20) NULL,
+        "city" varchar(30) NULL,
+        "street" varchar(40) NULL,
         "house_number" varchar(10),
-        "zip_code" varchar(15) NOT NULL,
+        "zip_code" varchar(15) NULL,
         "is_company" boolean
 );
 

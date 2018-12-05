@@ -20,6 +20,18 @@ router.put('/company/create', function(req, res)
 });
 
 // R
+router.post('/company/password', function(req, res)
+{
+    Company.getHashByEmail(req.body.email).then((data) =>
+    {
+        res.json(data);
+    })
+    .catch(function(error)
+    {
+        console.log(error);
+    });
+});
+
 router.get('/company', function(req, res)
 {
     Company.findAll().then((data) =>
@@ -73,6 +85,18 @@ router.put('/employee/create', function(req, res)
 });
 
 // R
+router.post('/employee/password', function(req, res)
+{
+    Employee.getHashByEmail(req.body.email).then((data) =>
+    {
+        res.json(data);
+    })
+    .catch(function(error)
+    {
+        console.log(error);
+    });
+});
+
 router.get('/employee', (req, res) => {
     Employee.findAll().then((data) => {
         res.json(data);
