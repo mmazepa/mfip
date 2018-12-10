@@ -10,7 +10,10 @@ const ejs = require("ejs");
 const errorHandler = require("errorhandler");
 
 const routes = require("./routes/index");
-const users = require("./routes/users");
+const adres = require("./routes/adres");
+const company = require("./routes/company");
+const employee = require("./routes/employee");
+const workstation = require("./routes/workstation");
 
 let port = process.env.PORT || 3000;
 let env = process.env.NODE_ENV || "development";
@@ -36,10 +39,12 @@ app.use(session({ secret: secret }));
 app.use(flash());
 
 app.use("/", routes);
-app.use("/users", users);
 
-// plik do testowania połączenia z bazą
-app.use("/test", require("./routes/test"));
+// pliki do testowania połączenia z bazą
+app.use("/adres", require("./routes/adres"));
+app.use("/company", require("./routes/company"));
+app.use("/employee", require("./routes/employee"));
+app.use("/workstation", require("./routes/workstation"));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
