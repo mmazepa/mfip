@@ -39,7 +39,17 @@ Company.getHashByEmail = (email) => {
         'WHERE c.email = $1', [email]);
 };
 
+Company.add = (name, specialization, description, email, website) => {
+    const addQuery = 'INSERT INTO "Company" (name, specialization, description, email, website, password) ' +
+                        'VALUES (\'' + name + '\', \'' + specialization + '\', \'' + description + '\', \'' + email + '\', \'' + website + '\', \'firm1234\') ' +
+                        'RETURNING id';
+    return db.one(addQuery);
+};
 
+Company.remove = (id) => {
+    const removeQuery = 'DELETE FROM "Company" WHERE id=' + id;
+    return db.result(removeQuery);
+};
 
 // bcrypt.compare('somePassword', hash, function(err, res) {
 //     if(res) {

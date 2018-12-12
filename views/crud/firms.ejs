@@ -25,6 +25,7 @@
                             <th>Opis</th>
                             <th>Email</th>
                             <th>WWW</th>
+                            <th>Usuń</th>
                         </tr>
                     <%
                             for (f in firms)
@@ -45,6 +46,13 @@
                                             <%= firms[f].website %>
                                         </a>
                                     </td>
+                                    <td>
+                                        <button id="<%= firms[f].id %>"
+                                                class="btn btn-danger"
+                                                onclick="confirmDeletion(this.id)">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </button>
+                                    </td>
                                 </tr>
                     <%
                             }
@@ -54,7 +62,39 @@
                     <%
                         }
                     %>
+                        <!-- fragment skryptu, tymczasowo na widoku -->
+                        <script>
+                            const confirmDeletion = (id) => {
+                                const decision = confirm("Czy na pewno chcesz usunąć ten rekord?");
+                                if (decision == true) location.replace("/company/remove/" + id);
+                            };
+                        </script>
                     </table>
+                    <div class="insertionBox">
+                        <form action="/company/add" method="POST">
+                            <table>
+                                <tr>
+                                    <th>Nazwa</th>
+                                    <th>Specjalizacja</th>
+                                    <th>Opis</th>
+                                    <th>E-mail</th>
+                                    <th>WWW</th>
+                                </tr>
+                                <tr>
+                                    <td><input name="name" type="text"/></td>
+                                    <td><input name="specialization" type="text"/></td>
+                                    <td><input name="description" type="text"/></td>
+                                    <td><input name="email" type="email"/></td>
+                                    <td><input name="website" type="text"/></td>
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
                 </p>
             </div>
           </div>
