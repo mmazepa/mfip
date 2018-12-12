@@ -25,10 +25,6 @@ document.onreadystatechange = () => {
 
             // --- LOGOWANIE I REJESTRACJA: WSPARCIE SKRYPTOWE -----------------
 
-            // $("#loginform").on("submit", () => {
-            //     location.replace("/employee/login");
-            // });
-
             $("#loginform, #signupform").on("submit", () => {
                 alertUndone("Autoryzacja użytkownika");
                 return false;
@@ -49,7 +45,7 @@ document.onreadystatechange = () => {
             $(".cvTitle").on("click", function() {
                 tableName = (this.id).replace("Title","Table");
                 glyphName = (this.id).replace("Title","Glyph");
-                addButtonName = "add" + upperCaseFirstLetter((this.id).replace("Title","Button"));
+                addButtonName = "add".concat(upperCaseFirstLetter((this.id).replace("Title","Button")));
                 $("." + tableName).toggle("slow", toggleChevrons(tableName, glyphName, addButtonName));
             });
 
@@ -220,7 +216,7 @@ document.onreadystatechange = () => {
 
             const repairClockItems = (items) => {
                 for (var i = 0; i < items.length; i++) {
-                    if (items[i] < 10) items[i] = '0' + items[i];
+                    if (items[i] < 10) items[i] = "0".concat(items[i]);
                 }
                 return items;
             };
@@ -228,9 +224,8 @@ document.onreadystatechange = () => {
             const refreshClock = () => {
                 const clock = document.getElementById("clock");
                 const now = new Date();
-                let clockItems = [now.getHours(), now.getMinutes(), now.getSeconds()];
-                clockItems = repairClockItems(clockItems);
-                clock.innerHTML = clockItems[0] + ":" + clockItems[1] + ":" + clockItems[2];
+                let clockItems = repairClockItems([now.getHours(), now.getMinutes(), now.getSeconds()]);
+                clock.innerHTML = clockItems.join([separator = ':']);
                 setTimeout(refreshClock, 500);
             };
             refreshClock();

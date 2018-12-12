@@ -58,15 +58,4 @@ employeeController.employeeByLastName = (req, res) => {
     });
 };
 
-// employeeController.employeeLogin = (req, res) => {
-//     let email = req.body.email;
-//     let password = req.body.password;
-//     console.log("[USER]: " + email + ", " + password);
-//     session.activeUser = email;
-//     res.render('worker.ejs', {
-//         session: req.session,
-//         message: req.flash("loginMessage")
-//     });
-// };
-
 module.exports = employeeController;

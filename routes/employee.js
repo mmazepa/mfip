@@ -15,6 +15,4 @@ router.get('/employee', employee.employee);
 router.get('/employee/id/:id', employee.employeeById);
 router.get('/employee/name/:last_name', employee.employeeByLastName);
 
-// router.post('/employee/profile', employee.employeeLogin);
-
 module.exports = router;
