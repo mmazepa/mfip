@@ -7,11 +7,7 @@ var index = require("../controllers/indexController.js");
 
 router.get('/', index.homepage);
 router.get('/firm', index.firm);
-router.get('/firms', index.firms);
 router.get('/worker', index.worker);
-router.get('/workers', index.workers);
-router.get('/addresses', index.addresses);
-router.get('/skills', index.skills);
 router.get('/workstations', index.workstations);
 router.get('/workHistory', index.workHistory);
 router.get('/cv', index.cv);

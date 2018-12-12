@@ -2,12 +2,17 @@
 
 var adresController = {};
 const Adres = require('../model/adres');
+var session;
 
 // Adres
 // R
 adresController.adres = (req,res) => {
+    session = req.session || session;
     Adres.findAll().then((data) => {
-        res.json(data);
+        res.render('crud/addresses.ejs', {
+            session: session,
+            addresses: data
+        });
     })
     .catch((error) => {
         console.log(error);

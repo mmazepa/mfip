@@ -30,23 +30,6 @@ indexController.firm = (req, res) => {
     });
 };
 
-indexController.firms = (req, res) => {
-    session = req.session || session;
-    var firms = req.firms || firms;
-
-    db.any('SELECT * FROM "Company"', [true])
-    .then((data) => {
-        firms = data;
-        res.render('crud/firms.ejs', {
-            session: session,
-            firms: firms
-        });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-};
-
 indexController.worker = (req, res) => {
     session = req.session || session;
     var employees = req.employees || employees;
@@ -63,63 +46,6 @@ indexController.worker = (req, res) => {
         res.render('worker.ejs', {
             session: session,
             employees: employees
-        });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-};
-
-indexController.workers = (req, res) => {
-    session = req.session || session;
-    var employees = req.employees || employees;
-
-    db.any('SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
-            'a.country, a.city, a.street, a.house_number, a.zip_code ' +
-            'FROM "Employee" AS e INNER JOIN "Adres" AS a ON e.id_adres = a.id', [true])
-    .then((data) => {
-        employees = data;
-        res.render('crud/workers.ejs', {
-            session: session,
-            employees: employees
-        });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-};
-
-indexController.addresses = (req, res) => {
-    session = req.session || session;
-    var addresses = req.addresses || addresses;
-
-    db.any('SELECT * FROM "Adres" ORDER BY country, city, street', [true])
-    .then((data) => {
-        addresses = data;
-        res.render('crud/addresses.ejs', {
-            session: session,
-            addresses: addresses
-        });
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-};
-
-indexController.skills = (req, res) => {
-    session = req.session || session;
-    var skills = req.skills || skills;
-
-    // db.any('SELECT e.first_name, e.last_name, s.type, s.name, s.description ' +
-    //         'FROM "List_Skills" AS ls INNER JOIN "Employee" AS e ON ls.id_owner = e.id ' +
-    //         'INNER JOIN "Skill" AS s ON ls.id_skill = s.id ' +
-    //         'ORDER BY e.last_name, e.first_name, s.type, s.name', [true])
-    db.any('SELECT id, type, name, description FROM "Skill"', [true])
-    .then((data) => {
-        skills = data;
-        res.render('crud/skills.ejs', {
-            session: session,
-            skills: skills
         });
     })
     .catch((error) => {

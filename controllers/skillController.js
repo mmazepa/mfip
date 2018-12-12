@@ -2,6 +2,22 @@
 
 var skillController = {};
 const Skill = require("../model/skill");
+var session;
+
+skillController.skills = (req, res) => {
+    session = req.session || session;
+    var skills = req.skills || skills;
+
+    Skill.findAll().then((data) => {
+        res.render('crud/skills.ejs', {
+            session: session,
+            skills: data
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
 
 skillController.add = (req, res) => {
     let type = req.body.type;

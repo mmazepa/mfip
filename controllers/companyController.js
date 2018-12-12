@@ -25,8 +25,14 @@ companyController.companyPassowrd = (req, res) => {
 };
 
 companyController.company = (req, res) => {
+    session = req.session || session;
+    var firms = req.firms || firms;
+
     Company.findAll().then((data) => {
-        res.json(data);
+        res.render('crud/firms.ejs', {
+            session: session,
+            firms: data
+        });
     })
     .catch((error) => {
         console.log(error);

@@ -23,7 +23,9 @@ Employee.createEmployee = (paramerts_json) => {
 
 // R
 Employee.findAll = () => {
-    return db.any('SELECT * FROM "Employee"');
+    return db.any('SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
+            'a.country, a.city, a.street, a.house_number, a.zip_code ' +
+            'FROM "Employee" AS e INNER JOIN "Adres" AS a ON e.id_adres = a.id');
 };
 
 Employee.findById = (id) => {
