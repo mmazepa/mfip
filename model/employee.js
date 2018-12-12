@@ -1,10 +1,7 @@
 /*jshint node: true, esversion: 6 */
 
-const pgp = require('pg-promise')();
-const db = pgp("postgres://mfip_admin:root@localhost:5432/mfip");
-
+const db = require("../config/postgres.js");
 const bcrypt = require('bcrypt');
-
 const Employee = module.exports;
 
 // C
