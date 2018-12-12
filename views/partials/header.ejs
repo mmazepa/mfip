@@ -3,18 +3,19 @@
         <head>
             <title>MFIP</title>
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel='stylesheet' href='/css/style.css' />
-            <script src='/jquery/dist/jquery.min.js'></script>
-            <script src='/js/skrypt.js'></script>
+            <link rel="stylesheet" href="/css/style.css" />
+            <script src="/jquery/dist/jquery.min.js"></script>
+            <script src="/js/skrypt.js"></script>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-            <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+            <link href="https://fonts.googleapis.com/css?family=Sofia" rel="stylesheet">
+            <link rel="shortcut icon" href="images/favicon.ico">
         </head>
         <body>
           <header>
               <span id="loginPanel">
+                  <!-- <form id="loginform" action="/employee/worker" method="post"> -->
                   <form id="loginform" method="post">
-                  <!-- <form action="/login" method="post"> -->
                     <div class="myCol">
                       <div class="form-group">
                           <div class="input-group">
@@ -82,7 +83,7 @@
                   </form>
               </span>
               <!-- TYMCZASOWE WYŚWIETLANIE SESJI -->
-              <!-- <div style="display:absolute;margin-top:50px;color:darkred;font-size:smaller;line-height:15px;z-index:1">
+              <!-- <div style="position:fixed;display:absolute;margin-top:0px;background-color:whitesmoke;border:1px solid darkred;width:142.5vh;color:darkred;font-size:smaller;line-height:15px;z-index:10">
                   <%= JSON.stringify(session) %><br/>
                   <br/>
               </div> -->

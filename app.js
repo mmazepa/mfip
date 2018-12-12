@@ -41,10 +41,11 @@ app.use(flash());
 app.use("/", routes);
 
 // pliki do testowania połączenia z bazą
-app.use("/adres", require("./routes/adres"));
-app.use("/company", require("./routes/company"));
-app.use("/employee", require("./routes/employee"));
-app.use("/workstation", require("./routes/workstation"));
+app.use("/", require("./routes/adres"));
+app.use("/", require("./routes/company"));
+app.use("/", require("./routes/employee"));
+app.use("/", require("./routes/workstation"));
+app.use("/", require("./routes/skill"));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));

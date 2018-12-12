@@ -3,6 +3,8 @@
 var employeeController = {};
 const Employee = require('../model/employee');
 
+var session = {};
+
 // Employee
 // C
 employeeController.employeeCreate = (req, res) => {
@@ -52,5 +54,16 @@ employeeController.employeeByLastName = (req, res) => {
         console.log(error);
     });
 };
+
+// employeeController.employeeLogin = (req, res) => {
+//     let email = req.body.email;
+//     let password = req.body.password;
+//     console.log("[USER]: " + email + ", " + password);
+//     session.activeUser = email;
+//     res.render('worker.ejs', {
+//         session: req.session,
+//         message: req.flash("loginMessage")
+//     });
+// };
 
 module.exports = employeeController;

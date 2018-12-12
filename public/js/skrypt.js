@@ -25,6 +25,10 @@ document.onreadystatechange = () => {
 
             // --- LOGOWANIE I REJESTRACJA: WSPARCIE SKRYPTOWE -----------------
 
+            // $("#loginform").on("submit", () => {
+            //     location.replace("/employee/login");
+            // });
+
             $("#loginform, #signupform").on("submit", () => {
                 alertUndone("Autoryzacja użytkownika");
                 return false;

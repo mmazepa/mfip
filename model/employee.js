@@ -1,4 +1,5 @@
 /*jshint node: true, esversion: 6 */
+
 const pgp = require('pg-promise')();
 const db = pgp("postgres://mfip_admin:root@localhost:5432/mfip");
 
@@ -16,7 +17,7 @@ Employee.createEmployee = (paramerts_json) => {
             .then(data => {
                 paramerts_json.id_adres = data.id;
                 return transaction.one(
-                    'INSERT INTO "Employee"(id_adres, password, first_name, last_name, birth, phone_number, email) ' + 
+                    'INSERT INTO "Employee"(id_adres, password, first_name, last_name, birth, phone_number, email) ' +
                     'VALUES(${id_adres}, ${password}, ${first_name}, ${last_name}, ${birth}, ${phone_number}, ${email}) RETURNING id',
                     paramerts_json);
             });
@@ -30,8 +31,8 @@ Employee.findAll = () => {
 
 Employee.findById = (id) => {
     return db.one(
-        'SELECT * FROM "Employee" AS "e" ' + 
-        'WHERE e.id = $1', 
+        'SELECT * FROM "Employee" AS "e" ' +
+        'WHERE e.id = $1',
         id);
     // return db.any(
     //     'SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
