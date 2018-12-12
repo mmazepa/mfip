@@ -39,4 +39,28 @@ adresController.adresByCountry = (req, res) => {
     });
 };
 
+adresController.add = (req, res) => {
+    let country = req.body.country;
+    let city = req.body.city;
+    let street = req.body.street;
+    let house_number = req.body.house_number;
+    let zip_code = req.body.zip_code;
+    Adres.add(country, city, street, house_number, zip_code).then(() => {
+        res.redirect("/adres");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+adresController.remove = (req, res) => {
+    let id = req.params.id;
+    Adres.remove(id).then(() => {
+        res.redirect("/adres");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
 module.exports = adresController;

@@ -22,3 +22,15 @@ Adres.findByCountry = (country) => {
         'ORDER BY country, city, street',
         country);
 };
+
+Adres.add = (country, city, street, house_number, zip_code) => {
+    const addQuery = 'INSERT INTO "Adres" (country, city, street, house_number, zip_code) ' +
+                        'VALUES (\'' + country + '\', \'' + city + '\', \'' + street + '\', \'' + house_number + '\', \'' + zip_code + '\') ' +
+                        'RETURNING id';
+    return db.one(addQuery);
+};
+
+Adres.remove = (id) => {
+    const removeQuery = 'DELETE FROM "Adres" WHERE id=' + id;
+    return db.result(removeQuery);
+};
