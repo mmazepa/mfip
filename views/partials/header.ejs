@@ -15,7 +15,7 @@
           <header>
               <span id="loginPanel">
                   <!-- <form id="loginform" action="/employee/worker" method="post"> -->
-                  <form id="loginform" method="post">
+                  <form id="loginform" action="/login" method="post">
                     <div class="myCol">
                       <div class="form-group">
                           <div class="input-group">
@@ -82,21 +82,6 @@
                     </div>
                   </form>
               </span>
-              <!-- TYMCZASOWE WYŚWIETLANIE SESJI -->
-              <!-- <div style="position:fixed;display:absolute;margin-top:0px;background-color:whitesmoke;border:1px solid darkred;width:142.5vh;color:darkred;font-size:smaller;line-height:15px;z-index:10">
-                  <%= JSON.stringify(session) %><br/>
-                  <br/>
-              </div> -->
+              
           </header>
-          <script>
-              var loginPanel = document.getElementById("loginPanel");
-              <%
-                  if (session.activeUser != null)
-                  {
-              %>
-                      let signout = "<span style='float:left;text-indent:50px;'>Witaj <%= session.activeUser.split('@')[0] %>!</span> <span id='logoutButton'><a href='/logout'><span class='glyphicon glyphicon-log-out'></span>Wyloguj</a></span>";
-                      loginPanel.innerHTML = signout;
-              <%
-                  }
-              %>
-          </script>
+          

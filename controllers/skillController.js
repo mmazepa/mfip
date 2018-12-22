@@ -2,15 +2,15 @@
 
 var skillController = {};
 const Skill = require("../model/skill");
-var session;
+// var session;
 
 skillController.skills = (req, res) => {
-    session = req.session || session;
+    // // // session = req.session || session;
     var skills = req.skills || skills;
 
     Skill.findAll().then((data) => {
         res.render('crud/skills.ejs', {
-            session: session,
+            // // session: session,
             skills: data
         });
     })

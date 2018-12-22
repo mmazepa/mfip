@@ -42,10 +42,37 @@ app.use(session({ secret: secret, resave:false, saveUninitialized:false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+const Employee = require("./model/employee");
+const bcrypt = require('bcrypt');
+passport.use(
+    new LocalStrategy({
+        usernameField: 'email',
+        passReqToCallback: true
+    },
+    (req, email, password, done) => {
+        if (req.body.type === 'worker') {
+            Employee.getHashByEmail(email).then((user) => {
+                console.log(password);
+                bcrypt.compare(password, user.password, function(err, ans) {
+                    if(ans) {
+                        // Passwords match
+                        console.log("Passwords match");
+                        return done(null, user);
+                    } else {
+                        // Passwords don't match
+                        console.log("DON'T");
+                        console.debug(user);
+                        return done(null, false, { message: 'Undefined User' });
+                    }
+                });
+            });
+        } else {
+            // TODO
+        }
+}));
 
-// passport.use(new LocalStrategy((email, passport, done) => {
-    
-// }));
+
+
 // app.use(function (req,res,next) {
 //     res.locals.currentUser = req.user;
 //     next();
@@ -88,6 +115,25 @@ else
 {
     app.use(logger('short'));
 }
+
+passport.serializeUser(function (user, done) {
+	done(null, user);
+});
+
+passport.deserializeUser(function (obj, done) {
+	done(null, obj);
+});
+
+app.use('/login',
+    passport.authenticate('local', { failureRedirect: '/', failureFlash: true }),
+    (req,res) => {
+        console.log("SUCESS");
+        // console.log(user);
+        res.redirect('/worker');
+    }
+);
+
+
 
 app.use(function(err, req, res, next)
 {

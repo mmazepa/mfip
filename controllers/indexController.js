@@ -1,27 +1,29 @@
 //jshint node: true, esversion: 6
 
 var indexController = {};
-var session;
+// var session;
 
-var pgp = require('pg-promise')();
-var db = pgp("postgres://postgres:postgres@localhost:5432/mfip");
+// var pgp = require('pg-promise')();
+// var db = pgp("postgres://postgres:postgres@localhost:5432/mfip");
+
+const db = require('../config/postgres');
+
 const Company = require('../model/company');
+const Employee = require('../model/employee');
 
 indexController.homepage = (req, res, next) => {
-  session = req.session || session;
+// // //   session = req.session || session;
   res.render('index', {
-      session: req.session,
+    // //   session: req.session,
       message: req.flash("loginMessage")
   });
 };
 
 indexController.firm = (req, res) => {
-    session = req.session || session;
     var firms = req.firms || firms;
 
     Company.findAll().then((data) => {
         res.render('firm.ejs', {
-            session: session,
             firms: data
         });
     })
@@ -31,8 +33,10 @@ indexController.firm = (req, res) => {
 };
 
 indexController.worker = (req, res) => {
-    session = req.session || session;
     var employees = req.employees || employees;
+    
+    console.log("req.body");
+    console.log(req.session.passport.user);
 
     db.any('SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
             'e.password, a.country, a.city, a.street, a.house_number, a.zip_code, ' +
@@ -44,7 +48,6 @@ indexController.worker = (req, res) => {
     .then((data) => {
         employees = data;
         res.render('worker.ejs', {
-            session: session,
             employees: employees
         });
     })
@@ -54,7 +57,6 @@ indexController.worker = (req, res) => {
 };
 
 indexController.workstations = (req, res) => {
-    session = req.session || session;
     var workstations = req.workstations || workstations;
 
     db.any('SELECT c.name AS company_name, w.name AS workstation_name, ' +
@@ -65,7 +67,6 @@ indexController.workstations = (req, res) => {
     .then((data) => {
         workstations = data;
         res.render('crud/workstations.ejs', {
-            session: session,
             workstations: workstations
         });
     })
@@ -75,7 +76,6 @@ indexController.workstations = (req, res) => {
 };
 
 indexController.workHistory = (req, res) => {
-    session = req.session || session;
     var workHistory = req.workHistory || workHistory;
 
     db.any('SELECT c.name, e.first_name, e.last_name, wh.from, wh.to, wh.description ' +
@@ -85,7 +85,6 @@ indexController.workHistory = (req, res) => {
     .then((data) => {
         workHistory = data;
         res.render('crud/workHistory.ejs', {
-            session: session,
             workHistory: workHistory
         });
     })
@@ -95,47 +94,64 @@ indexController.workHistory = (req, res) => {
 };
 
 indexController.cv = (req, res) => {
-  session = req.session || session;
   res.render('cv/cv.ejs', {
-      session: session
   });
 };
 
 indexController.cvEdit = (req, res) => {
-  session = req.session || session;
   res.render('cv/editCV.ejs', {
-      session: session
   });
 };
 
 indexController.signup = (req, res) => {
-  session = req.session || session;
   res.render('signup.ejs', {
-      message: req.flash('signupMessage'),
-      session: session
+      message: req.flash('signupMessage')
   });
 };
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 indexController.signup_post = (req, res) => {
     console.log("req.body");
     console.log(req.body);
+
+    // req.checkBody('email', 'Invalid email').isEmail();
+    // let errors = req.validationErrors();
+    // if (errors) {
+    //     res.render('login', {
+    //         errors: errors
+    //     });}
+    
+    if (req.body.type  === 'worker') {
+        Employee.getHashByEmail(req.body.email).then((data) => {
+
+            res.render('signup.ejs', {
+                message: req.flash('email is already exists'),
+                // // session: session
+            });
+
+        }).catch((error) => {
+            if(error.code === 0) {
+                req.body.birth = null;
+                req.body.phone_number = null;
+                Employee.createEmployee(req.body);
+                
+            }
+
+        });
+    } else {
+        console.log("company");
+    }
+
     res.render('signup.ejs', {
-        message: req.flash('signupMessage'),
-        session: session
+        message: req.flash('signupMessage')
     });
 };
 
 indexController.logout = (req, res) => {
-  session = req.session || session;
-  req.session.destroy((err) => {
-      if (err) {
-          console.log(err);
-      } else {
-          session.destroy();
-          // req.logout();
-          res.redirect('/');
-      }
-  });
+    req.logout();
+    res.redirect('/');
 };
 
 module.exports = indexController;

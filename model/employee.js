@@ -7,7 +7,7 @@ const Employee = module.exports;
 // C
 Employee.createEmployee = (paramerts_json) => {
     paramerts_json.password = bcrypt.hashSync(paramerts_json.password, 10);
-
+    console.log(paramerts_json.password);
     return db.tx(transaction => {
         return transaction.one(
             'INSERT INTO "Adres"(country) VALUES(NULL) RETURNING id')
@@ -50,7 +50,7 @@ Employee.findByName = (last_name) => {
 
 //hash
 Employee.getHashByEmail = (email) => {
-    return db.one('SELECT e.password ' +
+    return db.one('SELECT * ' +
         'FROM "Employee" AS "e" ' +
         'WHERE e.email = $1', [email]);
 };

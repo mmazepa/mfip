@@ -2,7 +2,7 @@
 
 var employeeController = {};
 const Employee = require('../model/employee');
-var session;
+// var session;
 
 // Employee
 // C
@@ -26,10 +26,8 @@ employeeController.employeePassword = (req, res) => {
 };
 
 employeeController.employee = (req, res) => {
-    session = req.session || session;
     Employee.findAll().then((data) => {
         res.render('crud/workers.ejs', {
-            session: session,
             employees: data
         });
     })

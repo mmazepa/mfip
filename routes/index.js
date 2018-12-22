@@ -5,9 +5,18 @@ const router = express.Router();
 
 var index = require("../controllers/indexController.js");
 
+function isEmployeeAuthenticated(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	} else {
+		// req.flash('error_msg','You are not logged in');
+		res.redirect('/');
+	}
+}
+
 router.get('/', index.homepage);
 router.get('/firm', index.firm);
-router.get('/worker', index.worker);
+router.get('/worker', isEmployeeAuthenticated, index.worker);
 router.get('/workstations', index.workstations);
 router.get('/workHistory', index.workHistory);
 router.get('/cv', index.cv);

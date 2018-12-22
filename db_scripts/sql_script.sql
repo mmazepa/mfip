@@ -84,8 +84,8 @@ CREATE TABLE "Employee" (
         "password" varchar(60) NOT NULL,
         "first_name" varchar(20) NOT NULL,
         "last_name" varchar(20) NOT NULL,
-        "birth" date NOT NULL,
-        "phone_number" varchar(20) NOT NULL,
+        "birth" date NULL,
+        "phone_number" varchar(20) NULL,
         "email" varchar(30) NOT NULL,
         "image" bytea,
         FOREIGN KEY ("id_adres") REFERENCES "Adres"("id")--,
@@ -228,11 +228,11 @@ INSERT INTO public."Workstation"(
 -- jkowalski    $2y$10$S.jV0RWbveAJAc8.6DnbM.Lu76b/br2AYoSGhcBnO7THIXu4dy37K  
 INSERT INTO public."Employee"(
 	id_adres, password, first_name, last_name, birth, phone_number, email)
-	VALUES (4,'$2y$10$S.jV0RWbveAJAc8.6DnbM.Lu76b/br2AYoSGhcBnO7THIXu4dy37K', 'Jan', 'Kowalski',  to_date('1985-02-03','YYYY-MM-DD'), '+48793650366', 'jkowalski@mail.com');
+	VALUES (4,'$2b$10$t0yGUNKJYHJ1IPZMhRO3m./WLSppdGYClg239tOJGVLXhy0QGWeiy', 'Jan', 'Kowalski',  to_date('1985-02-03','YYYY-MM-DD'), '+48793650366', 'jkowalski@mail.com');
 -- kborawski    
 INSERT INTO public."Employee"(
 	id_adres, password, first_name, last_name, birth, phone_number, email)
-	VALUES (5,'$2y$10$zvgFNleL3LLVC7Fi3efkXe.svSlebDB2l/WLB/Pe7q6p9MbGlD1Ey', 'Karol', 'Borawski',  to_date('1995-02-03','YYYY-MM-DD'), '+48593350631', 'kborawski@mail.com');
+	VALUES (5,'$2b$10$rxv6KMH/BKL6yu4cRNYq9umD74Ii5dw0U2sRr64HZmDILMqNHneIG', 'Karol', 'Borawski',  to_date('1995-02-03','YYYY-MM-DD'), '+48593350631', 'kborawski@mail.com');
 
 -- Work_History
 INSERT INTO public."Work_History"(
