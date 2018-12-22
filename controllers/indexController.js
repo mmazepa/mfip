@@ -116,6 +116,15 @@ indexController.signup = (req, res) => {
   });
 };
 
+indexController.signup_post = (req, res) => {
+    console.log("req.body");
+    console.log(req.body);
+    res.render('signup.ejs', {
+        message: req.flash('signupMessage'),
+        session: session
+    });
+};
+
 indexController.logout = (req, res) => {
   session = req.session || session;
   req.session.destroy((err) => {

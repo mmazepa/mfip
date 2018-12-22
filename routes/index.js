@@ -13,6 +13,7 @@ router.get('/workHistory', index.workHistory);
 router.get('/cv', index.cv);
 router.get('/cv/edit', index.cvEdit);
 router.get('/signup', index.signup);
+router.post('/signup', index.signup_post);
 router.get('/logout', index.logout);
 
 module.exports = router;

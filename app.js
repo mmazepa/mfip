@@ -25,6 +25,9 @@ const session = require('express-session');
 const app = express();
 const http = require("http").Server(app);
 
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
 
@@ -34,7 +37,33 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({ secret: secret }));
+// passport.js
+app.use(session({ secret: secret, resave:false, saveUninitialized:false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+// passport.use(new LocalStrategy((email, passport, done) => {
+    
+// }));
+// app.use(function (req,res,next) {
+//     res.locals.currentUser = req.user;
+//     next();
+// });
+// const auth = passport.authenticate("local", {
+//     successRedirect: "/success",
+//     failureRedirect: "/failuer"
+// });
+// app.get("/logout", () => {
+//     req.logout();
+//     res.redirect("/home");
+// });
+// function isLogged(req,res,next) {
+//     if (req.isAuthenticated()) {
+//         return next();
+//     }
+//     res.redirect("/home");
+// };
 
 app.use(flash());
 

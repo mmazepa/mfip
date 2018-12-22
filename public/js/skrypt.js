@@ -25,16 +25,16 @@ document.onreadystatechange = () => {
 
             // --- LOGOWANIE I REJESTRACJA: WSPARCIE SKRYPTOWE -----------------
 
-            $("#loginform, #signupform").on("submit", () => {
-                alertUndone("Autoryzacja użytkownika");
-                return false;
-            });
+            // $("#loginform, #signupform").on("submit", () => {
+            //     alertUndone("Autoryzacja użytkownika");
+            //     return false;
+            // });
 
             // --- TYMCZASOWA INFORMACJA O ELEMENTACH W BUDOWIE ----------------
 
-            const alertUndone = (name) => {
-                alert("UWAGA!\n" + name + " w budowie...");
-            };
+            // const alertUndone = (name) => {
+            //     alert("UWAGA!\n" + name + " w budowie...");
+            // };
 
             // --- AKCJE CV: LISTY ROZWIJALNE ----------------------------------
 
