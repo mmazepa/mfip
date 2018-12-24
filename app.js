@@ -6,14 +6,11 @@ const favicon = require("serve-favicon");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
+// const ejs = require("ejs");
 const errorHandler = require("errorhandler");
 
 const routes = require("./routes/index");
-const adres = require("./routes/adres");
-const company = require("./routes/company");
-const employee = require("./routes/employee");
-const workstation = require("./routes/workstation");
+const strategy = require("./config/strategy");
 
 let port = process.env.PORT || 3000;
 let env = process.env.NODE_ENV || "development";
@@ -26,7 +23,6 @@ const app = express();
 const http = require("http").Server(app);
 
 const passport = require("passport");
-const LocalStrategy = require("passport-local");
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "ejs");
@@ -42,36 +38,7 @@ app.use(session({ secret: secret, resave:false, saveUninitialized:false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const Employee = require("./model/employee");
-const bcrypt = require('bcrypt');
-passport.use(
-    new LocalStrategy({
-        usernameField: 'email',
-        passReqToCallback: true
-    },
-    (req, email, password, done) => {
-        if (req.body.type === 'worker') {
-            Employee.getHashByEmail(email).then((user) => {
-                console.log(password);
-                bcrypt.compare(password, user.password, function(err, ans) {
-                    if(ans) {
-                        // Passwords match
-                        console.log("Passwords match");
-                        return done(null, user);
-                    } else {
-                        // Passwords don't match
-                        console.log("DON'T");
-                        console.debug(user);
-                        return done(null, false, { message: 'Undefined User' });
-                    }
-                });
-            });
-        } else {
-            // TODO
-        }
-}));
-
-
+passport.use(strategy.Local);
 
 // app.use(function (req,res,next) {
 //     res.locals.currentUser = req.user;
@@ -128,7 +95,12 @@ app.use('/login',
     passport.authenticate('local', { failureRedirect: '/', failureFlash: true }),
     (req,res) => {
         console.log("SUCESS");
-        // console.log(user);
+        // cooki
+        let minute = 60000;
+        res.cookie('remember', req.session.passport.user , {
+            maxAge: minute
+        });
+
         res.redirect('/worker');
     }
 );

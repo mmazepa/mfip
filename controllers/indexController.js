@@ -1,10 +1,6 @@
 //jshint node: true, esversion: 6
 
 var indexController = {};
-// var session;
-
-// var pgp = require('pg-promise')();
-// var db = pgp("postgres://postgres:postgres@localhost:5432/mfip");
 
 const db = require('../config/postgres');
 
@@ -12,9 +8,7 @@ const Company = require('../model/company');
 const Employee = require('../model/employee');
 
 indexController.homepage = (req, res, next) => {
-// // //   session = req.session || session;
   res.render('index', {
-    // //   session: req.session,
       message: req.flash("loginMessage")
   });
 };
@@ -35,7 +29,9 @@ indexController.firm = (req, res) => {
 indexController.worker = (req, res) => {
     var employees = req.employees || employees;
     
-    console.log("req.body");
+    console.log("req.session");
+    console.log(req.session);
+    console.log("req.session.passport.user");
     console.log(req.session.passport.user);
 
     db.any('SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
@@ -104,13 +100,13 @@ indexController.cvEdit = (req, res) => {
 };
 
 indexController.signup = (req, res) => {
-  res.render('signup.ejs', {
-      message: req.flash('signupMessage')
-  });
-};
+    console.log("req.session");
+    console.log(req.session);
 
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+    res.render('signup.ejs', {
+        message: req.flash('signupMessage')
+    });
+};
 
 indexController.signup_post = (req, res) => {
     console.log("req.body");
@@ -127,8 +123,7 @@ indexController.signup_post = (req, res) => {
         Employee.getHashByEmail(req.body.email).then((data) => {
 
             res.render('signup.ejs', {
-                message: req.flash('email is already exists'),
-                // // session: session
+                message: req.flash('email is already exists')
             });
 
         }).catch((error) => {
@@ -150,6 +145,7 @@ indexController.signup_post = (req, res) => {
 };
 
 indexController.logout = (req, res) => {
+    res.clearCookie('remember');
     req.logout();
     res.redirect('/');
 };

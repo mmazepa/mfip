@@ -2,7 +2,6 @@
 
 var employeeController = {};
 const Employee = require('../model/employee');
-// var session;
 
 // Employee
 // C

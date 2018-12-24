@@ -29,7 +29,6 @@ companyController.company = (req, res) => {
 
     Company.findAll().then((data) => {
         res.render('crud/firms.ejs', {
-            // // session: session,
             firms: data
         });
     })
