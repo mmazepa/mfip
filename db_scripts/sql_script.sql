@@ -34,7 +34,7 @@ CREATE TABLE "Adres" (
 CREATE TABLE "Company" (
         "id" SERIAL PRIMARY KEY,
         "password" varchar(60) NOT NULL,
-        "firm_name" varchar(50) NOT NULL,
+        "name" varchar(50) NOT NULL,
         "email" varchar(30),
         "specialization" varchar(100) NOT NULL,
         "description" varchar(500) NOT NULL,
@@ -141,19 +141,19 @@ INSERT INTO public."Adres"(
 -- Company (rounds:15)
 -- intel        $2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy
 INSERT INTO public."Company"(
-	password, firm_name, email, specialization, description, website, image)
+	password, name, email, specialization, description, website, image)
 	VALUES ('$2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy','intel', 'intel@mail.com', 'processors & e.t.c.', 'big company', 'www.intel.com',
         :'c1');
         --make_lo('/home/matt/mfip/db_scripts/image_c_1.png')
         --loread(lo_open(\loread, 131072)
 -- microsoft    $2y$15$UciW4TzqSkYgb8gLjIkqFeyXQ3.ki0ux8R/HC8AgmE5ErNcB4OSvO
 INSERT INTO public."Company"(
-	password, firm_name, email, specialization, description, website, image)
+	password, name, email, specialization, description, website, image)
 	VALUES ('$2y$15$UciW4TzqSkYgb8gLjIkqFeyXQ3.ki0ux8R/HC8AgmE5ErNcB4OSvO','microsoft', 'microsoft@mail.com', 'OS & e.t.c.', 'big company', 'www.microsoft.com',
         :'c2');
 -- oracle       $2y$15$ZnJCM7ZpXF17kDlxsmaQX.elF6E0aTqufb0DfKes0QRgPWrSyvNi2
 INSERT INTO public."Company"(
-	password, firm_name, email, specialization, description, website, image)
+	password, name, email, specialization, description, website, image)
 	VALUES ('$2y$15$ZnJCM7ZpXF17kDlxsmaQX.elF6E0aTqufb0DfKes0QRgPWrSyvNi2','oracle', 'oracle@mail.com', 'JAVA & e.t.c.', 'big company', 'www.oracle.com',
         :'c3');
 
