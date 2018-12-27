@@ -27,24 +27,46 @@ indexController.firm = (req, res) => {
 };
 
 indexController.worker = (req, res) => {
-    var employees = req.employees || employees;
-    
+    var user = req.session.passport.user || user;
+
     console.log("req.session");
     console.log(req.session);
     console.log("req.session.passport.user");
     console.log(req.session.passport.user);
 
-    db.any('SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
-            'e.password, a.country, a.city, a.street, a.house_number, a.zip_code, ' +
-            'c.name AS company_name, c.specialization, wh.from, wh.to, wh.description ' +
-            'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ' +
-            'ON wh.id_company = c.id INNER JOIN "Employee" AS "e" ' +
-            'ON wh.id_emplyee = e.id INNER JOIN "Adres" AS a ' +
-            'ON e.id_adres = a.id WHERE e.last_name=\'Kowalski\'', [true])
+    const userString = 'SELECT id, id_adres, id_list_skills, first_name, last_name, ' +
+                        'birth, phone_number, image, ' +
+                        'email, password FROM "Employee" WHERE id=' + user.id;
+    const adresString = 'SELECT country, city, street, house_number, zip_code ' +
+                        'FROM "Adres" WHERE id=' + user.id_adres;
+    const workingString = 'SELECT wh.id_company AS company, wh.id_emplyee, ' +
+                        'wh.from, wh.to, wh.description ' +
+                        'FROM "Work_History" AS wh WHERE id_emplyee=' + user.id;
+
+    db.any(userString, [true])
     .then((data) => {
-        employees = data;
-        res.render('worker.ejs', {
-            employees: employees
+        user = data[0];
+
+        db.any(adresString, [true])
+        .then((data2) => {
+            adres = data2[0];
+
+            db.any(workingString, [true])
+            .then((data3) => {
+                workHistory = data3[0];
+
+                res.render('worker.ejs', {
+                    user: user,
+                    adres: adres,
+                    workHistory : workHistory
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        })
+        .catch((error) => {
+            console.log(error);
         });
     })
     .catch((error) => {
@@ -118,7 +140,7 @@ indexController.signup_post = (req, res) => {
     //     res.render('login', {
     //         errors: errors
     //     });}
-    
+
     if (req.body.type  === 'worker') {
         Employee.getHashByEmail(req.body.email).then((data) => {
 
@@ -131,7 +153,7 @@ indexController.signup_post = (req, res) => {
                 req.body.birth = new Date('01/01/1970');
                 req.body.phone_number = "+48720463920";
                 Employee.createEmployee(req.body);
-                
+
             }
 
         });
