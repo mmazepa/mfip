@@ -40,23 +40,23 @@
                       </tr>
                       <tr>
                         <td>Imię</td>
-                        <td>Jan</td>
+                        <td><%= user.first_name %></td>
                       </tr>
                       <tr>
                         <td>Nazwisko</td>
-                        <td>Kowalski</td>
+                        <td><%= user.last_name %></td>
                       </tr>
                       <tr>
                         <td>Data urodzenia</td>
-                        <td>15.07.1964</td>
+                        <td><%= user.birth %></td>
                       </tr>
                       <tr>
                         <td>Telefon</td>
-                        <td>610 341 005</td>
+                        <td><%= user.phone_number %></td>
                       </tr>
                       <tr>
                         <td>E-mail</td>
-                        <td><a href="mailto:jan.kowalski@gmail.com">jan.kowalski@gmail.com</a></td>
+                        <td><a href="mailto:<%= user.email %>"><%= user.email %></a></td>
                       </tr>
                     </table>
 
