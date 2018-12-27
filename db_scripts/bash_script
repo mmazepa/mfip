@@ -11,6 +11,12 @@ echo "If you see error you need to change /etc/postgresql/*/main/pg_hba.conf \n 
 sudo -u postgres dropdb mfip
 
 if !(psql -U postgres -lqt | cut -d \| -f 1 | grep -qw "mfip"); then
+    if [ -n "mfip" ] ; then
+        where="where pg_stat_activity.datname = 'mfip'"
+        echo "killing all connections to database 'mfip'"
+        else
+        echo "killing all connections to database"
+    fi
     #Create DB name: mfip
     sudo -u postgres createdb mfip
     echo "mfip created"
