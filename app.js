@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // passport.js
 app.use(session({ secret: secret, resave:false, saveUninitialized:false }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -100,8 +101,14 @@ app.use('/login',
         res.cookie('remember', req.session.passport.user , {
             maxAge: minute
         });
-
-        res.redirect('/worker');
+        
+        if (req.session.passport.user.type === "worker") {
+            res.redirect('/worker');
+        }
+        else{
+            res.redirect('/firm');
+        }
+        
     }
 );
 

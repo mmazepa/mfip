@@ -142,19 +142,19 @@ INSERT INTO public."Adres"(
 -- intel        $2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy
 INSERT INTO public."Company"(
 	password, name, email, specialization, description, website, image)
-	VALUES ('$2y$15$.Ee3wLjUL2zdOMg215J7HuoIDLTumjauL/j7LKefScIQXpPJhSaFy','intel', 'intel@mail.com', 'processors & e.t.c.', 'big company', 'www.intel.com',
+	VALUES ('$2b$15$Pp5hbTT9oCNfDErfD73A5u4ymcKc7LeiLx0u7qQlFnK2oMf32KSvS','intel', 'intel@mail.com', 'processors & e.t.c.', 'big company', 'www.intel.com',
         :'c1');
         --make_lo('/home/matt/mfip/db_scripts/image_c_1.png')
         --loread(lo_open(\loread, 131072)
 -- microsoft    $2y$15$UciW4TzqSkYgb8gLjIkqFeyXQ3.ki0ux8R/HC8AgmE5ErNcB4OSvO
 INSERT INTO public."Company"(
 	password, name, email, specialization, description, website, image)
-	VALUES ('$2y$15$UciW4TzqSkYgb8gLjIkqFeyXQ3.ki0ux8R/HC8AgmE5ErNcB4OSvO','microsoft', 'microsoft@mail.com', 'OS & e.t.c.', 'big company', 'www.microsoft.com',
+	VALUES ('$2b$15$mopY0BAwsiOITAsEuxS49.UFBTAiXiIMtfhs2h7e9Nf89.S0DtMV2','microsoft', 'microsoft@mail.com', 'OS & e.t.c.', 'big company', 'www.microsoft.com',
         :'c2');
 -- oracle       $2y$15$ZnJCM7ZpXF17kDlxsmaQX.elF6E0aTqufb0DfKes0QRgPWrSyvNi2
 INSERT INTO public."Company"(
 	password, name, email, specialization, description, website, image)
-	VALUES ('$2y$15$ZnJCM7ZpXF17kDlxsmaQX.elF6E0aTqufb0DfKes0QRgPWrSyvNi2','oracle', 'oracle@mail.com', 'JAVA & e.t.c.', 'big company', 'www.oracle.com',
+	VALUES ('$2b$15$8T4aAE8PsUG1cQ7WYugoS.SRuAlo553t9nh.i8DXBGlBVegt8Nqfe','oracle', 'oracle@mail.com', 'JAVA & e.t.c.', 'big company', 'www.oracle.com',
         :'c3');
 
 -- Skill

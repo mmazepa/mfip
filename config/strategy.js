@@ -1,6 +1,9 @@
 /*jshint node: true, esversion: 6 */
 const Strategy = module.exports;
+
 const Employee = require("../model/employee");
+const Company = require('../model/company');
+
 const bcrypt = require('bcrypt');
 const LocalStrategy = require("passport-local");
 
@@ -25,9 +28,33 @@ Strategy.Local = new LocalStrategy({
                     return done(null, false, { message: 'Undefined User' });
                 }
             });
+        }).catch((error) => {
+            if(error.code === 0) {
+                console.log("Incorrect data");
+                return done(null, false, { message: 'Incorrect data' });
+            }
         });
     } else {
-        // TODO
+        Company.getHashByEmail(email).then((company) => {
+            bcrypt.compare(password, company.password, function(err, ans) {
+                if(ans) {
+                    // Passwords match
+                    console.log("Passwords match");
+                    company.type = 'company';
+                    return done(null, company);
+                } else {
+                    // Passwords don't match
+                    console.log("DON'T");
+                    console.debug(company);
+                    return done(null, false, { message: 'Undefined company' });
+                }
+            });
+        }).catch((error) => {
+            if(error.code === 0) {
+                console.log("Incorrect data");
+                return done(null, false, { message: 'Incorrect data' });
+            }
+        });
 
     }
 });

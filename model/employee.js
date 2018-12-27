@@ -6,8 +6,9 @@ const Employee = module.exports;
 
 // C
 Employee.createEmployee = (paramerts_json) => {
+    
     paramerts_json.password = bcrypt.hashSync(paramerts_json.password, 10);
-    console.log(paramerts_json.password);
+    
     return db.tx(transaction => {
         return transaction.one(
             'INSERT INTO "Adres"(country) VALUES(NULL) RETURNING id')
