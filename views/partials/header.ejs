@@ -15,11 +15,17 @@
           <header>
 
               <%
-                  if (typeof user !== 'undefined') {
+                  if (user !== null) {
               %>
               <span id="loginPanel">
-                  <form id="loginform" action="/login" method="post">
+                  <form id="loginform" action="/logout" method="get">
                       <div class="myCol">
+                          <nav style="float:left;margin-right:50px;line-height:35px;">
+                              Jesteś zalogowany jako
+                              <strong>
+                                  <%= user.first_name %> <%= user.last_name %>
+                              </strong>
+                          </nav>
                           <button id="logoutButton"
                                   class="btn btn-danger"
                                   type="submit">

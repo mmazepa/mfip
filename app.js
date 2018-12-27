@@ -109,10 +109,13 @@ app.use('/login',
             res.redirect('/firm');
         }
         
+
+        global.user = req.session.passport.user;
+        res.redirect('/worker');
     }
 );
 
-
+global.user = null;
 
 app.use(function(err, req, res, next)
 {

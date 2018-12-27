@@ -182,6 +182,7 @@ indexController.signup_post = (req, res) => {
 indexController.logout = (req, res) => {
     res.clearCookie('remember');
     req.logout();
+    global.user = null;
     res.redirect('/');
 };
 
