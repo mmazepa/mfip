@@ -128,8 +128,8 @@ indexController.signup_post = (req, res) => {
 
         }).catch((error) => {
             if(error.code === 0) {
-                req.body.birth = null;
-                req.body.phone_number = null;
+                req.body.birth = new Date('01/01/1970');
+                req.body.phone_number = "+48720463920";
                 Employee.createEmployee(req.body);
                 
             }
