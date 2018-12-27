@@ -42,24 +42,32 @@ html {
           }
         }
 
-        #loginButton, #signupButton {
+        #loginButton, #signupButton, #logoutButton {
           .helper > .size(100px, auto);
           transition: 0.5s;
         }
 
         #loginButton {
-          .helper > .buttonStyle(darkgreen, white);
+          .helper > .buttonStyle(darkgreen, whitesmoke);
 
           &:hover {
-            .helper > .buttonStyle(white, darkgreen);
+            .helper > .buttonStyle(whitesmoke, darkgreen);
           }
         }
 
         #signupButton {
-          .helper > .buttonStyle(darkblue, white);
+          .helper > .buttonStyle(darkblue, whitesmoke);
 
           &:hover {
-            .helper > .buttonStyle(white, darkblue);
+            .helper > .buttonStyle(whitesmoke, darkblue);
+          }
+        }
+
+        #logoutButton {
+          .helper > .buttonStyle(darkred, whitesmoke);
+
+          &:hover {
+            .helper > .buttonStyle(whitesmoke, darkred);
           }
         }
       }

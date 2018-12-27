@@ -16,8 +16,7 @@
                 <h3>Uszanowanie, pracowniku!</h3>
                 <p>
                     Pracowniku, aktualnie jesteś zalogowany jako
-                    <strong>imię_nazwisko_i_inne_takie</strong>.
-                    (dalszy opis...)
+                    <strong><%= user.first_name %> <%= user.last_name %></strong>.
                 </p>
 
                 <h4 class="tableHeader">
@@ -35,13 +34,14 @@
                             <th>Hasło</th>
                         </tr>
                         <tr>
-                            <td><%= employees[0].first_name %></td>
-                            <td><%= employees[0].last_name %></td>
+                            <td><%= user.first_name %></td>
+                            <td><%= user.last_name %></td>
                             <td class="date">
                                 <%
-                                    var day = employees[0].birth.getDate();
-                                    var month = employees[0].birth.getMonth()+1;
-                                    const year = employees[0].birth.getFullYear();
+                                    var bdate = new Date(user.birth);
+                                    var day = bdate.getDate();
+                                    var month = bdate.getMonth()+1;
+                                    const year = bdate.getFullYear();
 
                                     if (day < 10) day = "0" + day;
                                     if (month < 10) month = "0" + month;
@@ -50,13 +50,13 @@
                                 %>
                                 <%= date %>
                             </td>
-                            <td><%= employees[0].phone_number %></td>
+                            <td><%= user.phone_number %></td>
                             <td>
-                                <a href="mailto:<%= employees[0].email %>">
-                                    <%= employees[0].email %>
+                                <a href="mailto:<%= user.email %>">
+                                    <%= user.email %>
                                 </a>
                             </td>
-                            <td>*******</td>
+                            <td>**********</td>
                         </tr>
                     </table>
                 </p>
@@ -75,18 +75,18 @@
                             <th>Kod pocztowy</th>
                         </tr>
                         <tr>
-                            <td><%= employees[0].country %></td>
-                            <td><%= employees[0].city %></td>
-                            <td><%= employees[0].street %></td>
-                            <td><%= employees[0].house_number %></td>
-                            <td><%= employees[0].zip_code %></td>
+                            <td><%= adres.country != null ? adres.country : "-"%></td>
+                            <td><%= adres.city != null ? adres.city : "-"%></td>
+                            <td><%= adres.street != null ? adres.street : "-"%></td>
+                            <td><%= adres.house_number != null ? adres.house_number : "-"%></td>
+                            <td><%= adres.zip_code != null ? adres.zip_code : "-"%></td>
                         </tr>
                     </table>
                 </p>
                 <div style="width: 100%">
                     <iframe width="100%"
                             height="100px"
-                            src="https://maps.google.com/maps?width=100%&amp;height=100&amp;hl=en&amp;q=<%= employees[0].street %><%= employees[0].city %><%= employees[0].country%>+&amp;ie=UTF8&amp;t=h&amp;z=16&amp;iwloc=B&amp;output=embed"
+                            src="https://maps.google.com/maps?width=100%&amp;height=100&amp;hl=en&amp;q=<%= adres.street %><%= adres.city %><%= adres.country%>+&amp;ie=UTF8&amp;t=h&amp;z=16&amp;iwloc=B&amp;output=embed"
                             frameborder="0"
                             scrolling="no"
                             marginheight="0"
@@ -100,72 +100,33 @@
                 </h4>
                 <p>
                     <table class="listTable">
+                    <tr>
+                        <th>L.P.</th>
+                        <th>Firma</th>
+                        <th>Data zatrudnienia</th>
+                        <th>Data zwolnienia</th>
+                        <th>Opis</th>
+                    </tr>
                     <%
-                        if (employees.length > 0) {
+                        if (workHistory != undefined) {
+                            for (wh in workHistory) {
                     %>
-                        <tr>
-                            <th>L.P.</th>
-                            <th>Firma</th>
-                            <th>Data zatrudnienia</th>
-                            <th>Data zwolnienia</th>
-                            <th>Opis</th>
-                        </tr>
-                    <%
-                            for (wh in employees)
-                            {
-                    %>
-                                <tr>
-                                    <td><%= parseInt(wh)+1 %></td>
-                                    <td><%= employees[wh].company_name %></td>
-                                    <td class="date">
-                                        <%
-                                            var date2;
-                                            if (employees[wh].from)
-                                            {
-                                                var day = employees[wh].from.getDate();
-                                                var month = employees[wh].from.getMonth()+1;
-                                                const year = employees[wh].from.getFullYear();
-
-                                                if (day < 10) day = "0" + day;
-                                                if (month < 10) month = "0" + month;
-
-                                                date2 = day + "." + month + "." + year;
-                                            }
-                                            else
-                                            {
-                                                date2 = "";
-                                            }
-                                        %>
-                                        <%= date2 %>
-                                    </td>
-                                    <td class="date">
-                                        <%
-                                            var date3;
-                                            if (employees[wh].to)
-                                            {
-                                                var day2 = employees[wh].to.getDate();
-                                                var month2 = employees[wh].to.getMonth()+1;
-                                                const year2 = employees[wh].to.getFullYear();
-
-                                                if (day2 < 10) day2 = "0" + day2;
-                                                if (month2 < 10) month2 = "0" + month2;
-
-                                                date3 = day2 + "." + month2 + "." + year2;
-                                            }
-                                            else
-                                            {
-                                                date3 = "";
-                                            }
-                                        %>
-                                        <%= date3 %>
-                                    </td>
-                                    <td><%= employees[wh].description %></td>
-                                </tr>
+                            <tr>
+                                <td>tmp_nothing</td>
+                                <td>tmp_nothing</td>
+                                <td class="date">tmp_nothing</td>
+                                <td class="date">tmp_nothing</td>
+                                <td>tmp_nothing</td>
+                            </tr>
                     <%
                             }
                         } else {
                     %>
-                            Brak Historii Zatrudnienia.
+                            <tr>
+                                <td colspan=5 style="text-align:center;">
+                                    Brak.
+                                </td>
+                            </tr>
                     <%
                         }
                     %>

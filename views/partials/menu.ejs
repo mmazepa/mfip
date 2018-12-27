@@ -9,23 +9,40 @@
         <span class="glyphicon glyphicon-briefcase"></span>
         Moja Firma
     </div>
-    <div id="worker" class="menuElement">
-        <span class="glyphicon glyphicon-user"></span>
-        Mój Profil
-    </div>
-    <div id="cv" class="menuElement">
-        <span class="glyphicon glyphicon-list-alt"></span>
-        Moje CV
-    </div>
-    <div id="signup" class="menuElement">
-        <span class="glyphicon glyphicon-hand-right"></span>
-        Rejestracja
-    </div>
+    <%
+        if (typeof user !== 'undefined') {
+    %>
+        <div id="worker" class="menuElement">
+            <span class="glyphicon glyphicon-user"></span>
+            Mój Profil
+        </div>
+        <div id="cv" class="menuElement">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            Moje CV
+        </div>
+        <div id="logout" class="menuElement">
+            <span class="glyphicon glyphicon-log-out"></span>
+            Wylogowanie
+        </div>
+    <%
+        } else {
+    %>
+        <div id="signup" class="menuElement">
+            <span class="glyphicon glyphicon-hand-right"></span>
+            Rejestracja
+        </div>
+    <%
+        }
+    %>
 
     <hr/>
 
     <!-- MENU CRUD'A -->
     <h5 style="font-weight:bold;">CRUD:</h5>
+    <h6 style="color:darkred">
+        <strong>INFO:</strong> CRUD widoczny tymczasowo,
+        później tylko dla admina.
+    </h6>
     <div id="employee" class="menuElement">
         <span class="glyphicon glyphicon-user"></span>
         Lista Pracowników
@@ -50,8 +67,7 @@
         <span class="glyphicon glyphicon-calendar"></span>
         Lista Historii Zatrudnienia
     </div>
+
     <!-- ZEGAREK -->
     <div id="clock">00:00:00</div>
-
-    
 </div>

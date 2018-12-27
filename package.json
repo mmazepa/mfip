@@ -12,7 +12,7 @@
     "express": "^4.16.3",
     "express-session": "latest",
     "passport": "latest",
-    "passport-local":"latest",
+    "passport-local": "latest",
     "bcrypt-nodejs": "latest",
     "connect-flash": "latest",
     "serve-favicon": "~2.3.2",
