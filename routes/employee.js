@@ -15,4 +15,7 @@ router.get('/employee', employee.employee);
 router.get('/employee/id/:id', employee.employeeById);
 router.get('/employee/name/:last_name', employee.employeeByLastName);
 
+// U
+router.post('/employee/update', employee.updateEmployee);
+
 module.exports = router;

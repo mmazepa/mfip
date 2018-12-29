@@ -33,6 +33,12 @@
                 <h4 class="tableHeader">
                     <span class="glyphicon glyphicon-user"></span>
                     Dane Pracownika
+                    <button id="editPersonals"
+                            class="btn btn-primary"
+                            style="width:150px;">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        <span id="editPersonalsLabel">Edytuj</span>
+                    </button>
                 </h4>
                 <p>
                     <table class="listTable">
@@ -42,7 +48,7 @@
                             <th>Data urodzenia</th>
                             <th>Numer telefonu</th>
                             <th>E-mail</th>
-                            <th>Hasło</th>
+                            <!-- <th>Hasło</th> -->
                         </tr>
                         <tr>
                             <td><%= user.first_name %></td>
@@ -67,10 +73,81 @@
                                     <%= user.email %>
                                 </a>
                             </td>
-                            <td>**********</td>
+                            <!-- <td>**********</td> -->
                         </tr>
                     </table>
                 </p>
+
+                <div class="insertionBox hideMe">
+                    <form action="/employee/update" method="POST">
+                        <table>
+                            <tr>
+                                <th>Imię</th>
+                                <th>Nazwisko</th>
+                                <th>Data urodzenia</th>
+                                <th>Numer telefonu</th>
+                                <th>
+                                    E-mail
+                                    <abbr title="E-mail to Twój login, pamiętaj o tym podczas jego zmiany.">
+                                        <span class="glyphicon glyphicon-exclamation-sign">
+                                    </abbr>
+                                </th>
+                            </tr>
+                            <tr>
+                                <input  type="text"
+                                        name="id"
+                                        value="<%= user.id %>"
+                                        style="width:100%;"
+                                        hidden/>
+                                <td>
+                                    <input  type="text"
+                                            name="first_name"
+                                            value="<%= user.first_name %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="last_name"
+                                            value="<%= user.last_name %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="date"
+                                            name="birth"
+                                            value="<%= user.birth.getFullYear() %>-<%= ('0' + user.birth.getMonth()+1).slice(-2) %>-<%= ('0' + user.birth.getDate()).slice(-2) %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="phone_number"
+                                            value="<%= user.phone_number %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="email"
+                                            name="email"
+                                            value="<%= user.email %>"
+                                            style="width:100%;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan=5>
+                                    <marquee>Edycja danych w toku...</marquee>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan=5>
+                                    <button id="saveNewPersonals"
+                                            class="btn btn-success"
+                                            type="submit">
+                                        <span class="glyphicon glyphicon-floppy-saved"></span>
+                                        Zapisz nowe dane
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
 
                 <h4 class="tableHeader">
                     <span class="glyphicon glyphicon-home"></span>
@@ -86,11 +163,29 @@
                             <th>Kod pocztowy</th>
                         </tr>
                         <tr>
-                            <td><%= adres.country != null ? adres.country : "-"%></td>
-                            <td><%= adres.city != null ? adres.city : "-"%></td>
-                            <td><%= adres.street != null ? adres.street : "-"%></td>
-                            <td><%= adres.house_number != null ? adres.house_number : "-"%></td>
-                            <td><%= adres.zip_code != null ? adres.zip_code : "-"%></td>
+                            <%
+                                let adresAvailable = false;
+                                for (var item in adres) {
+                                    if (adres[item] !== null && adres[item] != "")
+                                        adresAvailable = true;
+                                }
+
+                                if (adresAvailable) {
+                            %>
+                                <td><%= adres.country %></td>
+                                <td><%= adres.city %></td>
+                                <td><%= adres.street %></td>
+                                <td><%= adres.house_number %></td>
+                                <td><%= adres.zip_code %></td>
+                            <%
+                                } else {
+                            %>
+                                <td colspan=5 style="text-align:center;">
+                                    Nie podano adresu.
+                                </td>
+                            <%
+                                }
+                            %>
                         </tr>
                     </table>
                 </p>

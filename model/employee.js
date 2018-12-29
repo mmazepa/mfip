@@ -6,9 +6,9 @@ const Employee = module.exports;
 
 // C
 Employee.createEmployee = (paramerts_json) => {
-    
+
     paramerts_json.password = bcrypt.hashSync(paramerts_json.password, 10);
-    
+
     return db.tx(transaction => {
         return transaction.one(
             'INSERT INTO "Adres"(country) VALUES(NULL) RETURNING id')
@@ -54,4 +54,24 @@ Employee.getHashByEmail = (email) => {
     return db.one('SELECT * ' +
         'FROM "Employee" AS "e" ' +
         'WHERE e.email = $1', [email]);
+};
+
+// update personal info
+Employee.updateEmployeeById = (id, first_name, last_name, birth, phone_number, email) => {
+    var newUserPersonals = {
+        id: id,
+        first_name: first_name,
+        last_name: last_name,
+        birth: birth,
+        phone_number: phone_number,
+        email: email
+    };
+    return db.none('UPDATE "Employee" SET ' +
+                    'first_name=${first_name}, ' +
+                    'last_name=${last_name}, ' +
+                    'birth=${birth}, ' +
+                    'phone_number=${phone_number}, ' +
+                    'email=${email} ' +
+                    'WHERE id=${id}',
+                    newUserPersonals);
 };

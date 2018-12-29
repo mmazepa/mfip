@@ -23,19 +23,6 @@ document.onreadystatechange = () => {
                 else location.replace("/" + this.id);
             });
 
-            // --- LOGOWANIE I REJESTRACJA: WSPARCIE SKRYPTOWE -----------------
-
-            // $("#loginform, #signupform").on("submit", () => {
-            //     alertUndone("Autoryzacja użytkownika");
-            //     return false;
-            // });
-
-            // --- TYMCZASOWA INFORMACJA O ELEMENTACH W BUDOWIE ----------------
-
-            // const alertUndone = (name) => {
-            //     alert("UWAGA!\n" + name + " w budowie...");
-            // };
-
             // --- AKCJE CV: LISTY ROZWIJALNE ----------------------------------
 
             const upperCaseFirstLetter = (string) => {
@@ -85,6 +72,24 @@ document.onreadystatechange = () => {
                         break;
                     }
                 }
+            });
+
+            // --- ZARZĄDZANIE PROFILEM ----------------------------------------
+
+            var containsClass = true;
+            $("#editPersonals").on("click", () => {
+                $(".insertionBox").toggleClass("hideMe");
+                containsClass = !containsClass;
+
+                if (containsClass) {
+                    $("#editPersonalsLabel").html("Edytuj");
+                } else {
+                    $("#editPersonalsLabel").html("Anuluj edycję");
+                }
+            });
+
+            $("#saveNewPersonals").on("click", () => {
+                location.replace("/employee/update");
             });
 
             // --- FUNKCJE POMOCNICZE DO DODAWANIA NOWYCH REKORDÓW DO CV -------
