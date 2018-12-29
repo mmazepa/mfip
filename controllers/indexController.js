@@ -18,7 +18,7 @@ indexController.firm = (req, res) => {
 
     Company.findAll().then((data) => {
         res.render('firm.ejs', {
-            firms: data
+            // firms: data
         });
     })
     .catch((error) => {
@@ -55,6 +55,7 @@ indexController.worker = (req, res) => {
             .then((data3) => {
                 workHistory = data3[0];
 
+                user.type = "worker";
                 res.render('worker.ejs', {
                     user: user,
                     adres: adres,

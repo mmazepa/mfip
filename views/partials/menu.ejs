@@ -5,12 +5,9 @@
         <span class="glyphicon glyphicon-home"></span>
         Strona główna
     </div>
-    <div id="firm" class="menuElement">
-        <span class="glyphicon glyphicon-briefcase"></span>
-        Moja Firma
-    </div>
     <%
         if (user !== null) {
+            if (user.type === "worker") {
     %>
         <div id="worker" class="menuElement">
             <span class="glyphicon glyphicon-user"></span>
@@ -20,6 +17,16 @@
             <span class="glyphicon glyphicon-list-alt"></span>
             Moje CV
         </div>
+    <%
+            } else {
+    %>
+        <div id="firm" class="menuElement">
+            <span class="glyphicon glyphicon-briefcase"></span>
+            Moja Firma
+        </div>
+    <%
+            }
+    %>
         <div id="logout" class="menuElement">
             <span class="glyphicon glyphicon-log-out"></span>
             Wylogowanie

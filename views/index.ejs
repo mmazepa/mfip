@@ -20,13 +20,36 @@
                     zatrudnienia, pracowników w firmie oraz samych firm jako takich.
                 </p>
                 <p>
-                    Wybierz typ swojego konta w panelu znajdującym się w nagłówku
-                    strony, podaj adres e-mail i hasło po czym kliknij "Zaloguj"
-                    aby się zalogować i uzyskać dostęp do pełnej funkcjonalności
-                    serwisu. Jeżeli nie masz jeszcze konta, a chciałbyś mieć,
-                    kliknij przycisk "Dołącz" znajdujący się w panelu logowania
-                    lub wybierz opcję "Rejestracja" w panelu bocznym znajdującym
-                    się po lewej stronie.
+                    <%
+                        if (user === null) {
+                    %>
+                        Wybierz typ swojego konta w panelu znajdującym się w nagłówku
+                        strony, podaj adres e-mail i hasło po czym kliknij "Zaloguj"
+                        aby się zalogować i uzyskać dostęp do pełnej funkcjonalności
+                        serwisu. Jeżeli nie masz jeszcze konta, a chciałbyś mieć,
+                        kliknij przycisk "Dołącz" znajdujący się w panelu logowania
+                        lub wybierz opcję "Rejestracja" w panelu bocznym znajdującym
+                        się po lewej stronie.
+                    <%
+                        } else {
+                    %>
+                            Przejrzyj swój profil, aby upewnić się, że wszystkie
+                            zawarte w nim informacje są aktualne.
+                    <%
+                            if (user.type === "worker") {
+                    %>
+                            To samo możesz - powinieneś - zrobić ze swoim CV.
+                            Wybierz odpowiednią opcję w panelu bocznym i działaj,
+                            pracodawcy cenią sobie bycie na bieżąco.
+                    <%
+                            } else {
+                    %>
+                            Wybierz odpowiednią opcję w panelu bocznym.
+                            Pracownicy lubią, kiedy firmy są na bieżąco.
+                    <%
+                            }
+                        }
+                    %>
                 </p>
             </div>
           </div>

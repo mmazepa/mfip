@@ -23,7 +23,17 @@
                           <nav style="float:left;margin-right:50px;line-height:35px;">
                               Jesteś zalogowany jako
                               <strong>
-                                  <%= user.first_name %> <%= user.last_name %>
+                                  <%
+                                      if (user.type === "worker") {
+                                  %>
+                                      <%= user.first_name %> <%= user.last_name %> (pracownik)
+                                  <%
+                                      } else {
+                                  %>
+                                      <%= user.name %> (firma)
+                                  <%
+                                      }
+                                  %>
                               </strong>
                           </nav>
                           <button id="logoutButton"

@@ -10,13 +10,24 @@
 
             <div class="col-sm-9">
                 <h1 class="mainHeader">
-                    Profil <span class="appTitle">Pracownika</span>!
+                    Profil
+                    <span class="appTitle">
+                        <%= user.email.split("@")[0] %>
+                    </span>!
                 </h1>
 
-                <h3>Uszanowanie, pracowniku!</h3>
+                <h3>Uszanowanie, <%= user.first_name %>!</h3>
                 <p>
                     Pracowniku, aktualnie jesteś zalogowany jako
                     <strong><%= user.first_name %> <%= user.last_name %></strong>.
+                    Poniżej znajdziesz wszystkie informacje, które dodałeś do
+                    swojego profilu.<br/>
+                    <br/>
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    Zadbaj o to, aby każda podana przez Ciebie informacja
+                    była aktualna. Ułatwi to zarówno pracodawcom dotarcie
+                    do Ciebie, jak i Tobie sprawnie przeprowadzić proces
+                    rekrutacji bez zbędnych nieporozumień.
                 </p>
 
                 <h4 class="tableHeader">

@@ -10,16 +10,23 @@
 
             <div class="col-sm-9">
                 <h1 class="mainHeader">
-                    Profil <span class="appTitle">Firmy</span>!
+                    Profil Firmy
+                    <span class="appTitle"><%= user.name %></span>!
                 </h1>
 
                 <h3>Dzień dobry, szefie!</h3>
                 <p>
-                    Kierowniku, aktualnie jesteś zalogowany jako
-                    <strong>imię_nazwisko_i_inne_takie</strong>.
-                    (dalszy opis...)
-                    Firma, którą aktualnie zarządzasz to <strong>nazwa_firmy</strong>.
-                    (dalszy opis...)
+                    Kierowniku, jesteś zalogowany jako
+                    <strong><%= user.name %></strong>.
+                    Jest to Firma, którą aktualnie zarządzasz.
+                    Poniżej znajdziesz wszystkie informacje, które dodałeś do
+                    profilu swojej firmy.<br/>
+                    <br/>
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    Zadbaj o to, aby każda widoczna informacja o firmie
+                    była aktualna. Ułatwi to zarówno pracownikom dotarcie
+                    do Twojej firmy, jak i Tobie sprawnie przeprowadzić proces
+                    rekrutacji bez zbędnych nieporozumień.
                 </p>
 
                 <p>
@@ -37,17 +44,17 @@
                                 <th>WWW</th>
                             </tr>
                             <tr>
-                                <td><%= firms[0].name %></td>
-                                <td><%= firms[0].specialization %></td>
-                                <td><%= firms[0].description %></td>
+                                <td><%= user.name %></td>
+                                <td><%= user.specialization %></td>
+                                <td><%= user.description %></td>
                                 <td>
-                                    <a href="mailto:<%= firms[0].email %>">
-                                        <%= firms[0].email %>
+                                    <a href="mailto:<%= user.email %>">
+                                        <%= user.email %>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="http://<%= firms[0].website %>">
-                                        <%= firms[0].website %>
+                                    <a href="http://<%= user.website %>">
+                                        <%= user.website %>
                                     </a>
                                 </td>
                             </tr>

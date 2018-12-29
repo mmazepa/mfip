@@ -74,13 +74,10 @@ app.use("/", require("./routes/skill"));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
-if (env === 'development')
-{
+if (env === 'development') {
     app.use(logger('dev'));
     app.use(errorHandler());
-}
-else
-{
+} else {
     app.use(logger('short'));
 }
 
@@ -101,24 +98,22 @@ app.use('/login',
         res.cookie('remember', req.session.passport.user , {
             maxAge: minute
         });
-        
-        if (req.session.passport.user.type === "worker") {
-            res.redirect('/worker');
-        }
-        else{
-            res.redirect('/firm');
-        }
-        
 
         global.user = req.session.passport.user;
-        res.redirect('/worker');
+        if (global.user.type === "worker") {
+            res.redirect('/worker');
+        } else {
+            res.redirect('/firm');
+        }
+
+        // global.user = req.session.passport.user;
+        // res.redirect('/worker');
     }
 );
 
 global.user = null;
 
-app.use(function(err, req, res, next)
-{
+app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
@@ -126,8 +121,7 @@ app.use(function(err, req, res, next)
   res.render('error');
 });
 
-http.listen(port, function()
-{
+http.listen(port, function() {
     console.log("       ___ _     ");
     console.log(" _____|  _|_|___ ");
     console.log("|     |  _| | . |");
