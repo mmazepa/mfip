@@ -57,15 +57,7 @@ Employee.getHashByEmail = (email) => {
 };
 
 // update personal info
-Employee.updateEmployeeById = (id, first_name, last_name, birth, phone_number, email) => {
-    var newUserPersonals = {
-        id: id,
-        first_name: first_name,
-        last_name: last_name,
-        birth: birth,
-        phone_number: phone_number,
-        email: email
-    };
+Employee.updateEmployeePersonals = (newUserPersonals) => {
     return db.none('UPDATE "Employee" SET ' +
                     'first_name=${first_name}, ' +
                     'last_name=${last_name}, ' +

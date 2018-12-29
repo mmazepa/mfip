@@ -29,10 +29,10 @@ indexController.firm = (req, res) => {
 indexController.worker = (req, res) => {
     var user = req.session.passport.user || user;
 
-    console.log("req.session");
-    console.log(req.session);
-    console.log("req.session.passport.user");
-    console.log(req.session.passport.user);
+    // console.log("req.session");
+    // console.log(req.session);
+    // console.log("req.session.passport.user");
+    // console.log(req.session.passport.user);
 
     const userString = 'SELECT id, id_adres, id_list_skills, first_name, last_name, ' +
                         'birth, phone_number, image, ' +

@@ -56,14 +56,15 @@ employeeController.employeeByLastName = (req, res) => {
 };
 
 employeeController.updateEmployee = (req, res) => {
-    let id = req.body.id;
-    let first_name = req.body.first_name;
-    let last_name = req.body.last_name;
-    let birth = req.body.birth;
-    let phone_number = req.body.phone_number;
-    let email = req.body.email;
-
-    Employee.updateEmployeeById(id, first_name, last_name, birth, phone_number, email)
+    let newUserPersonals = {
+        id: req.body.id,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        birth: req.body.birth,
+        phone_number: req.body.phone_number,
+        email: req.body.email
+    };
+    Employee.updateEmployeePersonals(newUserPersonals)
     .then(() => {
         res.redirect("/worker");
     })
