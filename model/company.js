@@ -8,7 +8,7 @@ const Company = module.exports;
 Company.createCompany = (paramerts_json) => {
 
     paramerts_json.password = bcrypt.hashSync(paramerts_json.password, 15);
-    
+
     return db.one(
         'INSERT INTO "Company"(password, name, email, specialization, description) ' +
         'VALUES(${password}, ${name}, ${email}, ${specialization}, ${description}) RETURNING id',
@@ -30,6 +30,10 @@ Company.findById = (id) => {
     return db.one('SELECT c.id, c.name, c.email, c.specialization, c.description, c.website, c.image ' +
         'FROM "Company" AS "c" ' +
         'WHERE c.id = $1', [id]);
+};
+
+Company.workers = (id) => {
+    return db.any('SELECT e.first_name, e.last_name, e.email,  wh.from, wh.to FROM "Work_History" AS "wh" INNER JOIN "Employee" AS "e" on wh.id_emplyee = e.id WHERE id_company=$1', [id]);
 };
 
 //hash

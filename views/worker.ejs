@@ -53,20 +53,7 @@
                         <tr>
                             <td><%= user.first_name %></td>
                             <td><%= user.last_name %></td>
-                            <td class="date">
-                                <%
-                                    var bdate = new Date(user.birth);
-                                    var day = bdate.getDate();
-                                    var month = bdate.getMonth()+1;
-                                    const year = bdate.getFullYear();
-
-                                    if (day < 10) day = "0" + day;
-                                    if (month < 10) month = "0" + month;
-
-                                    const date = day + "." + month + "." + year;
-                                %>
-                                <%= date %>
-                            </td>
+                            <td class="date"><%= user.birth %></td>
                             <td><%= user.phone_number %></td>
                             <td>
                                 <a href="mailto:<%= user.email %>">
@@ -294,25 +281,27 @@
                         <th>Opis</th>
                     </tr>
                     <%
+                        var number = 0;
                         if (workHistory != undefined) {
                             for (wh in workHistory) {
                     %>
                             <tr>
-                                <td>tmp_nothing</td>
-                                <td>tmp_nothing</td>
-                                <td class="date">tmp_nothing</td>
-                                <td class="date">tmp_nothing</td>
-                                <td>tmp_nothing</td>
+                                <td><%= (number+1) %></td>
+                                <td><%= workHistory[wh].company %></td>
+                                <td class="date"><%= workHistory[wh].from %></td>
+                                <td class="date"><%= workHistory[wh].to %></td>
+                                <td><%= workHistory[wh].description %></td>
                             </tr>
                     <%
+                                number++;
                             }
                         } else {
                     %>
-                            <tr>
-                                <td colspan=5 style="text-align:center;">
-                                    Brak.
-                                </td>
-                            </tr>
+                        <tr>
+                            <td colspan=5 style="text-align:center;">
+                                Brak.
+                            </td>
+                        </tr>
                     <%
                         }
                     %>

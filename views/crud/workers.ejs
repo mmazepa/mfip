@@ -35,19 +35,7 @@
                                     <td><%= parseInt(e)+1 %></td>
                                     <td><%= employees[e].first_name %></td>
                                     <td><%= employees[e].last_name %></td>
-                                    <td class="date">
-                                        <%
-                                            var day = employees[e].birth.getDate();
-                                            var month = employees[e].birth.getMonth()+1;
-                                            const year = employees[e].birth.getFullYear();
-
-                                            if (day < 10) day = "0" + day;
-                                            if (month < 10) month = "0" + month;
-
-                                            const date = day + "." + month + "." + year;
-                                        %>
-                                        <%= date %>
-                                    </td>
+                                    <td class="date"><%= employees[e].birth %></td>
                                     <td><%= employees[e].phone_number %></td>
                                     <td>
                                         <a href="mailto:<%= employees[e].email %>">

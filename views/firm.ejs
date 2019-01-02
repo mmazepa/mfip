@@ -74,32 +74,30 @@
                             <th>Nazwisko</th>
                             <th>Stanowisko</th>
                             <th>W firmie od</th>
+                            <th>W firmie do</th>
                             <th>E-mail</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
+                        <%
+                            if (workers != null) {
+                                for (w in workers) {
+                        %>
+                            <tr>
+                                <td><%= parseInt(w)+1 %></td>
+                                <td><%= workers[w].first_name %></td>
+                                <td><%= workers[w].last_name %></td>
+                                <td>-</td>
+                                <td class="date"><%= workers[w].from %></td>
+                                <td class="date"><%= workers[w].to %></td>
+                                <td>
+                                    <a href="mailto:<%= workers[w].email %>">
+                                        <%= workers[w].email %>
+                                    </a>
+                                </td>
+                            </tr>
+                        <%
+                                }
+                            }
+                        %>
                     </table>
                 </p>
             </div>

@@ -225,6 +225,27 @@ document.onreadystatechange = () => {
                 row.parentElement.removeChild(row);
             };
 
+            // --- OBSŁUGA DAT -------------------------------------------------
+
+            const repairDates = () => {
+                let dates = document.getElementsByClassName("date");
+                for (var i = 0; i < dates.length; i++) {
+                    var tmpDate = new Date(dates[i].innerHTML);
+                    if (dates[i].innerHTML == "") continue;
+
+                    var day = tmpDate.getDate();
+                    var month = tmpDate.getMonth()+1;
+                    const year = tmpDate.getFullYear();
+
+                    if (day < 10) day = "0" + day;
+                    if (month < 10) month = "0" + month;
+
+                    const date = day + "." + month + "." + year;
+                    dates[i].innerHTML = date;
+                }
+            };
+            repairDates();
+
             // --- OBSŁUGA ZEGARKA ---------------------------------------------
 
             const repairClockItems = (items) => {
