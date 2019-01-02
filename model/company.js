@@ -50,6 +50,18 @@ Company.add = (name, specialization, description, email, website) => {
     return db.one(addQuery);
 };
 
+// update firm info
+Company.updateFirmInfo = (newFirmInfo) => {
+    return db.none('UPDATE "Company" SET ' +
+                    'name=${name}, ' +
+                    'specialization=${specialization}, ' +
+                    'description=${description}, ' +
+                    'email=${email}, ' +
+                    'website=${website} ' +
+                    'WHERE id=${id}',
+                    newFirmInfo);
+};
+
 Company.remove = (id) => {
     const removeQuery = 'DELETE FROM "Company" WHERE id=' + id;
     return db.result(removeQuery);

@@ -33,6 +33,12 @@
                     <h4 class="tableHeader">
                         <span class="glyphicon glyphicon-briefcase"></span>
                         Dane Firmy
+                        <button id="editFirmInfo"
+                                class="btn btn-primary"
+                                style="width:150px;">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            <span id="editFirmInfoLabel">Edytuj</span>
+                        </button>
                     </h4>
                     <p>
                         <table class="listTable">
@@ -61,6 +67,77 @@
                         </table>
                     </p>
                 </p>
+
+                <div id="firmInfoInsertion" class="insertionBox hideMe">
+                    <form action="/company/update" method="POST">
+                        <table>
+                            <tr>
+                                <th>Nazwa</th>
+                                <th>Specjalizacja</th>
+                                <th>Opis</th>
+                                <th>
+                                    E-mail
+                                    <abbr title="E-mail to Twój login, pamiętaj o tym podczas jego zmiany.">
+                                        <span class="glyphicon glyphicon-exclamation-sign">
+                                    </abbr>
+                                </th>
+                                <th>WWW</th>
+                            </tr>
+                            <tr>
+                                <input  type="text"
+                                        name="id"
+                                        value="<%= user.id %>"
+                                        style="width:100%;"
+                                        hidden/>
+                                <td>
+                                    <input  type="text"
+                                            name="name"
+                                            value="<%= user.name %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="specialization"
+                                            value="<%= user.specialization %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="description"
+                                            value="<%= user.description %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="email"
+                                            name="email"
+                                            value="<%= user.email %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="website"
+                                            value="<%= user.website %>"
+                                            style="width:100%;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan=5>
+                                    <marquee>Edycja informacji o firmie w toku...</marquee>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan=5>
+                                    <button id="saveNewPersonals"
+                                            class="btn btn-success"
+                                            type="submit">
+                                        <span class="glyphicon glyphicon-floppy-saved"></span>
+                                        Zapisz nowe dane
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
 
                 <h4 class="tableHeader">
                     <span class="glyphicon glyphicon-user"></span>

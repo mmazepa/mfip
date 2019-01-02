@@ -100,6 +100,18 @@ document.onreadystatechange = () => {
                 }
             });
 
+            var containsClassFirmInfo = true;
+            $("#editFirmInfo").on("click", () => {
+                $("#firmInfoInsertion").toggleClass("hideMe");
+                containsClassFirmInfo = !containsClassFirmInfo;
+
+                if (containsClassAdres) {
+                    $("#editFirmInfoLabel").html("Edytuj");
+                } else {
+                    $("#editFirmInfoLabel").html("Anuluj edycję");
+                }
+            });
+
             // --- FUNKCJE POMOCNICZE DO DODAWANIA NOWYCH REKORDÓW DO CV -------
 
             const appendMultipleChildren = (element, children) => {

@@ -71,6 +71,31 @@ companyController.add = (req, res) => {
     });
 };
 
+companyController.update = (req, res) => {
+    let newFirmInfo = {
+        id: req.body.id,
+        name: req.body.name,
+        specialization: req.body.specialization,
+        description: req.body.description,
+        email: req.body.email,
+        website: req.body.website
+    };
+    Company.updateFirmInfo(newFirmInfo)
+    .then(() => {
+        Company.findById(req.body.id)
+        .then((data) => {
+            global.user = data;
+            res.redirect("/firm");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
 companyController.remove = (req, res) => {
     let id = req.params.id;
     Company.remove(id).then(() => {
