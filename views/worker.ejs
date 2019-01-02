@@ -78,7 +78,7 @@
                     </table>
                 </p>
 
-                <div class="insertionBox hideMe">
+                <div id="personalsInsertion" class="insertionBox hideMe">
                     <form action="/employee/update" method="POST">
                         <table>
                             <tr>
@@ -152,6 +152,12 @@
                 <h4 class="tableHeader">
                     <span class="glyphicon glyphicon-home"></span>
                     Adres Pracownika
+                    <button id="editAdres"
+                            class="btn btn-primary"
+                            style="width:150px;">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        <span id="editAdresLabel">Edytuj</span>
+                    </button>
                 </h4>
                 <p>
                     <table class="listTable">
@@ -189,10 +195,84 @@
                         </tr>
                     </table>
                 </p>
+
+                <div id="adresInsertion" class="insertionBox hideMe">
+                    <form action="/adres/update" method="POST">
+                        <table>
+                            <tr>
+                                <th>Kraj</th>
+                                <th>Miasto</th>
+                                <th>Ulica</th>
+                                <th>Nr domu</th>
+                                <th>Kod pocztowy</th>
+                            </tr>
+                            <tr>
+                                <input  type="text"
+                                        name="adres_id"
+                                        value="<%= user.id_adres %>"
+                                        style="width:100%;"
+                                        hidden/>
+                                <td>
+                                    <input  type="text"
+                                            name="country"
+                                            value="<%= adres.country %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="city"
+                                            value="<%= adres.city %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="street"
+                                            value="<%= adres.street %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="house_number"
+                                            value="<%= adres.house_number %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <td>
+                                    <input  type="text"
+                                            name="zip_code"
+                                            value="<%= adres.zip_code %>"
+                                            style="width:100%;"/>
+                                </td>
+                                <input  type="text"
+                                        name="is_company"
+                                        value="<%= adres.is_company %>"
+                                        style="width:100%;"
+                                        hidden/>
+                            </tr>
+                            <tr>
+                                <td colspan=5>
+                                    <marquee>Edycja adresu w toku...</marquee>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan=5>
+                                    <button id="saveNewAdres"
+                                            class="btn btn-success"
+                                            type="submit">
+                                        <span class="glyphicon glyphicon-floppy-saved"></span>
+                                        Zapisz nowy adres
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+
+                <br/>
+
                 <div style="width: 100%">
                     <iframe width="100%"
-                            height="100px"
-                            src="https://maps.google.com/maps?width=100%&amp;height=100&amp;hl=en&amp;q=<%= adres.street %><%= adres.city %><%= adres.country%>+&amp;ie=UTF8&amp;t=h&amp;z=16&amp;iwloc=B&amp;output=embed"
+                            height="150px"
+                            src="https://maps.google.com/maps?width=100%&amp;height=150&amp;hl=en&amp;q=<%= adres.street %><%= adres.house_number %><%= adres.zip_code %><%= adres.city %><%= adres.country%>+&amp;ie=UTF8&amp;t=h&amp;z=16&amp;iwloc=B&amp;output=embed"
                             frameborder="0"
                             scrolling="no"
                             marginheight="0"

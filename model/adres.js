@@ -30,6 +30,19 @@ Adres.add = (country, city, street, house_number, zip_code) => {
     return db.one(addQuery);
 };
 
+// update adres
+Adres.update = (newUserAdres) => {
+    console.log(JSON.stringify(newUserAdres));
+    return db.none('UPDATE "Adres" SET ' +
+                    'country=${country}, ' +
+                    'city=${city}, ' +
+                    'street=${street}, ' +
+                    'house_number=${house_number}, ' +
+                    'zip_code=${zip_code} ' +
+                    'WHERE id=${adres_id}',
+                    newUserAdres);
+};
+
 Adres.remove = (id) => {
     const removeQuery = 'DELETE FROM "Adres" WHERE id=' + id;
     return db.result(removeQuery);

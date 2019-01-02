@@ -58,6 +58,14 @@
                         <td>E-mail</td>
                         <td><a href="mailto:<%= user.email %>"><%= user.email %></a></td>
                       </tr>
+                      <tr>
+                          <td>Adres</td>
+                          <td>
+                              <%= adres.street %> <%= adres.house_number %><br/>
+                              <%= adres.zip_code %> <%= adres.city %> <br/>
+                              <%= adres.country %>
+                          </td>
+                      </tr>
                     </table>
 
                     <!-- DOŚWIADCZENIE -->

@@ -56,6 +56,9 @@ indexController.worker = (req, res) => {
                 workHistory = data3[0];
 
                 user.type = "worker";
+                global.user = user;
+                global.adres = adres;
+                global.workHistory = workHistory;
                 res.render('worker.ejs', {
                     user: user,
                     adres: adres,

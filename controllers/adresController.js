@@ -50,6 +50,25 @@ adresController.add = (req, res) => {
     });
 };
 
+adresController.updateAdres = (req, res) => {
+    let newUserAdres = {
+        adres_id: req.body.adres_id,
+        country: req.body.country,
+        city: req.body.city,
+        street: req.body.street,
+        house_number: req.body.house_number,
+        zip_code: req.body.zip_code,
+        is_company: req.body.is_company
+    };
+    Adres.update(newUserAdres)
+    .then(() => {
+        res.redirect("/worker");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
 adresController.remove = (req, res) => {
     let id = req.params.id;
     Adres.remove(id).then(() => {

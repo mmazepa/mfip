@@ -25,6 +25,10 @@
                         <span class="glyphicon glyphicon-user"></span>
                         Dane personalne
                         <span id="personalGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                        <div class="info">
+                            Edycja danych personalnych nie jest dostępna z poziomu CV.
+                            Jeżeli chcesz dokonać ich edycji udaj się na swój profil użytkownika.
+                        </div>
                     </h4>
                     <table id="cvTable" class="personalTable">
                       <tr>
@@ -33,27 +37,31 @@
                       </tr>
                       <tr>
                         <td>Imię</td>
-                        <td><input type="text" value="Jan"/></td>
+                        <td><%= user.first_name %></td>
                       </tr>
                       <tr>
                         <td>Nazwisko</td>
-                        <td><input type="text" value="Kowalski"/></td>
+                        <td><%= user.last_name %></td>
                       </tr>
                       <tr>
                         <td>Data urodzenia</td>
-                        <td><input type="date" value="1964-07-15"/></td>
+                        <td><%= user.birth %></td>
                       </tr>
                       <tr>
                         <td>Telefon</td>
-                        <td>
-                            <input type="tel"
-                                   pattern="([0-9]{3} [0-9]{3} [0-9]{3})|([0-9]{9})"
-                                   value="610 341 005" />
-                        </td>
+                        <td><%= user.phone_number %></td>
                       </tr>
                       <tr>
                         <td>E-mail</td>
-                        <td><input type="email" value="jan.kowalski@gmail.com"/></td>
+                        <td><a href="mailto:<%= user.email %>"><%= user.email %></a></td>
+                      </tr>
+                      <tr>
+                          <td>Adres</td>
+                          <td>
+                              <%= adres.street %> <%= adres.house_number %><br/>
+                              <%= adres.zip_code %> <%= adres.city %> <br/>
+                              <%= adres.country %>
+                          </td>
                       </tr>
                     </table>
 

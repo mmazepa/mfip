@@ -12,6 +12,7 @@ router.get('/adres/id/:id', adres.adresById);
 router.get('/adres/country/:country', adres.adresByCountry);
 
 router.post('/adres/add', adres.add);
+router.post('/adres/update', adres.updateAdres);
 router.get('/adres/remove/:id', adres.remove);
 
 module.exports = router;

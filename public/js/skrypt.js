@@ -76,20 +76,28 @@ document.onreadystatechange = () => {
 
             // --- ZARZĄDZANIE PROFILEM ----------------------------------------
 
-            var containsClass = true;
+            var containsClassPersonals = true;
             $("#editPersonals").on("click", () => {
-                $(".insertionBox").toggleClass("hideMe");
-                containsClass = !containsClass;
+                $("#personalsInsertion").toggleClass("hideMe");
+                containsClassPersonals = !containsClassPersonals;
 
-                if (containsClass) {
+                if (containsClassPersonals) {
                     $("#editPersonalsLabel").html("Edytuj");
                 } else {
                     $("#editPersonalsLabel").html("Anuluj edycję");
                 }
             });
 
-            $("#saveNewPersonals").on("click", () => {
-                location.replace("/employee/update");
+            var containsClassAdres = true;
+            $("#editAdres").on("click", () => {
+                $("#adresInsertion").toggleClass("hideMe");
+                containsClassAdres = !containsClassAdres;
+
+                if (containsClassAdres) {
+                    $("#editAdresLabel").html("Edytuj");
+                } else {
+                    $("#editAdresLabel").html("Anuluj edycję");
+                }
             });
 
             // --- FUNKCJE POMOCNICZE DO DODAWANIA NOWYCH REKORDÓW DO CV -------
