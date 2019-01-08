@@ -3,7 +3,7 @@ DO $$DECLARE count int;
 BEGIN
 SELECT count(*) INTO count FROM pg_roles WHERE rolname = 'mfip_admin';
 IF count > 0 THEN
-    EXECUTE 
+    EXECUTE
         '
                 REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA public FROM mfip_admin;
                 REVOKE ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public FROM mfip_admin;
@@ -111,28 +111,14 @@ GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO mfip_admin;
 -- Adress
 INSERT INTO public."Adres"(
         country, city, street, house_number, zip_code, is_company)
-        VALUES (
-        'Poland', 'Gdansk', 'Slowackiego', '173', '80-298', TRUE);
-
-INSERT INTO public."Adres"(
-        country, city, street, house_number, zip_code, is_company)
-        VALUES (
-        'Poland', 'Warszawa', 'Al. Jerozolimskie', '195a', '02-222', TRUE);
-
-INSERT INTO public."Adres"(
-        country, city, street, house_number, zip_code, is_company)
-        VALUES (
-        'Poland', 'Warszawa', 'Przyokopowa', '31', '01-208', TRUE);
-
-INSERT INTO public."Adres"(
-        country, city, street, house_number, zip_code, is_company)
-        VALUES (
-        'Poland', 'Warszawa', 'Wojska Polskiego', '3a', '03-204', FALSE);
-
-INSERT INTO public."Adres"(
-        country, city, street, house_number, zip_code, is_company)
-        VALUES (
-        'Poland', 'Gdansk', 'Grunwaldzka', '23', '81-304', FALSE);
+        VALUES
+        ('Poland', 'Gdansk', 'Slowackiego', '173', '80-298', TRUE),
+        ('Poland', 'Warszawa', 'Al. Jerozolimskie', '195a', '02-222', TRUE),
+        ('Poland', 'Warszawa', 'Przyokopowa', '31', '01-208', TRUE),
+        ('Poland', 'Warszawa', 'Wojska Polskiego', '3a', '03-204', FALSE),
+        ('Poland', 'Gdansk', 'Grunwaldzka', '23', '81-304', FALSE),
+        ('Polska', 'Gdańsk', 'Matki Polki', '4/2', '80-251', FALSE),
+        ('Polska', 'Warszawa', 'Domaniewska', '39A', '02-672', TRUE);
 
 \set c1 `cat b_c_1`
 \set c2 `cat b_c_2`
@@ -157,97 +143,74 @@ INSERT INTO public."Company"(
 	VALUES ('$2b$15$8T4aAE8PsUG1cQ7WYugoS.SRuAlo553t9nh.i8DXBGlBVegt8Nqfe','oracle', 'oracle@mail.com', 'JAVA & e.t.c.', 'big company', 'www.oracle.com',
         :'c3');
 
+INSERT INTO public."Company"(
+  password, name, email, specialization, description, website)
+  VALUES ('$2b$15$LgEOo7hoj0eWpc8G/LWEeOtutvRTcJq4DizgkHOftxOq6BxVnU.Ae', 'Ubisoft', 'support@ubisoft.com', 'Game Development', 'French Company', 'www.ubisoft.com');
+
 -- Skill
 INSERT INTO public."Skill"(
 	type, name, description)
-	VALUES ('skill', 'js', 'java script');
-	
-INSERT INTO public."Skill"(
-	type, name, description)
-	VALUES ('skill', 'java', 'java');
-
-INSERT INTO public."Skill"(
-	type, name, description)
-	VALUES ('skill', 'SQL', 'relation db');
-	
-INSERT INTO public."Skill"(
-	type, name, description)
-	VALUES ('skill', 'comunication', 'soft skill');
+	VALUES
+  ('skill', 'js', 'java script'),
+  ('skill', 'java', 'java'),
+  ('skill', 'SQL', 'relation db'),
+	('skill', 'comunication', 'soft skill');
 
 -- List_Skills
 -- for workspases
 INSERT INTO public."List_Skills"(
 	id_skill, id_owner, is_company)
-	VALUES (1, 1, TRUE);
-        
-INSERT INTO public."List_Skills"(
-	id_skill, id_owner, is_company)
-	VALUES (4, 2, TRUE);
-
-INSERT INTO public."List_Skills"(
-	id_skill, id_owner, is_company)
-	VALUES (2, 2, TRUE);
-
-INSERT INTO public."List_Skills"(
-	id_skill, id_owner, is_company)
-	VALUES (3, 3, TRUE);
+	VALUES
+  (1, 1, TRUE),
+  (4, 2, TRUE),
+  (2, 2, TRUE),
+  (3, 3, TRUE);
 
 -- for emplyee
 INSERT INTO public."List_Skills"(
 	id_skill, id_owner, is_company)
-	VALUES (3, 2, FALSE);
-
-INSERT INTO public."List_Skills"(
-	id_skill, id_owner, is_company)
-	VALUES (1, 1, FALSE);
-
-INSERT INTO public."List_Skills"(
-	id_skill, id_owner, is_company)
-	VALUES (3, 1, FALSE);
-
-INSERT INTO public."List_Skills"(
-	id_skill, id_owner, is_company)
-	VALUES (4, 1, FALSE);
+	VALUES
+  (3, 2, FALSE),
+  (1, 1, FALSE),
+  (3, 1, FALSE),
+  (4, 1, FALSE);
 
 -- Workstation
 INSERT INTO public."Workstation"(
 	id_company, id_adres, name, phone_number, email, "limit", description)
-	VALUES (1, 1, 'Web Deweloper', '+48573324665', 'manager1@mail.com', 15, 'new Web project');
-
-INSERT INTO public."Workstation"(
-	id_company, id_adres, name, phone_number, email, "limit", description)
-	VALUES (2, 2, 'Project Manager', '+48258324662', 'manager2@mail.com', 10, 'Web projects managers');
-
-INSERT INTO public."Workstation"(
-	id_company, id_adres, name, phone_number, email, "limit", description)
-	VALUES (3, 3, 'DB Administrator', '+48328323424', 'manager2@mail.com', 20, 'Web projects managers');
-
-
+	VALUES
+  (1, 1, 'Web Deweloper', '+48573324665', 'manager1@mail.com', 15, 'new Web project'),
+  (2, 2, 'Project Manager', '+48258324662', 'manager2@mail.com', 10, 'Web projects managers'),
+  (3, 3, 'DB Administrator', '+48328323424', 'manager2@mail.com', 20, 'Web projects managers'),
+  (4, 7, 'Web Developer', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
+  (4, 7, 'Web Designer', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
+  (4, 7, 'Web Master', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
+  (4, 7, 'DB Administrator', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
+  (4, 7, 'Project Manager', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation');
 
 -- Employee (rounds: 10)
--- jkowalski    $2y$10$S.jV0RWbveAJAc8.6DnbM.Lu76b/br2AYoSGhcBnO7THIXu4dy37K  
+-- jkowalski    $2y$10$S.jV0RWbveAJAc8.6DnbM.Lu76b/br2AYoSGhcBnO7THIXu4dy37K
 INSERT INTO public."Employee"(
 	id_adres, password, first_name, last_name, birth, phone_number, email)
 	VALUES (4,'$2b$10$t0yGUNKJYHJ1IPZMhRO3m./WLSppdGYClg239tOJGVLXhy0QGWeiy', 'Jan', 'Kowalski',  to_date('1985-02-03','YYYY-MM-DD'), '+48793650366', 'jkowalski@mail.com');
--- kborawski    
+-- kborawski
 INSERT INTO public."Employee"(
 	id_adres, password, first_name, last_name, birth, phone_number, email)
 	VALUES (5,'$2b$10$rxv6KMH/BKL6yu4cRNYq9umD74Ii5dw0U2sRr64HZmDILMqNHneIG', 'Karol', 'Borawski',  to_date('1995-02-03','YYYY-MM-DD'), '+48593350631', 'kborawski@mail.com');
 
+INSERT INTO public."Employee"(
+	id_adres, password, first_name, last_name, birth, phone_number, email)
+	VALUES (6,'$2b$10$lbL6QFhEUZsMap2DYWfeDuWJl12ot.41xihmkoosQz.E4RTDVs3mK', 'Mariusz', 'Mazepa',  to_date('1994-01-19','YYYY-MM-DD'), '515402122', 'maksymilianmariusz@gmail.com');
+
 -- Work_History
 INSERT INTO public."Work_History"(
 	id_company, id_emplyee, "from", "to", description)
-	VALUES (3, 1, to_date('2010-02-03','YYYY-MM-DD'), to_date('2015-02-03','YYYY-MM-DD'), 'my first job');
-
-INSERT INTO public."Work_History"(
-	id_company, id_emplyee, "from", "to", description)
-	VALUES (2, 1, to_date('2016-02-03','YYYY-MM-DD'), to_date('2017-02-03','YYYY-MM-DD'), 'my second job');
-
-INSERT INTO public."Work_History"(
-	id_company, id_emplyee, "from", "to", description)
-	VALUES (1, 1, to_date('2018-02-03','YYYY-MM-DD'), NULL, 'my current job');
-
-INSERT INTO public."Work_History"(
-	id_company, id_emplyee, "from", "to", description)
-	VALUES (2, 2, to_date('2010-02-03','YYYY-MM-DD'), NULL, 'first job');
-
+	VALUES
+  (3, 1, to_date('2010-02-03','YYYY-MM-DD'), to_date('2015-02-03','YYYY-MM-DD'), 'my first job'),
+  (2, 1, to_date('2016-02-03','YYYY-MM-DD'), to_date('2017-02-03','YYYY-MM-DD'), 'my second job'),
+  (1, 1, to_date('2018-02-03','YYYY-MM-DD'), NULL, 'my current job'),
+  (2, 2, to_date('2010-02-03','YYYY-MM-DD'), NULL, 'first job'),
+  (1, 3, to_date('2012-07-01','YYYY-MM-DD'), to_date('2012-08-31','YYYY-MM-DD'), 'wakacyjny staż'),
+  (4, 3, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'praktyki zawodowe'),
+  (4, 1, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'praktyki zawodowe'),
+  (4, 2, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'praktyki zawodowe');
