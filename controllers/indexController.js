@@ -142,7 +142,7 @@ indexController.cvEdit = (req, res) => {
     db.any(skillsString, [true])
     .then((data) => {
         res.render('cv/editCV.ejs', {
-            skills: skills,
+            skills: data,
         });
     })
     .catch((error) => {
