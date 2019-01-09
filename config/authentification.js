@@ -37,4 +37,4 @@ Authentification.isUserAuthenticated = function (req, res, next) {
 		}
 		res.redirect('/');
 	}
-}
+};
