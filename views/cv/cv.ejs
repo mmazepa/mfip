@@ -72,6 +72,7 @@
                     <h4 id="expTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-flag"></span>
                         Doświadczenie
+                        <nav class="count">0</nav>
                         <span id="expGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
                     <table id="cvTable" class="expTable">
@@ -81,9 +82,11 @@
                             <th>Firma</th>
                         </tr>
                     <%
+                        var expCount = 0;
                         if (skills.length > 0) {
                             for (s in skills) {
                                 if (skills[s].type == "Experience") {
+                                    expCount++;
                     %>
                                 <tr>
                                     <td>
@@ -98,6 +101,16 @@
                                 }
                             }
                         }
+
+                        if (expCount == 0) {
+                    %>
+                            <tr>
+                                <td colspan=2 style="text-align:center;font-weight:normal;">
+                                    Brak informacji o doświadczeniu zawodowym.
+                                </td>
+                            </tr>
+                    <%
+                        }
                     %>
                     </table>
 
@@ -105,6 +118,7 @@
                     <h4 id="eduTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-education"></span>
                         Wykształcenie
+                        <nav class="count">0</nav>
                         <span id="eduGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
                     <table id="cvTable" class="eduTable">
@@ -114,9 +128,11 @@
                             <th>Uczelnia</th>
                         </tr>
                         <%
+                            var eduCount = 0;
                             if (skills.length > 0) {
                                 for (s in skills) {
                                     if (skills[s].type == "Education") {
+                                        eduCount++;
                         %>
                                     <tr>
                                         <td>
@@ -131,6 +147,16 @@
                                     }
                                 }
                             }
+
+                            if (eduCount == 0) {
+                        %>
+                                <tr>
+                                    <td colspan=3 style="text-align:center;font-weight:normal;">
+                                        Brak informacji o wykształceniu.
+                                    </td>
+                                </tr>
+                        <%
+                            }
                         %>
                     </table>
 
@@ -138,6 +164,7 @@
                     <h4 id="langTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-book"></span>
                         Języki
+                        <nav class="count">0</nav>
                         <span id="langGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
                     <table id="cvTable" class="langTable">
@@ -146,9 +173,11 @@
                             <th>Poziom</th>
                         </tr>
                         <%
+                            var langCount = 0;
                             if (skills.length > 0) {
                                 for (s in skills) {
                                     if (skills[s].type == "Language") {
+                                        langCount++;
                         %>
                                     <tr>
                                         <td><%= skills[s].name %></td>
@@ -157,6 +186,16 @@
                         <%
                                     }
                                 }
+                            }
+
+                            if (langCount == 0) {
+                        %>
+                                <tr>
+                                    <td colspan=2 style="text-align:center;font-weight:normal;">
+                                        Brak informacji o językach.
+                                    </td>
+                                </tr>
+                        <%
                             }
                         %>
                     </table>
@@ -165,6 +204,7 @@
                     <h4 id="skillTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-star-empty"></span>
                         Umiejętności
+                        <nav class="count">0</nav>
                         <span id="skillGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
                     <table id="cvTable" class="skillTable">
@@ -173,9 +213,11 @@
                             <th>Opis</th>
                         </tr>
                         <%
+                            var skillCount = 0;
                             if (skills.length > 0) {
                                 for (s in skills) {
                                     if (skills[s].type == "Skill") {
+                                        skillCount++;
                         %>
                                     <tr>
                                         <td><%= skills[s].name %></td>
@@ -185,6 +227,16 @@
                                     }
                                 }
                             }
+
+                            if (skillCount == 0) {
+                        %>
+                                <tr>
+                                    <td colspan=3 style="text-align:center;font-weight:normal;">
+                                        Brak informacji o posiadanych umiejętnościach.
+                                    </td>
+                                </tr>
+                        <%
+                            }
                         %>
                     </table>
 
@@ -192,6 +244,7 @@
                     <h4 id="courseTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-certificate"></span>
                         Kursy, szkolenia, certyfikaty
+                        <nav class="count">0</nav>
                         <span id="courseGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
                     <table id="cvTable" class="courseTable">
@@ -201,9 +254,11 @@
                             <th>Krótki opis</th>
                         </tr>
                         <%
+                            var courseCertCount = 0;
                             if (skills.length > 0) {
                                 for (s in skills) {
                                     if (skills[s].type == "Course" || skills[s].type == "Certificate") {
+                                        courseCertCount++;
                         %>
                                     <tr>
                                         <td><%= skills[s].type %></td>
@@ -218,6 +273,17 @@
                                     }
                                 }
                             }
+
+                            if (courseCertCount == 0) {
+                        %>
+                                <tr>
+                                    <td colspan=3 style="text-align:center;font-weight:normal;">
+                                        Brak informacji o ukończonych kursach
+                                        i/lub zdobytych certyfikatach.
+                                    </td>
+                                </tr>
+                        <%
+                            }
                         %>
                     </table>
 
@@ -225,6 +291,7 @@
                     <h4 id="intTitle" class="cvTitle">
                         <span class="glyphicon glyphicon-headphones"></span>
                         Zainteresowania
+                        <nav class="count">0</nav>
                         <span id="intGlyph" class="glyphicon glyphicon-chevron-down"></span>
                     </h4>
                     <table id="cvTable" class="intTable">
@@ -232,9 +299,11 @@
                             <th>Zainteresowanie</th>
                         </tr>
                         <%
+                            var intCount = 0;
                             if (skills.length > 0) {
                                 for (s in skills) {
                                     if (skills[s].type == "Interest") {
+                                        intCount++;
                         %>
                                     <tr>
                                         <td><%= skills[s].description %></td>
@@ -242,6 +311,16 @@
                         <%
                                     }
                                 }
+                            }
+
+                            if (intCount == 0) {
+                        %>
+                                <tr>
+                                    <td colspan=3 style="text-align:center;font-weight:normal;">
+                                        Brak informacji o zainteresowaniach.
+                                    </td>
+                                </tr>
+                        <%
                             }
                         %>
                     </table>
@@ -258,6 +337,13 @@
                         swobodnego przepływu takich danych oraz uchylenia dyrektywy
                         95/46/WE (RODO).
                     </p>
+
+                    <script>
+                        let counters = document.getElementsByClassName("count");
+                        let values = [<%= expCount %>, <%= eduCount %>, <%= langCount %>, <%= skillCount %>, <%= courseCertCount %>, <%= intCount %>];
+                        const sumUp = (item, value) => { item.innerHTML = value; };
+                        for (c in counters) { sumUp(counters[c], values[c]); }
+                    </script>
                 </div>
             </div>
           </div>

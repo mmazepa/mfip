@@ -101,7 +101,7 @@
                                 <td>
                                     <input  type="date"
                                             name="birth"
-                                            value="<%= user.birth.getFullYear() %>-<%= ('0' + user.birth.getMonth()+1).slice(-2) %>-<%= ('0' + user.birth.getDate()).slice(-2) %>"
+                                            value="<%= user.birth.getFullYear() %>-<%= ('0' + (user.birth.getMonth()+1)).slice(-2) %>-<%= ('0' + user.birth.getDate()).slice(-2) %>"
                                             style="width:100%;"/>
                                 </td>
                                 <td>
@@ -303,7 +303,7 @@
                     </tr>
                     <%
                         var number = 0;
-                        if (workHistory != undefined) {
+                        if (workHistory.length > 0) {
                             for (wh in workHistory) {
                     %>
                             <tr>
@@ -331,8 +331,8 @@
                         } else {
                     %>
                         <tr>
-                            <td colspan=5 style="text-align:center;">
-                                Brak.
+                            <td colspan=6 style="text-align:center;">
+                                Brak informacji o zatrudnieniu.
                             </td>
                         </tr>
                     <%

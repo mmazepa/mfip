@@ -41,25 +41,6 @@ app.use(passport.session());
 
 passport.use(strategy.Local);
 
-// app.use(function (req,res,next) {
-//     res.locals.currentUser = req.user;
-//     next();
-// });
-// const auth = passport.authenticate("local", {
-//     successRedirect: "/success",
-//     failureRedirect: "/failuer"
-// });
-// app.get("/logout", () => {
-//     req.logout();
-//     res.redirect("/home");
-// });
-// function isLogged(req,res,next) {
-//     if (req.isAuthenticated()) {
-//         return next();
-//     }
-//     res.redirect("/home");
-// };
-
 app.use(flash());
 
 app.use("/", routes);
@@ -103,9 +84,6 @@ app.use('/login',
         } else {
             res.redirect('/firm');
         }
-
-        // global.user = req.session.passport.user;
-        // res.redirect('/worker');
     }
 );
 
