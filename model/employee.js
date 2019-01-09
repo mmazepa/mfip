@@ -50,7 +50,7 @@ Employee.findByName = (last_name) => {
 };
 
 Employee.findEmployeeByCompanyId = (companyId) => {
-    return db.any('SELECT e.*, a.* ' +
+    return db.any('SELECT * ' +
         ' FROM "Employee" AS e ' +
         ' INNER JOIN "Work_History" AS wh ON e.id = wh.id_emplyee' +
         ' INNER JOIN "Adres" AS a ON e.id_adres = a.id' +
