@@ -62,3 +62,8 @@ Skill.remove = (id) => {
     const removeQuery = 'DELETE FROM "Skill" WHERE id=' + id;
     return db.result(removeQuery);
 };
+
+Skill.removeFromListSkills = (skill_id, user_id) => {
+    const removeQuery = 'DELETE FROM "List_Skills" WHERE id_skill=' + skill_id + ' AND id_owner=' + user_id;
+    return db.result(removeQuery);
+};

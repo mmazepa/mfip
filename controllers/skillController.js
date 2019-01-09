@@ -58,16 +58,6 @@ skillController.add = (req, res) => {
     });
 };
 
-skillController.remove = (req, res) => {
-    let id = req.params.id;
-    Skill.remove(id).then(() => {
-        res.redirect("/skills");
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-};
-
 skillController.addByUser = (req, res) => {
     let user_id = req.params.id;
     let type = req.body.type;
@@ -80,6 +70,35 @@ skillController.addByUser = (req, res) => {
     .then((data) => {
         let skill = data;
         Skill.addToListSkills(user_id, skill.id)
+        .then(() => {
+            res.redirect("/cv");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+skillController.remove = (req, res) => {
+    let id = req.params.id;
+    Skill.remove(id)
+    .then(() => {
+        res.redirect("/skills");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+skillController.removeByUser = (req, res) => {
+    let user_id = req.params.user_id;
+    let skill_id = req.params.skill_id;
+    Skill.removeFromListSkills(skill_id, user_id)
+    .then(() => {
+        Skill.remove(skill_id)
         .then(() => {
             res.redirect("/cv");
         })

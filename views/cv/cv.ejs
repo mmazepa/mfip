@@ -77,6 +77,7 @@
                             <th>Zakres</th>
                             <!-- <th>Stanowisko</th> -->
                             <th>Firma</th>
+                            <th>Usuń</th>
                         </tr>
                     <%
                         var expCount = 0;
@@ -93,6 +94,12 @@
                                     </td>
                                     <!-- <td></td> -->
                                     <td><%= skills[s].name %></td>
+                                    <td>
+                                        <button class="btn btn-danger"
+                                                onclick="location.replace('/skill/removeByUser/<%= skills[s].id %>/<%= user.id %>')">
+                                            <span class="glyphicon glyphicon-remove">
+                                        </button>
+                                    </td>
                                 </tr>
                     <%
                                 }
@@ -146,6 +153,7 @@
                             <th>Zakres</th>
                             <th>Kierunek</th>
                             <th>Uczelnia</th>
+                            <th>Usuń</th>
                         </tr>
                         <%
                             var eduCount = 0;
@@ -162,6 +170,12 @@
                                         </td>
                                         <td><%= skills[s].name %></td>
                                         <td><%= skills[s].description %></td>
+                                        <td>
+                                            <button class="btn btn-danger"
+                                                    onclick="location.replace('/skill/removeByUser/<%= skills[s].id %>/<%= user.id %>')">
+                                                <span class="glyphicon glyphicon-remove">
+                                            </button>
+                                        </td>
                                     </tr>
                         <%
                                     }
@@ -216,6 +230,7 @@
                         <tr>
                             <th>Język</th>
                             <th>Poziom</th>
+                            <th>Usuń</th>
                         </tr>
                         <%
                             var langCount = 0;
@@ -227,6 +242,12 @@
                                     <tr>
                                         <td><%= skills[s].name %></td>
                                         <td><%= skills[s].description %></td>
+                                        <td>
+                                            <button class="btn btn-danger"
+                                                    onclick="location.replace('/skill/removeByUser/<%= skills[s].id %>/<%= user.id %>')">
+                                                <span class="glyphicon glyphicon-remove">
+                                            </button>
+                                        </td>
                                     </tr>
                         <%
                                     }
@@ -286,6 +307,7 @@
                         <tr>
                             <th>Umiejętność</th>
                             <th>Opis</th>
+                            <th>Usuń</th>
                         </tr>
                         <%
                             var skillCount = 0;
@@ -297,6 +319,12 @@
                                     <tr>
                                         <td><%= skills[s].name %></td>
                                         <td><%= skills[s].description %></td>
+                                        <td>
+                                            <button class="btn btn-danger"
+                                                    onclick="location.replace('/skill/removeByUser/<%= skills[s].id %>/<%= user.id %>')">
+                                                <span class="glyphicon glyphicon-remove">
+                                            </button>
+                                        </td>
                                     </tr>
                         <%
                                     }
@@ -348,6 +376,7 @@
                             <th>Typ</th>
                             <th>Zakres</th>
                             <th>Krótki opis</th>
+                            <th>Usuń</th>
                         </tr>
                         <%
                             var courseCertCount = 0;
@@ -364,6 +393,12 @@
                                             <nav class="date"><%= skills[s].to %></nav>
                                         </td>
                                         <td><%= skills[s].description %></td>
+                                        <td>
+                                            <button class="btn btn-danger"
+                                                    onclick="location.replace('/skill/removeByUser/<%= skills[s].id %>/<%= user.id %>')">
+                                                <span class="glyphicon glyphicon-remove">
+                                            </button>
+                                        </td>
                                     </tr>
                         <%
                                     }
@@ -424,6 +459,7 @@
                     <table id="cvTable" class="intTable">
                         <tr>
                             <th>Zainteresowanie</th>
+                            <th>Usuń</th>
                         </tr>
                         <%
                             var intCount = 0;
@@ -434,6 +470,12 @@
                         %>
                                     <tr>
                                         <td><%= skills[s].description %></td>
+                                        <td>
+                                            <button class="btn btn-danger"
+                                                    onclick="location.replace('/skill/removeByUser/<%= skills[s].id %>/<%= user.id %>')">
+                                                <span class="glyphicon glyphicon-remove">
+                                            </button>
+                                        </td>
                                     </tr>
                         <%
                                     }

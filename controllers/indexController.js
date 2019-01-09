@@ -118,7 +118,7 @@ indexController.workHistory = (req, res) => {
 
 indexController.cv = (req, res) => {
     var id = req.session.passport.user.id;
-    const skillsString = 'SELECT s.type, s.from, s.to, s.name, s.description ' +
+    const skillsString = 'SELECT s.id, s.type, s.from, s.to, s.name, s.description ' +
                             'FROM "List_Skills" AS ls ' +
                             'INNER JOIN "Employee" AS e ON e.id=ls.id_owner ' +
                             'INNER JOIN "Skill" AS s ON s.id=ls.id_skill WHERE e.id=' + id;
