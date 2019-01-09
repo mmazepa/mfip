@@ -18,13 +18,6 @@
                         <span style="font-family:'Sofia';font-size:32px;">
                             Curriculum Vitae
                         </span>
-                        <button id="editCVButton"
-                                style="float:right;"
-                                class="btn btn-success"
-                                type="submit">
-                            <span class="glyphicon glyphicon-edit"></span>
-                            Edytuj CV
-                        </button>
                     </h3>
 
                     <!-- DANE PERSONALNE -->
@@ -32,6 +25,10 @@
                         <span class="glyphicon glyphicon-user"></span>
                         Dane personalne
                         <span id="personalGlyph" class="glyphicon glyphicon-chevron-down"></span>
+                        <div class="info">
+                            Edycja danych personalnych nie jest dostępna z poziomu CV.
+                            Jeżeli chcesz dokonać ich edycji udaj się na swój profil użytkownika.
+                        </div>
                     </h4>
                     <table id="cvTable" class="personalTable">
                       <tr>
@@ -113,6 +110,29 @@
                         }
                     %>
                     </table>
+                    <div id="cvTable" class="insertionBox expTable">
+                        <form action="/skill/addByUser/<%= user.id %>" method="POST">
+                            <table>
+                                <tr>
+                                    <th>Od</th>
+                                    <th>Do</th>
+                                    <th>Firma</th>
+                                    <th>Dodaj</th>
+                                </tr>
+                                <tr>
+                                    <input name="type" type="text" value="Experience" hidden/>
+                                    <td><input name="from" type="date"/></td>
+                                    <td><input name="to" type="date"/></td>
+                                    <td><input name="name" type="text"/></td>
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
 
                     <!-- WYKSZTAŁCENIE -->
                     <h4 id="eduTitle" class="cvTitle">
@@ -159,6 +179,31 @@
                             }
                         %>
                     </table>
+                    <div id="cvTable" class="insertionBox eduTable">
+                        <form action="/skill/addByUser/<%= user.id %>" method="POST">
+                            <table>
+                                <tr>
+                                    <th>Od</th>
+                                    <th>Do</th>
+                                    <th>Kierunek</th>
+                                    <th>Uczelnia</th>
+                                    <th>Dodaj</th>
+                                </tr>
+                                <tr>
+                                    <input name="type" type="text" value="Education" hidden/>
+                                    <td><input name="from" type="date"/></td>
+                                    <td><input name="to" type="date"/></td>
+                                    <td><input name="name" type="text"/></td>
+                                    <td><input name="description" type="text"/></td>
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
 
                     <!-- JĘZYKI -->
                     <h4 id="langTitle" class="cvTitle">
@@ -199,6 +244,36 @@
                             }
                         %>
                     </table>
+                    <div id="cvTable" class="insertionBox langTable">
+                        <form action="/skill/addByUser/<%= user.id %>" method="POST">
+                            <table>
+                                <tr>
+                                    <th>Język</th>
+                                    <th>Poziom</th>
+                                    <th>Dodaj</th>
+                                </tr>
+                                <tr>
+                                    <input name="type" type="text" value="Language" hidden/>
+                                    <td><input name="name" type="text"/></td>
+                                    <td>
+                                        <select name="description">
+                                            <option>C2</option>
+                                            <option>C1</option>
+                                            <option>B2</option>
+                                            <option>B1</option>
+                                            <option>A2</option>
+                                            <option>A1</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
 
                     <!-- UMIEJĘTNOŚCI -->
                     <h4 id="skillTitle" class="cvTitle">
@@ -239,6 +314,27 @@
                             }
                         %>
                     </table>
+                    <div id="cvTable" class="insertionBox skillTable">
+                        <form action="/skill/addByUser/<%= user.id %>" method="POST">
+                            <table>
+                                <tr>
+                                    <th>Umiejętność</th>
+                                    <th>Opis</th>
+                                    <th>Dodaj</th>
+                                </tr>
+                                <tr>
+                                    <input name="type" type="text" value="Skill" hidden/>
+                                    <td><input name="name" type="text"/></td>
+                                    <td><input name="description" type="text"/></td>
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
 
                     <!-- KURSY, SZKOLENIA, CERTYFIKATY -->
                     <h4 id="courseTitle" class="cvTitle">
@@ -286,6 +382,37 @@
                             }
                         %>
                     </table>
+                    <div id="cvTable" class="insertionBox courseTable">
+                        <form action="/skill/addByUser/<%= user.id %>" method="POST">
+                            <table>
+                                <tr>
+                                    <th>Typ</th>
+                                    <th>Od</th>
+                                    <th>Do</th>
+                                    <th>Nazwa</th>
+                                    <th>Opis</th>
+                                    <th>Dodaj</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select name="type">
+                                            <option>Course</option>
+                                            <option>Certificate</option>
+                                        </select>
+                                    </td>
+                                    <td><input name="from" type="date"/></td>
+                                    <td><input name="to" type="date"/></td>
+                                    <td><input name="name" type="text"/></td>
+                                    <td><input name="description" type="text"/></td>
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
 
                     <!-- ZAINTERESOWANIA -->
                     <h4 id="intTitle" class="cvTitle">
@@ -324,6 +451,25 @@
                             }
                         %>
                     </table>
+                    <div id="cvTable" class="insertionBox intTable">
+                        <form action="/skill/addByUser/<%= user.id %>" method="POST">
+                            <table>
+                                <tr>
+                                    <th>Zainteresowanie</th>
+                                    <th>Dodaj</th>
+                                </tr>
+                                <tr>
+                                    <input name="type" type="text" value="Interest" hidden/>
+                                    <td><input name="description" type="text"/></td>
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
 
                     <!-- AKTUALNA KLAUZULA ZGODNA Z RODO -->
                     <p style="font-size:smaller;font-style:italic;">

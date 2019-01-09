@@ -68,4 +68,28 @@ skillController.remove = (req, res) => {
     });
 };
 
+skillController.addByUser = (req, res) => {
+    let user_id = req.params.id;
+    let type = req.body.type;
+    let from = req.body.from;
+    let to = req.body.to;
+    let name = req.body.name;
+    let description = req.body.description;
+
+    Skill.addByUser(type, from, to, name, description)
+    .then((data) => {
+        let skill = data;
+        Skill.addToListSkills(user_id, skill.id)
+        .then(() => {
+            res.redirect("/cv");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
 module.exports = skillController;
