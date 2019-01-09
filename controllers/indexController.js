@@ -117,13 +117,37 @@ indexController.workHistory = (req, res) => {
 };
 
 indexController.cv = (req, res) => {
-  res.render('cv/cv.ejs', {
-  });
+    var id = req.session.passport.user.id;
+    const skillsString = 'SELECT s.type, s.from, s.to, s.name, s.description ' +
+                            'FROM "List_Skills" AS ls ' +
+                            'INNER JOIN "Employee" AS e ON e.id=ls.id_owner ' +
+                            'INNER JOIN "Skill" AS s ON s.id=ls.id_skill WHERE e.id=' + id;
+    db.any(skillsString, [true])
+    .then((data) => {
+        res.render('cv/cv.ejs', {
+            skills: data,
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 };
 
 indexController.cvEdit = (req, res) => {
-  res.render('cv/editCV.ejs', {
-  });
+    var id = req.session.passport.user.id;
+    const skillsString = 'SELECT s.type, s.from, s.to, s.name, s.description ' +
+                            'FROM "List_Skills" AS ls ' +
+                            'INNER JOIN "Employee" AS e ON e.id=ls.id_owner ' +
+                            'INNER JOIN "Skill" AS s ON s.id=ls.id_skill WHERE e.id=' + id;
+    db.any(skillsString, [true])
+    .then((data) => {
+        res.render('cv/editCV.ejs', {
+            skills: skills,
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
 };
 
 indexController.signup = (req, res) => {
