@@ -25,7 +25,7 @@ employeeController.employeePassword = (req, res) => {
 };
 
 employeeController.employee = (req, res) => {
-    Employee.findAll().then((data) => {
+    Employee.findEmployeeByCompanyId(req.session.passport.user.id).then((data) => {
         res.render('crud/workers.ejs', {
             employees: data
         });

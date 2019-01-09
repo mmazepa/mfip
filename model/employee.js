@@ -49,6 +49,14 @@ Employee.findByName = (last_name) => {
         ' WHERE e.last_name = $1', last_name);
 };
 
+Employee.findEmployeeByCompanyId = (companyId) => {
+    return db.any('SELECT e.*, a.* ' +
+        ' FROM "Employee" AS e ' +
+        ' INNER JOIN "Work_History" AS wh ON e.id = wh.id_emplyee' +
+        ' INNER JOIN "Adres" AS a ON e.id_adres = a.id' +
+        ' WHERE wh.id_company = $1', companyId);
+};
+
 //hash
 Employee.getHashByEmail = (email) => {
     return db.one('SELECT * ' +
