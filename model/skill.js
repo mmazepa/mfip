@@ -11,10 +11,23 @@ Skill.findById = (id) => {
     return db.one('SELECT * FROM "Skill" WHERE id = $1', id);
 };
 
-Skill.add = (type, name, description) => {
-    const addQuery = 'INSERT INTO "Skill" (type, name, description) ' +
-                        'VALUES (\'' + type + '\', \'' + name + '\', \'' + description + '\') ' +
+Skill.add = (type, from, to, name, description) => {
+    let addQuery = 'INSERT INTO "Skill" (type, "from", "to", name, description) ' +
+                        'VALUES (\'' + type + '\', \'' + from + '\', \'' + to + '\', \'' + name + '\', \'' + description + '\') ' +
                         'RETURNING id';
+    if (from == undefined && to == undefined) {
+        addQuery = 'INSERT INTO "Skill" (type, "from", "to", name, description) ' +
+                    'VALUES (\'' + type + '\', NULL, NULL, \'' + name + '\', \'' + description + '\') ' +
+                    'RETURNING id';
+    } else if (from == undefined) {
+        addQuery = 'INSERT INTO "Skill" (type, "from", "to", name, description) ' +
+                    'VALUES (\'' + type + '\', NULL, \'' + to + '\', \'' + name + '\', \'' + description + '\') ' +
+                    'RETURNING id';
+    } else if (to == undefined) {
+        addQuery = 'INSERT INTO "Skill" (type, "from", "to", name, description) ' +
+                    'VALUES (\'' + type + '\', \'' + from + '\', NULL, \'' + name + '\', \'' + description + '\') ' +
+                    'RETURNING id';
+    }
     return db.one(addQuery);
 };
 

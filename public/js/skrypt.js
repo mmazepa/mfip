@@ -232,10 +232,103 @@ document.onreadystatechange = () => {
 
             // --- DYNAMICZNE USUWANIE REKORDÓW Z CV ---------------------------
 
-            deleteCurrentRow = (elem) => {
+            const deleteCurrentRow = (elem) => {
                 const row = elem.parentElement.parentElement;
                 row.parentElement.removeChild(row);
             };
+
+            // --- CRUD: SKILLS ------------------------------------------------
+
+            const changeHeadersFT = (newFrom, newTo) => {
+                var from = document.getElementById("thFrom");
+                var to = document.getElementById("thTo");
+                from.innerHTML = newFrom;
+                to.innerHTML = newTo;
+            };
+
+            const changeHeadersND = (newName, newDesc) => {
+                var name = document.getElementById("thName");
+                var desc = document.getElementById("thDesc");
+                name.innerHTML = newName;
+                desc.innerHTML = newDesc;
+            };
+
+            const connectDates = function() {
+                var from = document.getElementById("inputFrom");
+                var to = document.getElementById("inputTo");
+                to.value = from.value;
+            };
+
+            const disableOrNot = (fromOpt, toOpt, nameOpt, descOpt) => {
+                var from = document.getElementById("inputFrom");
+                var to = document.getElementById("inputTo");
+                var name = document.getElementById("inputName");
+                var desc = document.getElementById("inputDesc");
+                from.disabled = fromOpt;
+                to.disabled = toOpt;
+                name.disabled = nameOpt;
+                desc.disabled = descOpt;
+            };
+
+            const clearFields = (fromOpt, toOpt, nameOpt, descOpt) => {
+                var from = document.getElementById("inputFrom");
+                var to = document.getElementById("inputTo");
+                var name = document.getElementById("inputName");
+                var desc = document.getElementById("inputDesc");
+                if (fromOpt) from.value = 0;
+                if (toOpt) to.value = 0;
+                if (nameOpt) name.value = null;
+                if (descOpt) desc.value = null;
+            };
+
+            const disabilityAndClearing = (fromOpt, toOpt, nameOpt, descOpt) => {
+                disableOrNot(fromOpt, toOpt, nameOpt, descOpt);
+                clearFields(fromOpt, toOpt, nameOpt, descOpt);
+            };
+
+            $("#selectSkillType").on("change", function() {
+                const type = this.options[this.selectedIndex].value;
+
+                var from = document.getElementById("inputFrom");
+                var to = document.getElementById("inputTo");
+                var name = document.getElementById("inputName");
+                var desc = document.getElementById("inputDesc");
+
+                from.removeEventListener("change", connectDates);
+                disabilityAndClearing(false, false, false, false);
+
+                if (type == "exp") {
+                    changeHeadersFT("Od", "Do");
+                    changeHeadersND("Firma", "-");
+                    disabilityAndClearing(false, false, false, true);
+                } else if (type == "edu") {
+                    changeHeadersFT("Od", "Do");
+                    changeHeadersND("Kierunek", "Uczelnia");
+                    disabilityAndClearing(false, false, false, false);
+                } else if (type == "lang") {
+                    changeHeadersFT("-", "-");
+                    changeHeadersND("Język", "Poziom");
+                    disabilityAndClearing(true, true, false, false);
+                } else if (type == "skill") {
+                    changeHeadersFT("-", "-");
+                    changeHeadersND("Umiejętność", "Opis");
+                    disabilityAndClearing(true, true, false, false);
+                } else if (type == "course") {
+                    changeHeadersFT("Od", "Do");
+                    changeHeadersND("-", "Opis");
+                    disabilityAndClearing(false, false, true, false);
+                } else if (type == "cert") {
+                    changeHeadersFT("Data", "-");
+                    changeHeadersND("-", "Opis");
+                    connectDates();
+                    disabilityAndClearing(false, true, true, false);
+                    from.addEventListener("change", dateEventListener);
+                } else if (type == "int") {
+                    changeHeadersFT("-", "-");
+                    changeHeadersND("-", "Opis");
+                    disabilityAndClearing(true, true, true, false);
+                }
+            });
 
             // --- OBSŁUGA DAT -------------------------------------------------
 

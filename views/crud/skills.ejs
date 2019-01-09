@@ -22,6 +22,7 @@
                             <th>L.P.</th>
                             <!-- <th>ID</th> -->
                             <th>Typ</th>
+                            <th>Zakres</th>
                             <th>Nazwa</th>
                             <th>Opis</th>
                             <th>Usuń</th>
@@ -34,8 +35,51 @@
                                     <td><%= parseInt(s)+1 %></td>
                                     <!-- <td><%= skills[s].id %></td> -->
                                     <td><%= skills[s].type %></td>
-                                    <td><%= skills[s].name %></td>
-                                    <td><%= skills[s].description %></td>
+                                    <td>
+                    <%
+                            if (skills[s].type == "Experience" || skills[s].type == "Education" || skills[s].type == "Course") {
+                    %>
+                                        <span class="date"><%= skills[s].from %></span>
+                                        -
+                                        <span class="date"><%= skills[s].to %></span>
+                    <%
+                            } else if (skills[s].type == "Certificate") {
+                    %>
+                                        <span class="date"><%= skills[s].from %></span>
+                    <%
+                            } else {
+                    %>
+                                        <span style="color:silver;">nie dotyczy</span>
+                    <%
+                            }
+                    %>
+                                    </td>
+                                    <td>
+                    <%
+                            if (skills[s].type == "Course" || skills[s].type == "Certificate" || skills[s].type == "Interest") {
+                    %>
+                                    <span style="color:silver;">nie dotyczy</span>
+                    <%
+                            } else {
+                    %>
+                                        <%= skills[s].name %>
+                    <%
+                            }
+                    %>
+                                    </td>
+                                    <td>
+                    <%
+                            if (skills[s].type == "Experience") {
+                    %>
+                                        <span style="color:silver;">nie dotyczy</span>
+                    <%
+                            } else {
+                    %>
+                                        <%= skills[s].description %>
+                    <%
+                            }
+                    %>
+                                    </td>
                                     <td>
                                         <button id="<%= skills[s].id %>"
                                                 class="btn btn-danger"
@@ -65,13 +109,28 @@
                             <table>
                                 <tr>
                                     <th>Typ</th>
-                                    <th>Nazwa</th>
-                                    <th>Opis</th>
+                                    <th id="thFrom">Od</th>
+                                    <th id="thTo">Do</th>
+                                    <th id="thName">Kierunek</th>
+                                    <th id="thDesc">Uczelnia</th>
                                 </tr>
                                 <tr>
-                                    <td><input name="type" type="text"/></td>
-                                    <td><input name="name" type="text"/></td>
-                                    <td><input name="description" type="text"/></td>
+                                    <td>
+                                        <!-- <input name="type" type="text"/> -->
+                                        <select id="selectSkillType" name="type">
+                                            <option value="exp">Experience</option>
+                                            <option value="edu" selected>Education</option>
+                                            <option value="lang">Language</option>
+                                            <option value="skill">Skill</option>
+                                            <option value="course">Course</option>
+                                            <option value="cert">Certificate</option>
+                                            <option value="int">Interest</option>
+                                        </select>
+                                    </td>
+                                    <td><input id="inputFrom" name="from" type="date"/></td>
+                                    <td><input id="inputTo" name="to" type="date"/></td>
+                                    <td><input id="inputName" name="name" type="text"/></td>
+                                    <td><input id="inputDesc" name="description" type="text"/></td>
                                     <td>
                                         <button class="btn btn-primary">
                                             <span class="glyphicon glyphicon-plus"></span>

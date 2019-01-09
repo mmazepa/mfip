@@ -45,6 +45,8 @@ CREATE TABLE "Company" (
 CREATE TABLE "Skill" (
         "id" SERIAL PRIMARY KEY,
         "type" varchar(30) NOT NULL,
+        "from" date,
+        "to" date,
         "name" varchar(30) NOT NULL,
         "description" varchar(50)
 );
@@ -149,12 +151,12 @@ INSERT INTO public."Company"(
 
 -- Skill
 INSERT INTO public."Skill"(
-	type, name, description)
+	type, "from", "to", name, description)
 	VALUES
-  ('skill', 'js', 'java script'),
-  ('skill', 'java', 'java'),
-  ('skill', 'SQL', 'relation db'),
-	('skill', 'comunication', 'soft skill');
+  ('Skill', null, null, 'js', 'java script'),
+  ('Skill', null, null, 'java', 'java'),
+  ('Skill', null, null, 'SQL', 'relation db'),
+	('Skill', null, null, 'comunication', 'soft skill');
 
 -- List_Skills
 -- for workspases
