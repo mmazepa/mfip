@@ -95,9 +95,7 @@ app.use('/login',
         console.log("SUCESS");
         // cooki
         let minute = 60000;
-        res.cookie('remember', req.session.passport.user , {
-            maxAge: minute
-        });
+        res.cookie('remember', req.session.passport.user);
 
         global.user = req.session.passport.user;
         if (global.user.type === "worker") {
