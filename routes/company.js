@@ -19,4 +19,7 @@ router.post('/company/add', company.add);
 router.post('/company/update', company.update);
 router.get('/company/remove/:id', company.remove);
 
+router.get('/findJob', company.findJob);
+router.get('/addWorker/:company_id/:employee_id', company.addWorkerById);
+
 module.exports = router;

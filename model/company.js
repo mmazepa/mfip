@@ -33,7 +33,18 @@ Company.findById = (id) => {
 };
 
 Company.workers = (id) => {
-    return db.any('SELECT e.first_name, e.last_name, e.email,  wh.from, wh.to FROM "Work_History" AS "wh" INNER JOIN "Employee" AS "e" on wh.id_emplyee = e.id WHERE id_company=$1', [id]);
+    return db.any('SELECT e.first_name, e.last_name, e.email, wh.from, wh.to ' +
+                    'FROM "Work_History" AS "wh" ' +
+                    'INNER JOIN "Employee" AS "e" on wh.id_emplyee = e.id ' +
+                    'WHERE id_company=$1', [id]);
+};
+
+Company.addWorker = (id_company, id_employee) => {
+    const addWorkerQuery = 'INSERT INTO "Work_History" ' +
+                    '(id_company, id_emplyee, "from", "to", description) '+
+                    'VALUES (\'' + id_company + '\', \'' + id_employee +
+                            '\', current_date, NULL, NULL)';
+    return db.none(addWorkerQuery);
 };
 
 //hash

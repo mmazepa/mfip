@@ -1,0 +1,68 @@
+<% include partials/header %>
+
+    <!-- main section -->
+    <main id="mainContent">
+
+      <div class="containter-fluid">
+          <div class="row">
+
+            <% include partials/menu %>
+
+            <div class="col-sm-9">
+                <h1 class="mainHeader">
+                    Szukaj <span class="appTitle">Pracy</span>!
+                </h1>
+                <p style="text-align:center;">
+                    <!-- LISTA FIRM -->
+                    <%
+                        if (firms.length > 0) {
+                            for (f in firms)
+                            {
+                    %>
+                                <div class="firm">
+                                    <nav><%= firms[f].name %></nav>
+                                    <nav>
+                                        <strong>Specjalizacja:</strong>
+                                        <%= firms[f].specialization %>
+                                    </nav>
+                                    <nav>
+                                        <strong>Opis:</strong>
+                                        <%= firms[f].description %>
+                                    </nav>
+                                    <nav>
+                                        <strong>Email:</strong>
+                                        <a href="mailto:<%= firms[f].email %>">
+                                            <%= firms[f].email %>
+                                        </a>
+                                    </nav>
+                                    <nav>
+                                        <strong>WWW:</strong>
+                                        <a href="http://<%= firms[f].website %>">
+                                            <%= firms[f].website %>
+                                        </a>
+                                    </nav>
+                                    <nav>
+                                        <button class="btn btn-success"
+                                                onclick="location.replace('/addWorker/<%= firms[f].id %>/<%= user.id %>')">
+                                            <span class="glyphicon glyphicon-check"></span>
+                                            Aplikuj
+                                        </button>
+                                    </nav>
+                                </div>
+                    <%
+                            }
+                        } else {
+                    %>
+                            Brak Firm.
+                    <%
+                        }
+                    %>
+                </p>
+            </div>
+          </div>
+      </div>
+    </main>
+
+    <% include partials/footer %>
+  </body>
+</html>

@@ -115,6 +115,45 @@ html {
           }
         }
 
+        .firm {
+          background-color: @mainColor;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          padding: 10px;
+          text-indent: 25px;
+          border: 1px solid darken(@mainColor, 5%);
+          border-radius: 10px;
+          .helper > .shadow;
+          nav {
+            background-color: lighten(@secondColor, 10%);
+            display: block;
+            &:first-child {
+              font-weight: bold;
+              padding: 5px;
+              font-size: 24px;
+              border-top-left-radius: 20px;
+              border-top-right-radius: 20px;
+            }
+            &:not(:first-child) {
+              text-indent: 50px;
+            }
+            &:last-child {
+              padding-bottom: 10px;
+              border-bottom-left-radius: 20px;
+              border-bottom-right-radius: 20px;
+              padding-right: 40px;
+              text-align: right;
+              button {
+                width: 100px;
+              }
+            }
+          }
+          a {
+            color: darken(@mainColor, 10%);
+            &:focus { color: @secondColor; }
+          }
+        }
+
         .tableHeader {
           .helper > .centerTextOptionalBold(bold);
           display: block;

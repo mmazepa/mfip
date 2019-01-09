@@ -25,10 +25,19 @@ companyController.companyPassowrd = (req, res) => {
 };
 
 companyController.company = (req, res) => {
-    var firms = req.firms || firms;
-
     Company.findAll().then((data) => {
         res.render('crud/firms.ejs', {
+            firms: data
+        });
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+companyController.findJob = (req, res) => {
+    Company.findAll().then((data) => {
+        res.render('findJob.ejs', {
             firms: data
         });
     })
@@ -63,8 +72,21 @@ companyController.add = (req, res) => {
     let description = req.body.description;
     let email = req.body.email;
     let website = req.body.website;
-    Company.add(name, specialization, description, email, website).then(() => {
+    Company.add(name, specialization, description, email, website)
+    .then(() => {
         res.redirect("/company");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+companyController.addWorkerById = (req, res) => {
+    let company_id = req.params.company_id;
+    let employee_id = req.params.employee_id;
+    Company.addWorker(company_id, employee_id)
+    .then(() => {
+        res.redirect("/worker");
     })
     .catch((error) => {
         console.log(error);
