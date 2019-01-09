@@ -272,6 +272,26 @@
                     Informacje o zatrudnieniu
                 </h4>
                 <p>
+                    Odnotowano
+                    <strong><%= workHistory.length %> zatrudnień</strong>
+                    od początku działalności.
+                </p>
+                <p>
+                    <%
+                        let workplaces = 0;
+                        const countWorkplaces = (item, index) => {
+                            if (item.to == null) workplaces++;
+                        };
+                        workHistory.forEach(countWorkplaces);
+                    %>
+                    Aktualnie podejmujesz zatrudnienie w
+                    <strong><%= workplaces %> miejscach</strong>.
+                </p>
+                <p>
+                    Zakończono współpracę z firmami
+                    <strong><%= workHistory.length-workplaces %> razy</strong>.
+                </p>
+                <p>
                     <table class="listTable">
                     <tr>
                         <th>L.P.</th>
@@ -279,6 +299,7 @@
                         <th>Data zatrudnienia</th>
                         <th>Data zwolnienia</th>
                         <th>Opis</th>
+                        <th>Zwolnij się</th>
                     </tr>
                     <%
                         var number = 0;
@@ -291,6 +312,18 @@
                                 <td class="date"><%= workHistory[wh].from %></td>
                                 <td class="date"><%= workHistory[wh].to %></td>
                                 <td><%= workHistory[wh].description %></td>
+                                <td>
+                    <%
+                                if (workHistory[wh].to == null) {
+                    %>
+                                    <button class="btn btn-danger"
+                                            onclick="location.replace('/fireWorker/you/<%= workHistory[wh].company_id %>/<%= user.id %>')">
+                                        <span class="glyphicon glyphicon-log-out"></span>
+                                    </button>
+                    <%
+                                }
+                    %>
+                                </td>
                             </tr>
                     <%
                                 number++;

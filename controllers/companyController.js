@@ -93,6 +93,20 @@ companyController.addWorkerById = (req, res) => {
     });
 };
 
+companyController.fireWorkerById = (req, res) => {
+    let by = req.params.by;
+    let company_id = req.params.company_id;
+    let employee_id = req.params.employee_id;
+    Company.fireWorker(company_id, employee_id)
+    .then(() => {
+        if (by == "you") res.redirect("/worker");
+        if (by == "boss") res.redirect("/firm");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
 companyController.update = (req, res) => {
     let newFirmInfo = {
         id: req.body.id,

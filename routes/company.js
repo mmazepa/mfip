@@ -21,5 +21,6 @@ router.get('/company/remove/:id', company.remove);
 
 router.get('/findJob', company.findJob);
 router.get('/addWorker/:company_id/:employee_id', company.addWorkerById);
+router.get('/fireWorker/:by/:company_id/:employee_id', company.fireWorkerById);
 
 module.exports = router;

@@ -38,7 +38,7 @@ indexController.worker = (req, res) => {
                         'email, password FROM "Employee" WHERE id=' + user.id;
     const adresString = 'SELECT country, city, street, house_number, zip_code ' +
                         'FROM "Adres" WHERE id=' + user.id_adres;
-    const workingString = 'SELECT c.name AS "company", e.first_name, e.last_name, ' +
+    const workingString = 'SELECT c.id AS "company_id", c.name AS "company", e.first_name, e.last_name, ' +
                             'wh.from, wh.to, wh.description FROM "Work_History" AS "wh" ' +
                             'INNER JOIN "Company" AS "c" ON wh.id_company = c.id ' +
                             'INNER JOIN "Employee" AS "e" ON wh.id_emplyee = e.id ' +
