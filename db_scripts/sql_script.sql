@@ -101,7 +101,7 @@ CREATE TABLE "Work_History" (
         "from" date NOT NULL,
         "to" date,
         "description" varchar(50),
-        FOREIGN KEY ("id_company") REFERENCES "Company"("id"),
+        FOREIGN KEY ("id_company") REFERENCES "Workstation"("id"),
         FOREIGN KEY ("id_emplyee") REFERENCES "Employee"("id")
 );
 -- CREATE INDEX "Work_History_id_company"
