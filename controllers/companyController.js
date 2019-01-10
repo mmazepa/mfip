@@ -104,9 +104,9 @@ companyController.add = (req, res) => {
 };
 
 companyController.addWorkerById = (req, res) => {
-    let company_id = req.params.company_id;
+    let workstation_id = req.params.workstation_id;
     let employee_id = req.params.employee_id;
-    Company.addWorker(company_id, employee_id)
+    Company.addWorker(workstation_id, employee_id)
     .then(() => {
         res.redirect("/worker");
     })
@@ -115,11 +115,23 @@ companyController.addWorkerById = (req, res) => {
     });
 };
 
+companyController.acceptWorkerById = (req, res) => {
+    let workstation_id = req.params.workstation_id;
+    let employee_id = req.params.employee_id;
+    Company.acceptWorker(workstation_id, employee_id)
+    .then(() => {
+        res.redirect("/firm");
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
 companyController.fireWorkerById = (req, res) => {
     let by = req.params.by;
-    let company_id = req.params.company_id;
+    let workstation_id = req.params.workstation_id;
     let employee_id = req.params.employee_id;
-    Company.fireWorker(company_id, employee_id)
+    Company.fireWorker(workstation_id, employee_id)
     .then(() => {
         if (by == "you") res.redirect("/worker");
         if (by == "boss") res.redirect("/firm");

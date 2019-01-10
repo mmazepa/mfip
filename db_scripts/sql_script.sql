@@ -98,7 +98,7 @@ CREATE TABLE "Work_History" (
         "id" SERIAL PRIMARY KEY,
         "id_workstation" SERIAL,
         "id_employee" SERIAL,
-        "from" date NOT NULL,
+        "from" date,
         "to" date,
         "description" varchar(50),
         "is_accepted" boolean,

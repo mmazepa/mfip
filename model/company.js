@@ -58,8 +58,8 @@ Company.setImage = (id_company, image) => {
 };
 
 Company.workers = (id) => {
-    const workersString = 'SELECT e.first_name, e.last_name, ' +
-                            'w.name AS workstation, w.email, ws.from, ws.to ' +
+    const workersString = 'SELECT e.id AS employee_id, e.first_name, e.last_name, ws.is_accepted, ' +
+                            'w.name AS workstation, w.id AS workstation_id, w.email, ws.from, ws.to ' +
                             'FROM "Work_History" AS ws ' +
                             'INNER JOIN "Employee" AS e ON ws.id_employee=e.id ' +
                             'INNER JOIN "Workstation" AS w ON ws.id_workstation=w.id ' +
@@ -69,10 +69,19 @@ Company.workers = (id) => {
 
 Company.addWorker = (id_workstation, id_employee) => {
     const addWorkerQuery = 'INSERT INTO "Work_History" ' +
-                    '(id_workstation, id_employee, "from", "to", description) '+
+                    '(id_workstation, id_employee, "from", "to", description, is_accepted) '+
                     'VALUES (\'' + id_workstation + '\', \'' + id_employee +
-                            '\', current_date, NULL, NULL)';
+                            '\', NULL, NULL, NULL, FALSE)';
     return db.none(addWorkerQuery);
+};
+
+Company.acceptWorker = (id_workstation, id_employee) => {
+    const acceptQuery = 'UPDATE "Work_History" SET is_accepted=true ' +
+                        'AND "from"=current_date ' +
+                        'WHERE id_workstation=' + id_workstation +
+                        ' AND id_employee=' + id_employee +
+                        ' AND "from" IS NULL AND is_accepted=false';
+    return db.none(acceptQuery);
 };
 
 Company.fireWorker = (id_workstation, id_employee) => {

@@ -17,8 +17,7 @@ indexController.firm = (req, res) => {
     var id = req.session.passport.user.id;
     Company.workers(id).then((data) => {
         res.render('firm.ejs', {
-            workers: data,
-            id_company: id
+            workers: data
         });
     })
     .catch((error) => {
@@ -40,8 +39,8 @@ indexController.worker = (req, res) => {
     const adresString = 'SELECT country, city, street, house_number, zip_code ' +
                         'FROM "Adres" WHERE id=' + user.id_adres;
     const workingString = 'SELECT e.first_name, e.last_name, w.name AS workstation, ' +
-                            'wh.from, wh.to, wh.description, c.name AS company ' +
-                            'FROM "Work_History" AS wh ' +
+                            'wh.from, wh.to, wh.description, c.name AS company, ' +
+                            'wh.is_accepted FROM "Work_History" AS wh ' +
                             'INNER JOIN "Employee" AS e ON wh.id_employee=e.id ' +
                             'INNER JOIN "Workstation" AS w ON wh.id_workstation=w.id ' +
                             'INNER JOIN "Company" AS c ON w.id_company=c.id WHERE e.id=' + user.id;

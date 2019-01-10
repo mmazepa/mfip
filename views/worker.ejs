@@ -271,19 +271,19 @@
                     <span class="glyphicon glyphicon-briefcase"></span>
                     Informacje o zatrudnieniu
                 </h4>
+                <%
+                    let workplaces = 0;
+                    const countWorkplaces = (item, index) => {
+                        if (item.to == null) workplaces++;
+                    };
+                    workHistory.forEach(countWorkplaces);
+                %>
                 <p>
                     Odnotowano
                     <strong><%= workHistory.length %> zatrudnień</strong>
                     od początku działalności.
                 </p>
                 <p>
-                    <%
-                        let workplaces = 0;
-                        const countWorkplaces = (item, index) => {
-                            if (item.to == null) workplaces++;
-                        };
-                        workHistory.forEach(countWorkplaces);
-                    %>
                     Aktualnie podejmujesz zatrudnienie w
                     <strong><%= workplaces %> miejscach</strong>.
                 </p>
@@ -300,7 +300,8 @@
                         <th>Data zatrudnienia</th>
                         <th>Data zwolnienia</th>
                         <th>Opis</th>
-                        <th>Zwolnij się</th>
+                        <th>Przyjęty?</th>
+                        <th>Zrezygnuj</th>
                     </tr>
                     <%
                         var number = 0;
@@ -314,6 +315,7 @@
                                 <td class="date"><%= workHistory[wh].from %></td>
                                 <td class="date"><%= workHistory[wh].to %></td>
                                 <td><%= workHistory[wh].description %></td>
+                                <td><%= workHistory[wh].is_accepted ? "TAK" : "NIE" %></td>
                                 <td>
                     <%
                                 if (workHistory[wh].to == null) {

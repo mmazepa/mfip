@@ -162,21 +162,27 @@
                     <span class="glyphicon glyphicon-user"></span>
                     Pracownicy
                 </h4>
+                <%
+                    let workersAmount = 0;
+                    let newbiesAmount = 0;
+                    const countWorkers = (item, index) => {
+                        if (item.to == null) workersAmount++;
+                        if (item.to == null && item.from == null) newbiesAmount++;
+                    };
+                    workers.forEach(countWorkers);
+                %>
                 <p>
                     Firma zatrudniła
-                    <strong><%= workers.length %> pracowników</strong>
+                    <strong><%= workers.length-newbiesAmount %> pracowników</strong>
                     od początku swojej działalności.
                 </p>
                 <p>
-                    <%
-                        let workersAmount = 0;
-                        const countWorkers = (item, index) => {
-                            if (item.to == null) workersAmount++;
-                        };
-                        workers.forEach(countWorkers);
-                    %>
                     Aktualnie w firmie pracuje
-                    <strong><%= workersAmount %> pracowników</strong>.
+                    <strong><%= workersAmount-newbiesAmount %> pracowników</strong>.
+                </p>
+                <p>
+                    O miejsce w firmie stara się obecnie
+                    <strong><%= newbiesAmount %> osób</strong>.
                 </p>
                 <p>
                     Pracę w naszej firmie zakończyło
@@ -192,6 +198,7 @@
                             <th>W firmie od</th>
                             <th>W firmie do</th>
                             <th>E-mail</th>
+                            <th>Przyjęty?</th>
                             <th>Zwolnij</th>
                         </tr>
                         <%
@@ -210,12 +217,13 @@
                                         <%= workers[w].email %>
                                     </a>
                                 </td>
+                                <td><%= workers[w].is_accepted ? "TAK" : "NIE" %></td>
                                 <td>
                         <%
                                     if (workers[w].to == null) {
                         %>
                                     <button class="btn btn-danger"
-                                            onclick="location.replace('/fireWorker/boss/<%= user.id %>/<%= workers[w].id %>')">
+                                            onclick="location.replace('/fireWorker/boss/<%= workers[w].workstation_id %>/<%= workers[w].employee_id %>')">
                                         <span class="glyphicon glyphicon-log-out"></span>
                                     </button>
                         <%
