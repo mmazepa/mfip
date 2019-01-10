@@ -121,7 +121,8 @@ indexController.cv = (req, res) => {
     const skillsString = 'SELECT s.id, s.type, s.from, s.to, s.name, s.description ' +
                             'FROM "List_Skills" AS ls ' +
                             'INNER JOIN "Employee" AS e ON e.id=ls.id_owner ' +
-                            'INNER JOIN "Skill" AS s ON s.id=ls.id_skill WHERE e.id=' + id;
+                            'INNER JOIN "Skill" AS s ON s.id=ls.id_skill WHERE e.id=' + id +
+                            'AND ls.is_company=false';
     db.any(skillsString, [true])
     .then((data) => {
         res.render('cv/cv.ejs', {
