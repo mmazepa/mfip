@@ -32,6 +32,18 @@ Company.findById = (id) => {
         'WHERE c.id = $1', [id]);
 };
 
+Company.getImage = (id_company) => {
+    return db.one('SELECT c.image ' +
+        'FROM "Company" AS "c" ' +
+        'WHERE c.id = $1', [id_company]);
+};
+
+Company.setImage = (id_company, image) => {
+    return db.none('UPDATE "Company" ' +
+                'SET "image"= $2 ' +
+                'WHERE id_company= $1', [id_company, image]);
+};
+
 Company.workers = (id) => {
     return db.any('SELECT e.id, e.first_name, e.last_name, e.email, wh.from, wh.to ' +
                     'FROM "Work_History" AS "wh" ' +

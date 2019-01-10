@@ -15,6 +15,9 @@ router.get('/company', company.company);
 router.get('/company/id/:id', company.companyById);
 router.get('/company/name/:name', company.companyByName);
 
+router.get('/company/image/:id', company.imageGet);
+router.post('/company/image/upload', company.imageUpload);
+
 router.post('/company/add', company.add);
 router.post('/company/update', company.update);
 router.get('/company/remove/:id', company.remove);

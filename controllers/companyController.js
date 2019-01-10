@@ -66,6 +66,27 @@ companyController.companyByName = (req, res) => {
     });
 };
 
+companyController.imageGet = (req,res) => {
+    let id = req.params.id;
+    Company.getImage(id).then((result) => {
+
+        //console.log(result.image.toJSON().data);
+        //console.log(Buffer.from(JSON.parse(result.image).data));
+        
+        //result.image.toJSON().data
+        res.json(
+            "data:image/jpeg;base64," + result.image.toString()
+        );
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+};
+
+companyController.imageUpload = (req,res) => {
+    
+};
+
 companyController.add = (req, res) => {
     let name = req.body.name;
     let specialization = req.body.specialization;
