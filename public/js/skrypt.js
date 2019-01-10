@@ -51,11 +51,13 @@ document.onreadystatechange = () => {
                     case "firm": {
                         $("#userData").html("Dane kierownika:");
                         $("#firmData, #firmInput").removeClass("hideMe");
+                        $("#first_name_div, #last_name_div").hide();
                         break;
                     }
                     case "worker": {
                         $("#userData").html("Dane pracownika:");
                         $("#firmData, #firmInput").addClass("hideMe");
+                        $("#first_name_div, #last_name_div").show();
                         break;
                     }
                 }
