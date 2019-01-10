@@ -51,10 +51,10 @@ Company.getImage = (id_company) => {
         'WHERE c.id = $1', [id_company]);
 };
 
-Company.setImage = (id_company, image) => {
+Company.setNewImage = (id_company, image) => {
     return db.none('UPDATE "Company" ' +
                 'SET "image"= $2 ' +
-                'WHERE id_company= $1', [id_company, image]);
+                'WHERE id= $1', [id_company, image]);
 };
 
 Company.workers = (id) => {
