@@ -3,6 +3,9 @@
 var companyController = {};
 const Company = require('../model/company');
 
+const formidable = require('formidable');
+const fs = require('fs');
+
 // Company
 // C
 companyController.companyCreate = (req, res) => {
@@ -68,22 +71,32 @@ companyController.companyByName = (req, res) => {
 
 companyController.imageGet = (req,res) => {
     let id = req.params.id;
-    Company.getImage(id).then((result) => {
-
-        //console.log(result.image.toJSON().data);
-        //console.log(Buffer.from(JSON.parse(result.image).data));
-        
-        //result.image.toJSON().data
-        res.json(
-            "data:image/jpeg;base64," + result.image.toString()
-        );
+    Company.getImage(id).then((data) => {
+        res.json({
+            "image_src":"data:image/jpeg;base64," + data.image.toString()
+        });
     })
     .catch((error) => {
         console.log(error);
+        res.json(null);
     });
 };
 
 companyController.imageUpload = (req,res) => {
+    let form = new formidable.IncomingForm();
+
+    form.parse(req, function (err, fields, files) {
+        let image = fs.readFileSync(files.imagetoupload.path);
+        
+        Company.setNewImage(fields.id, new Buffer(image).toString('base64'))
+        .then(() => {
+            res.redirect("/firm");
+        })
+        .catch((error) => {
+            console.log(error);
+            res.redirect("/");
+        });
+    });
     
 };
 
