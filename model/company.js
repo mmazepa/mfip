@@ -58,10 +58,13 @@ Company.setImage = (id_company, image) => {
 };
 
 Company.workers = (id) => {
-    return db.any('SELECT e.id, e.first_name, e.last_name, e.email, wh.from, wh.to ' +
-                    'FROM "Work_History" AS "wh" ' +
-                    'INNER JOIN "Employee" AS "e" on wh.id_employee = e.id ' +
-                    'WHERE id_company=$1', [id]);
+    const workersString = 'SELECT e.first_name, e.last_name, ' +
+                            'w.name AS workstation, w.email, ws.from, ws.to ' +
+                            'FROM "Work_History" AS ws ' +
+                            'INNER JOIN "Employee" AS e ON ws.id_employee=e.id ' +
+                            'INNER JOIN "Workstation" AS w ON ws.id_workstation=w.id ' +
+                            'INNER JOIN "Company" AS c ON w.id_company=c.id WHERE c.id=' + id;
+    return db.any(workersString, [true]);
 };
 
 Company.addWorker = (id_workstation, id_employee) => {

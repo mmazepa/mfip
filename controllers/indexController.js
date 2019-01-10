@@ -17,7 +17,8 @@ indexController.firm = (req, res) => {
     var id = req.session.passport.user.id;
     Company.workers(id).then((data) => {
         res.render('firm.ejs', {
-            workers: data
+            workers: data,
+            id_company: id
         });
     })
     .catch((error) => {

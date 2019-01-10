@@ -142,12 +142,12 @@
                             <td>
                                 <!-- TODO! dodać obrazek z tej firmy!!! -->
                                 <img src="/images/company.png">
-                                
+
                             </td>
                                 <form action="/company/imageUpload" method="post" enctype="multipart/form-data">
                                     <td>
                                         <input type="file" name="imagetoupload">
-                                    </td>                            
+                                    </td>
                                     <td>
                                         <button class="btn btn-primary" type="submit">
                                             add new image
@@ -188,7 +188,7 @@
                             <th>L.P.</th>
                             <th>Imię</th>
                             <th>Nazwisko</th>
-                            <!-- <th>Stanowisko</th> -->
+                            <th>Stanowisko</th>
                             <th>W firmie od</th>
                             <th>W firmie do</th>
                             <th>E-mail</th>
@@ -202,7 +202,7 @@
                                 <td><%= parseInt(w)+1 %></td>
                                 <td><%= workers[w].first_name %></td>
                                 <td><%= workers[w].last_name %></td>
-                                <!-- <td>-</td> -->
+                                <td><%= workers[w].workstation %></td>
                                 <td class="date"><%= workers[w].from %></td>
                                 <td class="date"><%= workers[w].to %></td>
                                 <td>
