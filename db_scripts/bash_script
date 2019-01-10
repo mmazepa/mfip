@@ -24,9 +24,9 @@ fi
 
 echo "mfip existed"
 
-cat *_c_1.png | base64 > b_c_1
-cat *_c_2.png | base64 > b_c_2
-cat *_c_3.png | base64 > b_c_3
+cat *_c_1.png | base64 -w 0 > b_c_1
+cat *_c_2.png | base64 -w 0 > b_c_2
+cat *_c_3.png | base64 -w 0 > b_c_3
 
 psql -U postgres mfip < sql_script.sql
 
