@@ -38,11 +38,12 @@ indexController.worker = (req, res) => {
                         'email, password FROM "Employee" WHERE id=' + user.id;
     const adresString = 'SELECT country, city, street, house_number, zip_code ' +
                         'FROM "Adres" WHERE id=' + user.id_adres;
-    const workingString = 'SELECT c.id AS "company_id", c.name AS "company", e.first_name, e.last_name, ' +
-                            'wh.from, wh.to, wh.description FROM "Work_History" AS "wh" ' +
-                            'INNER JOIN "Company" AS "c" ON wh.id_company = c.id ' +
-                            'INNER JOIN "Employee" AS "e" ON wh.id_emplyee = e.id ' +
-                            'WHERE wh.id_emplyee=' + user.id;
+    const workingString = 'SELECT e.first_name, e.last_name, w.name AS workstation, ' +
+                            'wh.from, wh.to, wh.description, c.name AS company ' +
+                            'FROM "Work_History" AS wh ' +
+                            'INNER JOIN "Employee" AS e ON wh.id_employee=e.id ' +
+                            'INNER JOIN "Workstation" AS w ON wh.id_workstation=w.id ' +
+                            'INNER JOIN "Company" AS c ON w.id_company=c.id WHERE e.id=' + user.id;
 
     db.any(userString, [true])
     .then((data) => {
@@ -101,10 +102,13 @@ indexController.workstations = (req, res) => {
 indexController.workHistory = (req, res) => {
     var workHistory = req.workHistory || workHistory;
 
-    db.any('SELECT c.name, e.first_name, e.last_name, wh.from, wh.to, wh.description ' +
-            'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ' +
-            'ON wh.id_company = c.id INNER JOIN "Employee" AS "e" ' +
-            'ON wh.id_emplyee = e.id', [true])
+    const workingString = 'SELECT e.first_name, e.last_name, w.name AS workstation, ' +
+                            'wh.from, wh.to, wh.description, c.name AS company ' +
+                            'FROM "Work_History" AS wh ' +
+                            'INNER JOIN "Employee" AS e ON wh.id_employee=e.id ' +
+                            'INNER JOIN "Workstation" AS w ON wh.id_workstation=w.id ' +
+                            'INNER JOIN "Company" AS c ON w.id_company=c.id';
+    db.any(workingString, [true])
     .then((data) => {
         workHistory = data;
         res.render('crud/workHistory.ejs', {

@@ -36,9 +36,10 @@ companyController.company = (req, res) => {
 };
 
 companyController.findJob = (req, res) => {
-    Company.findAll().then((data) => {
+    Company.findAllWithWorkstations()
+    .then((data) => {
         res.render('findJob.ejs', {
-            firms: data
+            jobs: data
         });
     })
     .catch((error) => {
@@ -72,7 +73,7 @@ companyController.imageGet = (req,res) => {
 
         //console.log(result.image.toJSON().data);
         //console.log(Buffer.from(JSON.parse(result.image).data));
-        
+
         //result.image.toJSON().data
         res.json(
             "data:image/jpeg;base64," + result.image.toString()
@@ -84,7 +85,7 @@ companyController.imageGet = (req,res) => {
 };
 
 companyController.imageUpload = (req,res) => {
-    
+
 };
 
 companyController.add = (req, res) => {

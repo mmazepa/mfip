@@ -96,14 +96,14 @@ CREATE TABLE "Employee" (
 
 CREATE TABLE "Work_History" (
         "id" SERIAL PRIMARY KEY,
-        "id_company" SERIAL,
-        "id_emplyee" SERIAL,
+        "id_workstation" SERIAL,
+        "id_employee" SERIAL,
         "from" date NOT NULL,
         "to" date,
         "description" varchar(50),
-        "is_acsepted" boolean,
-        FOREIGN KEY ("id_company") REFERENCES "Workstation"("id"),
-        FOREIGN KEY ("id_emplyee") REFERENCES "Employee"("id")
+        "is_accepted" boolean,
+        FOREIGN KEY ("id_workstation") REFERENCES "Workstation"("id"),
+        FOREIGN KEY ("id_employee") REFERENCES "Employee"("id")
 );
 -- CREATE INDEX "Work_History_id_company"
 --         ON "Work_History" ("id_company");
@@ -169,7 +169,7 @@ INSERT INTO public."List_Skills"(
   (2, 2, TRUE),
   (3, 3, TRUE);
 
--- for emplyee
+-- for employee
 INSERT INTO public."List_Skills"(
 	id_skill, id_owner, is_company)
 	VALUES
@@ -207,13 +207,21 @@ INSERT INTO public."Employee"(
 
 -- Work_History
 INSERT INTO public."Work_History"(
-	id_company, id_emplyee, "from", "to", description)
+	id_workstation, id_employee, "from", "to", description, is_accepted)
 	VALUES
-  (3, 1, to_date('2010-02-03','YYYY-MM-DD'), to_date('2015-02-03','YYYY-MM-DD'), 'my first job'),
-  (2, 1, to_date('2016-02-03','YYYY-MM-DD'), to_date('2017-02-03','YYYY-MM-DD'), 'my second job'),
-  (1, 1, to_date('2018-02-03','YYYY-MM-DD'), NULL, 'my current job'),
-  (2, 2, to_date('2010-02-03','YYYY-MM-DD'), NULL, 'first job'),
-  (1, 3, to_date('2012-07-01','YYYY-MM-DD'), to_date('2012-08-31','YYYY-MM-DD'), 'wakacyjny staż'),
-  (4, 3, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'praktyki zawodowe'),
-  (4, 1, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'praktyki zawodowe'),
-  (4, 2, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'praktyki zawodowe');
+  (3, 1, to_date('2010-02-03','YYYY-MM-DD'), to_date('2015-02-03','YYYY-MM-DD'), 'my first job', TRUE),
+  (2, 1, to_date('2016-02-03','YYYY-MM-DD'), to_date('2017-02-03','YYYY-MM-DD'), 'my second job', TRUE),
+  (1, 1, to_date('2018-02-03','YYYY-MM-DD'), NULL, 'my current job', TRUE),
+  (2, 2, to_date('2010-02-03','YYYY-MM-DD'), NULL, 'first job', TRUE),
+  (1, 3, to_date('2012-07-01','YYYY-MM-DD'), to_date('2012-08-31','YYYY-MM-DD'), 'wakacyjny staż', TRUE),
+  (4, 3, to_date('2013-07-01','YYYY-MM-DD'), to_date('2015-08-31','YYYY-MM-DD'), 'praktyki zawodowe', TRUE),
+  (4, 1, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'praktyki zawodowe', TRUE),
+  (4, 2, to_date('2013-07-01','YYYY-MM-DD'), to_date('2015-08-31','YYYY-MM-DD'), 'praktyki zawodowe', TRUE),
+  (1, 3, to_date('2010-07-01','YYYY-MM-DD'), to_date('2012-08-31','YYYY-MM-DD'), 'umowa o dzieło', TRUE),
+  (2, 3, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'wykonywanie zawodu', TRUE),
+  (3, 3, to_date('2010-07-01','YYYY-MM-DD'), to_date('2012-08-31','YYYY-MM-DD'), 'umowa zlecenie', TRUE),
+  (4, 3, to_date('2013-07-01','YYYY-MM-DD'), to_date('2015-08-31','YYYY-MM-DD'), 'wykonywanie zawodu', TRUE),
+  (5, 3, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'umowa o dzieło', TRUE),
+  (6, 3, to_date('2018-07-01','YYYY-MM-DD'), to_date('2018-08-31','YYYY-MM-DD'), 'umowa o pracę', TRUE),
+  (7, 3, to_date('2013-07-01','YYYY-MM-DD'), to_date('2015-08-31','YYYY-MM-DD'), 'umowa o dzieło', TRUE),
+  (8, 3, to_date('2010-07-01','YYYY-MM-DD'), to_date('2012-08-31','YYYY-MM-DD'), 'wykonywanie zawodu', TRUE);

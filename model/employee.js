@@ -40,7 +40,7 @@ Employee.findById = (id) => {
     //     'c.name AS company_name, c.specialization, wh.from, wh.to, wh.description ' +
     //     'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ' +
     //     'ON wh.id_company = c.id INNER JOIN "Employee" AS "e" ' +
-    //     'ON wh.id_emplyee = e.id INNER JOIN "Adres" AS a ' +
+    //     'ON wh.id_employee = e.id INNER JOIN "Adres" AS a ' +
     //     'ON e.id_adres = a.id WHERE e.id=$1', [id]);
 };
 
@@ -52,7 +52,7 @@ Employee.findByName = (last_name) => {
 Employee.findEmployeeByCompanyId = (companyId) => {
     return db.any('SELECT * ' +
         ' FROM "Employee" AS e ' +
-        ' INNER JOIN "Work_History" AS wh ON e.id = wh.id_emplyee' +
+        ' INNER JOIN "Work_History" AS wh ON e.id = wh.id_employee' +
         ' INNER JOIN "Adres" AS a ON e.id_adres = a.id' +
         ' WHERE wh.id_company = $1', companyId);
 };

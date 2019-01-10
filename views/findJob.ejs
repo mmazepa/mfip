@@ -15,38 +15,43 @@
                 <p style="text-align:center;">
                     <!-- LISTA FIRM -->
                     <%
-                        if (firms.length > 0) {
-                            for (f in firms)
+                        if (jobs.length > 0) {
+                            for (j in jobs)
                             {
                     %>
                                 <div class="firm">
-                                    <%=
-                                        <!-- JSON.stringify(firms[f]) -->
-                                    %>
-                                    <nav><%= firms[f].name %></nav>
-                                    <nav>
-                                        <strong>Specjalizacja:</strong>
-                                        <%= firms[f].specialization %>
-                                    </nav>
+                                    <nav><%= jobs[j].workstation %> in <%= jobs[j].company%></nav>
                                     <nav>
                                         <strong>Opis:</strong>
-                                        <%= firms[f].description %>
+                                        <%= jobs[j].workstation_description %>
                                     </nav>
                                     <nav>
-                                        <strong>Email:</strong>
-                                        <a href="mailto:<%= firms[f].email %>">
-                                            <%= firms[f].email %>
+                                        <strong>Email stanowiska:</strong>
+                                        <a href="mailto:<%= jobs[j].workstation_email %>">
+                                            <%= jobs[j].workstation_email %>
+                                        </a>
+                                    </nav>
+                                    <nav>
+                                        <strong>Adres stanowiska:</strong>
+                                        <%= jobs[j].street %> <%= jobs[j].house_number %>,
+                                        <%= jobs[j].zip_code %> <%= jobs[j].city %>,
+                                        <%= jobs[j].country %>
+                                    </nav>
+                                    <nav>
+                                        <strong>Email firmy:</strong>
+                                        <a href="mailto:<%= jobs[j].company_email %>">
+                                            <%= jobs[j].company_email %>
                                         </a>
                                     </nav>
                                     <nav>
                                         <strong>WWW:</strong>
-                                        <a href="http://<%= firms[f].website %>">
-                                            <%= firms[f].website %>
+                                        <a href="http://<%= jobs[j].website %>">
+                                            <%= jobs[j].website %>
                                         </a>
                                     </nav>
                                     <nav>
                                         <button class="btn btn-success"
-                                                onclick="location.replace('/addWorker/<%= firms[f].id %>/<%= user.id %>')">
+                                                onclick="location.replace('/addWorker/<%= jobs[j].id %>/<%= user.id %>')">
                                             <span class="glyphicon glyphicon-check"></span>
                                             Aplikuj
                                         </button>
