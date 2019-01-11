@@ -12,9 +12,13 @@ router.put('/employee/create', employee.employeeCreate);
 
 // R
 router.post('/employee/password', employee.employeePassword);
-router.get('/employee', authentification.isCompanyAuthenticated, employee.employee);
+// router.get('/employee', authentification.isCompanyAuthenticated, employee.employee);
+router.get('/employee', employee.findAllEmployees);
 router.get('/employee/id/:id', employee.employeeById);
 router.get('/employee/name/:last_name', employee.employeeByLastName);
+
+router.get('/employee/image/:id', employee.imageGet);
+router.post('/employee/image/upload', employee.imageUpload);
 
 // U
 router.post('/employee/update', employee.updateEmployee);

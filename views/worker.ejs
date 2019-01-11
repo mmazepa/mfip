@@ -23,6 +23,16 @@
                     Poniżej znajdziesz wszystkie informacje, które dodałeś do
                     swojego profilu.<br/>
                     <br/>
+                    <%
+                        if (user.image != null) {
+                    %>
+                         <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                 width="375">
+                         <br/>
+                         <br/>
+                    <%
+                        }
+                    %>
                     <span class="glyphicon glyphicon-info-sign"></span>
                     Zadbaj o to, aby każda podana przez Ciebie informacja
                     była aktualna. Ułatwi to zarówno pracodawcom dotarcie
@@ -134,6 +144,36 @@
                             </tr>
                         </table>
                     </form>
+                    <table>
+                        <tr>
+                            <td>
+                                <%
+                                    if (user.image != null) {
+                                %>
+                                     <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                             width="200">
+                                     <br/>
+                                     <br/>
+                                <%
+                                    } else {
+                                %>
+                                <img src="/images/employee.jpg" width="200">
+                                <%
+                                    }
+                                %>
+
+                            </td>
+                            <td>
+                                <form action="/employee/image/upload" method="POST" enctype="multipart/form-data">
+                                        <input  type="text" name="id" value="<%= user.id %>" hidden/>
+                                        <input type="file" name="imagetoupload" multiple="multiple">
+                                        <button class="btn btn-primary" type="submit">
+                                            add new image
+                                        </button>
+                                </form>
+                            </td>
+                            </tr>
+                        </table>
                 </div>
 
                 <h4 class="tableHeader">
@@ -295,6 +335,7 @@
                     <table class="listTable">
                     <tr>
                         <th>L.P.</th>
+                        <th>Logo</th>
                         <th>Firma</th>
                         <th>Stanowisko</th>
                         <th>Data zatrudnienia</th>
@@ -310,6 +351,16 @@
                     %>
                             <tr>
                                 <td><%= (number+1) %></td>
+                                <td>
+                                    <%
+                                        if (workHistory[wh].image != null) {
+                                    %>
+                                         <img    src="data:image/jpeg;base64,<%= workHistory[wh].image %>"
+                                                 width="50">
+                                    <%
+                                        }
+                                    %>
+                                </td>
                                 <td><%= workHistory[wh].company %></td>
                                 <td><%= workHistory[wh].workstation %></td>
                                 <td class="date"><%= workHistory[wh].from %></td>
@@ -321,7 +372,7 @@
                                 if (workHistory[wh].to == null) {
                     %>
                                     <button class="btn btn-danger"
-                                            onclick="location.replace('/fireWorker/you/<%= workHistory[wh].company_id %>/<%= user.id %>')">
+                                            onclick="location.replace('/fireWorker/you/<%= workHistory[wh].id %>/<%= user.id %>')">
                                         <span class="glyphicon glyphicon-log-out"></span>
                                     </button>
                     <%

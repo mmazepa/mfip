@@ -20,6 +20,7 @@
                     %>
                         <tr>
                             <th>L.P.</th>
+                            <th>Foto</th>
                             <th>Imię</th>
                             <th>Nazwisko</th>
                             <th>Data urodzenia</th>
@@ -33,6 +34,16 @@
                     %>
                                 <tr>
                                     <td><%= parseInt(e)+1 %></td>
+                                    <td>
+                                        <%
+                                            if (employees[e].image != null) {
+                                        %>
+                                             <img    src="data:image/jpeg;base64,<%= employees[e].image %>"
+                                                     width="50">
+                                        <%
+                                            }
+                                        %>
+                                    </td>
                                     <td><%= employees[e].first_name %></td>
                                     <td><%= employees[e].last_name %></td>
                                     <td class="date"><%= employees[e].birth %></td>

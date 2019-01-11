@@ -20,7 +20,9 @@
                     %>
                         <tr>
                             <th>L.P.</th>
+                            <th>Foto</th>
                             <th>Pracownik</th>
+                            <th>Logo</th>
                             <th>Firma</th>
                             <th>Data zatrudnienia</th>
                             <th>Data zwolnienia</th>
@@ -32,7 +34,27 @@
                     %>
                                 <tr>
                                     <td><%= parseInt(wh)+1 %></td>
+                                    <td>
+                                        <%
+                                            if (workHistory[wh].employee_image != null) {
+                                        %>
+                                             <img    src="data:image/jpeg;base64,<%= workHistory[wh].employee_image %>"
+                                                     width="50">
+                                        <%
+                                            }
+                                        %>
+                                    </td>
                                     <td><%= workHistory[wh].first_name + " " + workHistory[wh].last_name %></td>
+                                    <td>
+                                        <%
+                                            if (workHistory[wh].company_image != null) {
+                                        %>
+                                             <img    src="data:image/jpeg;base64,<%= workHistory[wh].company_image %>"
+                                                     width="50">
+                                        <%
+                                            }
+                                        %>
+                                    </td>
                                     <td><%= workHistory[wh].company %></td>
                                     <td class="date"><%= workHistory[wh].from %></td>
                                     <td class="date"><%= workHistory[wh].to %></td>

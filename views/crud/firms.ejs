@@ -20,6 +20,7 @@
                     %>
                         <tr>
                             <th>L.P.</th>
+                            <th>Logo</th>
                             <th>Nazwa</th>
                             <th>Specjalizacja</th>
                             <th>Opis</th>
@@ -33,6 +34,16 @@
                     %>
                                 <tr>
                                     <td><%= parseInt(f)+1 %></td>
+                                    <td>
+                                        <%
+                                            if (firms[f].image != null) {
+                                        %>
+                                             <img    src="data:image/jpeg;base64,<%= firms[f].image %>"
+                                                     width="50">
+                                        <%
+                                            }
+                                        %>
+                                    </td>
                                     <td><%= firms[f].name %></td>
                                     <td><%= firms[f].specialization %></td>
                                     <td><%= firms[f].description %></td>

@@ -20,6 +20,7 @@
                     %>
                         <tr>
                             <th>L.P.</th>
+                            <th>Logo</th>
                             <th>Firma</th>
                             <th>Stanowisko</th>
                             <th>Numer telefonu</th>
@@ -34,6 +35,16 @@
                     %>
                                 <tr>
                                     <td><%= parseInt(w)+1 %></td>
+                                    <td>
+                                        <%
+                                            if (workstations[w].image != null) {
+                                        %>
+                                             <img    src="data:image/jpeg;base64,<%= workstations[w].image %>"
+                                                     width="50">
+                                        <%
+                                            }
+                                        %>
+                                    </td>
                                     <td><%= workstations[w].company_name %></td>
                                     <td><%= workstations[w].workstation_name %></td>
                                     <td><%= workstations[w].phone_number %></td>

@@ -24,7 +24,7 @@ Employee.createEmployee = (paramerts_json) => {
 
 // R
 Employee.findAll = () => {
-    return db.any('SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
+    return db.any('SELECT e.image, e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
             'a.country, a.city, a.street, a.house_number, a.zip_code ' +
             'FROM "Employee" AS e INNER JOIN "Adres" AS a ON e.id_adres = a.id');
 };
@@ -39,7 +39,7 @@ Employee.findById = (id) => {
     //     'e.password, a.country, a.city, a.street, a.house_number, a.zip_code, ' +
     //     'c.name AS company_name, c.specialization, wh.from, wh.to, wh.description ' +
     //     'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ' +
-    //     'ON wh.id_company = c.id INNER JOIN "Employee" AS "e" ' +
+    //     'ON wh.id_workstation = c.id INNER JOIN "Employee" AS "e" ' +
     //     'ON wh.id_employee = e.id INNER JOIN "Adres" AS a ' +
     //     'ON e.id_adres = a.id WHERE e.id=$1', [id]);
 };
@@ -54,7 +54,7 @@ Employee.findEmployeeByCompanyId = (companyId) => {
         ' FROM "Employee" AS e ' +
         ' INNER JOIN "Work_History" AS wh ON e.id = wh.id_employee' +
         ' INNER JOIN "Adres" AS a ON e.id_adres = a.id' +
-        ' WHERE wh.id_company = $1', companyId);
+        ' WHERE wh.id_workstation = $1', companyId);
 };
 
 //hash
@@ -62,6 +62,18 @@ Employee.getHashByEmail = (email) => {
     return db.one('SELECT * ' +
         'FROM "Employee" AS "e" ' +
         'WHERE e.email = $1', [email]);
+};
+
+Employee.getImage = (id_employee) => {
+    return db.one('SELECT c.image ' +
+        'FROM "Employee" AS "e" ' +
+        'WHERE e.id = $1', [id_employee]);
+};
+
+Employee.setNewImage = (id_employee, image) => {
+    return db.none('UPDATE "Employee" ' +
+                'SET "image"= $2 ' +
+                'WHERE id= $1', [id_employee, image]);
 };
 
 // update personal info

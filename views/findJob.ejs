@@ -22,6 +22,17 @@
                                 <div class="firm">
                                     <nav><%= jobs[j].workstation %> in <%= jobs[j].company%></nav>
                                     <nav>
+                                        <%
+                                            if (jobs[j].image != null) {
+                                        %>
+                                             <img    src="data:image/jpeg;base64,<%= jobs[j].image %>"
+                                                     width="375px">
+                                        <%
+                                            }
+                                        %>
+                                        <br/><br/>
+                                    </nav>
+                                    <nav>
                                         <strong>Opis:</strong>
                                         <%= jobs[j].workstation_description %>
                                     </nav>

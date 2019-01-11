@@ -39,8 +39,8 @@ indexController.worker = (req, res) => {
     const adresString = 'SELECT country, city, street, house_number, zip_code ' +
                         'FROM "Adres" WHERE id=' + user.id_adres;
     const workingString = 'SELECT e.first_name, e.last_name, w.name AS workstation, ' +
-                            'wh.from, wh.to, wh.description, c.name AS company, ' +
-                            'wh.is_accepted FROM "Work_History" AS wh ' +
+                            'wh.from, wh.to, wh.description, c.image, c.name AS company, ' +
+                            'w.id, wh.is_accepted FROM "Work_History" AS wh ' +
                             'INNER JOIN "Employee" AS e ON wh.id_employee=e.id ' +
                             'INNER JOIN "Workstation" AS w ON wh.id_workstation=w.id ' +
                             'INNER JOIN "Company" AS c ON w.id_company=c.id WHERE e.id=' + user.id;
@@ -83,7 +83,7 @@ indexController.worker = (req, res) => {
 indexController.workstations = (req, res) => {
     var workstations = req.workstations || workstations;
 
-    db.any('SELECT c.name AS company_name, w.name AS workstation_name, ' +
+    db.any('SELECT c.name AS company_name, c.image, w.name AS workstation_name, ' +
             'w.phone_number, w.email, w.limit, w.description, a.country, ' +
             'a.city, a.street, a.house_number, a.zip_code ' +
             'FROM "Workstation" AS w INNER JOIN "Company" AS c ' +
@@ -103,8 +103,8 @@ indexController.workHistory = (req, res) => {
     var workHistory = req.workHistory || workHistory;
 
     const workingString = 'SELECT e.first_name, e.last_name, w.name AS workstation, ' +
-                            'wh.from, wh.to, wh.description, c.name AS company ' +
-                            'FROM "Work_History" AS wh ' +
+                            'wh.from, wh.to, wh.description, c.name AS company, ' +
+                            'c.image AS company_image, e.image AS employee_image FROM "Work_History" AS wh ' +
                             'INNER JOIN "Employee" AS e ON wh.id_employee=e.id ' +
                             'INNER JOIN "Workstation" AS w ON wh.id_workstation=w.id ' +
                             'INNER JOIN "Company" AS c ON w.id_company=c.id';

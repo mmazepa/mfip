@@ -22,6 +22,16 @@
                     Poniżej znajdziesz wszystkie informacje, które dodałeś do
                     profilu swojej firmy.<br/>
                     <br/>
+                    <%
+                        if (user.image != null) {
+                    %>
+                         <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                 width="375">
+                         <br/>
+                         <br/>
+                    <%
+                        }
+                    %>
                     <span class="glyphicon glyphicon-info-sign"></span>
                     Zadbaj o to, aby każda widoczna informacja o firmie
                     była aktualna. Ułatwi to zarówno pracownikom dotarcie
@@ -140,28 +150,31 @@
                     <table>
                         <tr>
                             <td>
-                                <!-- TODO! dodać obrazek z tej firmy!!! -->
-                                <img src="/images/company.png">
+                                <%
+                                    if (user.image != null) {
+                                %>
+                                     <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                             width="200">
+                                     <br/>
+                                     <br/>
+                                <%
+                                    } else {
+                                %>
+                                <img src="/images/company.png" width="200">
+                                <%
+                                    }
+                                %>
 
                             </td>
+                            <td>
                                 <form action="/company/image/upload" method="POST" enctype="multipart/form-data">
-                                    <td>
-<<<<<<< HEAD
-                                        <input type="file" name="imagetoupload">
-                                    </td>
-=======
                                         <input  type="text" name="id" value="<%= user.id %>" hidden/>
-                                    </td>
-                                    <td>
                                         <input type="file" name="imagetoupload" multiple="multiple">
-                                    </td>                      
->>>>>>> a2470300914623103ba53e10e261f158fedc6d2d
-                                    <td>
                                         <button class="btn btn-primary" type="submit">
                                             add new image
                                         </button>
-                                    </td>
                                 </form>
+                            </td>
                             </tr>
                         </table>
                 </div>

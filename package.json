@@ -29,8 +29,8 @@
     "debug": "~2.6.0",
     "pg-promise": "latest",
     "bcrypt": "latest",
-    "formidable":"latest",
-    "fs":"latest"
+    "formidable": "latest",
+    "fs": "latest"
   },
   "devDependencies": {
     "nodemon": "^1.17.4"
