@@ -58,7 +58,7 @@ Company.setNewImage = (id_company, image) => {
 };
 
 Company.workers = (id) => {
-    const workersString = 'SELECT e.id AS employee_id, e.first_name, e.last_name, ws.is_accepted, ' +
+    const workersString = 'SELECT e.id AS employee_id, e.image, e.first_name, e.last_name, ws.is_accepted, ' +
                             'w.name AS workstation, w.id AS workstation_id, w.email, ws.from, ws.to ' +
                             'FROM "Work_History" AS ws ' +
                             'INNER JOIN "Employee" AS e ON ws.id_employee=e.id ' +

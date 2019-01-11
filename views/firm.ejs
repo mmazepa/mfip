@@ -213,6 +213,7 @@
                     <table class="listTable">
                         <tr>
                             <th>L.P.</th>
+                            <th>Foto</th>
                             <th>Imię</th>
                             <th>Nazwisko</th>
                             <th>Stanowisko</th>
@@ -228,6 +229,16 @@
                         %>
                             <tr>
                                 <td><%= parseInt(w)+1 %></td>
+                                <td>
+                                    <%
+                                        if (workers[w].image != null) {
+                                    %>
+                                         <img    src="data:image/jpeg;base64,<%= workers[w].image %>"
+                                                 width="50">
+                                    <%
+                                        }
+                                    %>
+                                </td>
                                 <td><%= workers[w].first_name %></td>
                                 <td><%= workers[w].last_name %></td>
                                 <td><%= workers[w].workstation %></td>
