@@ -34,10 +34,25 @@
                       <tr>
                         <th>Dana</th>
                         <th>Wartość</th>
+                        <th>Foto</th>
                       </tr>
                       <tr>
                         <td>Imię</td>
                         <td><%= user.first_name %></td>
+                        <td rowspan="6">
+                            <%
+                                if (user.image != null) {
+                            %>
+                                <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                        width="300">
+                            <%
+                                } else {
+                            %>
+                            <img src="/images/employee.jpg" width="200">
+                            <%
+                                }
+                            %>
+                        </td>
                       </tr>
                       <tr>
                         <td>Nazwisko</td>
