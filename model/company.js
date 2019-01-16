@@ -76,11 +76,11 @@ Company.addWorker = (id_workstation, id_employee) => {
 };
 
 Company.acceptWorker = (id_workstation, id_employee) => {
-    const acceptQuery = 'UPDATE "Work_History" SET is_accepted=true ' +
-                        'AND "from"=current_date ' +
+    const acceptQuery = 'UPDATE "Work_History" SET is_accepted=true, ' +
+                        '"from"=current_date ' +
                         'WHERE id_workstation=' + id_workstation +
                         ' AND id_employee=' + id_employee +
-                        ' AND "from" IS NULL AND is_accepted=false';
+                        ' AND "from" IS NULL AND (is_accepted=false OR is_accepted=NULL)';
     return db.none(acceptQuery);
 };
 

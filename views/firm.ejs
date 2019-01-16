@@ -220,8 +220,8 @@
                             <th>W firmie od</th>
                             <th>W firmie do</th>
                             <th>E-mail</th>
-                            <th>Przyjęty?</th>
-                            <th>Zwolnij</th>
+                            <th>Status</th>
+                            <th>Zwolnij/Odrzuć</th>
                         </tr>
                         <%
                             if (workers != null) {
@@ -249,7 +249,39 @@
                                         <%= workers[w].email %>
                                     </a>
                                 </td>
-                                <td><%= workers[w].is_accepted ? "TAK" : "NIE" %></td>
+                                <td>
+                        <%
+                                    if (workers[w].is_accepted && workers[w].to == null) {
+                        %>
+                                        <span   style="color:darkgreen;font-size:smaller;"
+                                                class="glyphicon glyphicon-ok">
+                                            Przyjęty
+                                        </span>
+                        <%
+                                    } else if (!workers[w].is_accepted && workers[w].to == null) {
+                        %>
+                                        <button class="btn btn-success"
+                                                onclick="location.replace('/acceptWorker/<%= workers[w].workstation_id %>/<%= workers[w].employee_id %>')">
+                                            <span class="glyphicon glyphicon-check"></span>
+                                        </button>
+                        <%
+                                    } else if (workers[w].from != null && workers[w].to != null) {
+                        %>
+                                        <span   style="color:dimgray;font-size:smaller;"
+                                                class="glyphicon glyphicon-time">
+                                            Współpraca zakończona
+                                        </span>
+                        <%
+                                    } else {
+                        %>
+                                        <span   style="color:darkred;font-size:smaller;"
+                                                class="glyphicon glyphicon-remove">
+                                            Odrzucony
+                                        </span>
+                        <%
+                                    }
+                        %>
+                                </td>
                                 <td>
                         <%
                                     if (workers[w].to == null) {
