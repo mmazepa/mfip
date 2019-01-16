@@ -68,7 +68,7 @@ CREATE TABLE "Workstation" (
         "id_adres" SERIAL,
         "id_list_skills" SERIAL,
         "name" varchar(30) NOT NULL,
-        "phone_number" varchar(20),
+        "phone_number" BIGSERIAL,
         "email" varchar(30),
         "limit" smallserial NOT NULL,
         "description" varchar(50) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE "Employee" (
         "first_name" varchar(20) NOT NULL,
         "last_name" varchar(20) NOT NULL,
         "birth" date NOT NULL,
-        "phone_number" varchar(20) NOT NULL,
+        "phone_number" BIGSERIAL NOT NULL,
         "email" varchar(30) NOT NULL,
         "image" bytea,
         FOREIGN KEY ("id_adres") REFERENCES "Adres"("id")--,
@@ -182,28 +182,28 @@ INSERT INTO public."List_Skills"(
 INSERT INTO public."Workstation"(
 	id_company, id_adres, name, phone_number, email, "limit", description)
 	VALUES
-  (1, 1, 'Web Deweloper', '+48573324665', 'manager1@mail.com', 15, 'new Web project'),
-  (2, 2, 'Project Manager', '+48258324662', 'manager2@mail.com', 10, 'Web projects managers'),
-  (3, 3, 'DB Administrator', '+48328323424', 'manager2@mail.com', 20, 'Web projects managers'),
-  (4, 7, 'Web Developer', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
-  (4, 7, 'Web Designer', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
-  (4, 7, 'Web Master', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
-  (4, 7, 'DB Administrator', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
-  (4, 7, 'Project Manager', '801702603', 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation');
+  (1, 1, 'Web Deweloper', 48573324665, 'manager1@mail.com', 15, 'new Web project'),
+  (2, 2, 'Project Manager', 48258324662, 'manager2@mail.com', 10, 'Web projects managers'),
+  (3, 3, 'DB Administrator', 48328323424, 'manager2@mail.com', 20, 'Web projects managers'),
+  (4, 7, 'Web Developer', 801702603, 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
+  (4, 7, 'Web Designer', 801702603, 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
+  (4, 7, 'Web Master', 801702603, 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
+  (4, 7, 'DB Administrator', 801702603, 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation'),
+  (4, 7, 'Project Manager', 801702603, 'poland@ubisoft.com', 10, 'Ubisoft Official Workstation');
 
 -- Employee (rounds: 10)
 -- jkowalski    $2y$10$S.jV0RWbveAJAc8.6DnbM.Lu76b/br2AYoSGhcBnO7THIXu4dy37K
 INSERT INTO public."Employee"(
 	id_adres, password, first_name, last_name, birth, phone_number, email)
-	VALUES (4,'$2b$10$t0yGUNKJYHJ1IPZMhRO3m./WLSppdGYClg239tOJGVLXhy0QGWeiy', 'Jan', 'Kowalski',  to_date('1985-02-03','YYYY-MM-DD'), '+48793650366', 'jkowalski@mail.com');
+	VALUES (4,'$2b$10$t0yGUNKJYHJ1IPZMhRO3m./WLSppdGYClg239tOJGVLXhy0QGWeiy', 'Jan', 'Kowalski',  to_date('1985-02-03','YYYY-MM-DD'), 48793650366, 'jkowalski@mail.com');
 -- kborawski
 INSERT INTO public."Employee"(
 	id_adres, password, first_name, last_name, birth, phone_number, email)
-	VALUES (5,'$2b$10$rxv6KMH/BKL6yu4cRNYq9umD74Ii5dw0U2sRr64HZmDILMqNHneIG', 'Karol', 'Borawski',  to_date('1995-02-03','YYYY-MM-DD'), '+48593350631', 'kborawski@mail.com');
+	VALUES (5,'$2b$10$rxv6KMH/BKL6yu4cRNYq9umD74Ii5dw0U2sRr64HZmDILMqNHneIG', 'Karol', 'Borawski',  to_date('1995-02-03','YYYY-MM-DD'), 48593350631, 'kborawski@mail.com');
 
 INSERT INTO public."Employee"(
 	id_adres, password, first_name, last_name, birth, phone_number, email)
-	VALUES (6,'$2b$10$lbL6QFhEUZsMap2DYWfeDuWJl12ot.41xihmkoosQz.E4RTDVs3mK', 'Mariusz', 'Mazepa',  to_date('1994-01-19','YYYY-MM-DD'), '515402122', 'maksymilianmariusz@gmail.com');
+	VALUES (6,'$2b$10$lbL6QFhEUZsMap2DYWfeDuWJl12ot.41xihmkoosQz.E4RTDVs3mK', 'Mariusz', 'Mazepa',  to_date('1994-01-19','YYYY-MM-DD'), 515402122, 'maksymilianmariusz@gmail.com');
 
 -- Work_History
 INSERT INTO public."Work_History"(
