@@ -56,6 +56,8 @@
                             <input  id="login"
                                     type="text"
                                     name="firmName"
+                                    pattern="[A-Za-z0-9]+"
+                                    title="Duże/małe litery i cyfry."
                                     placeholder="Nazwa firmy"/>
                         </div>
 
@@ -68,6 +70,8 @@
                             <input  id="first_name"
                                     type="text"
                                     name="first_name"
+                                    pattern="[A-Z]{1}[a-z]{2}[a-z]*"
+                                    title="Jedna duża litera, reszta małe, minimum 3 znaki."
                                     placeholder="Imię"/>
                         </div>
                         <div id="last_name_div" class="form-group">
@@ -75,6 +79,8 @@
                             <input  id="last_name"
                                     type="text"
                                     name="last_name"
+                                    pattern="[A-Z]{1}[a-z]{2}[a-z]*"
+                                    title="Jedna duża litera, reszta małe, minimum 3 znaki."
                                     placeholder="Nazwisko"/>
                         </div>
                         <div class="form-group">

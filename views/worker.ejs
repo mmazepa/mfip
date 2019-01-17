@@ -99,12 +99,16 @@
                                 <td>
                                     <input  type="text"
                                             name="first_name"
+                                            pattern="[A-Z]{1}[a-z]{2}[a-z]*"
+                                            title="Jedna duża litera, reszta małe, minimum 3 znaki."
                                             value="<%= user.first_name %>"
                                             style="width:100%;"/>
                                 </td>
                                 <td>
                                     <input  type="text"
                                             name="last_name"
+                                            pattern="[A-Z]{1}[a-z]{2}[a-z]*"
+                                            title="Jedna duża litera, reszta małe, minimum 3 znaki."
                                             value="<%= user.last_name %>"
                                             style="width:100%;"/>
                                 </td>
@@ -117,6 +121,8 @@
                                 <td>
                                     <input  type="text"
                                             name="phone_number"
+                                            pattern="[0-9]{7,}"
+                                            title="Tylko cyfry, minimum 7."
                                             value="<%= user.phone_number %>"
                                             style="width:100%;"/>
                                 </td>
@@ -242,6 +248,8 @@
                                 <td>
                                     <input  type="text"
                                             name="country"
+                                            pattern="[A-Z]{1}[a-z]{2}[a-z]*"
+                                            title="Jedna duża litera, reszta małe, minimum 3 znaki."
                                             value="<%= adres.country %>"
                                             style="width:100%;"/>
                                 </td>
@@ -260,12 +268,16 @@
                                 <td>
                                     <input  type="text"
                                             name="house_number"
+                                            pattern="([0-9]{1,})(/[0-9]{1,})?([A-Z])?"
+                                            title="Nr budynku, nr budynku/nr lokalu, opcjonalna duża litera."
                                             value="<%= adres.house_number %>"
                                             style="width:100%;"/>
                                 </td>
                                 <td>
                                     <input  type="text"
                                             name="zip_code"
+                                            pattern="[0-9]{2}-[0-9]{3}"
+                                            title="Dwie cyfry, myślnik, trzy cyfry - np. 80-251."
                                             value="<%= adres.zip_code %>"
                                             style="width:100%;"/>
                                 </td>
