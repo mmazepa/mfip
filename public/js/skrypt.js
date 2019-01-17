@@ -197,24 +197,29 @@ document.onreadystatechange = () => {
             // --- OBSŁUGA DAT -------------------------------------------------
 
             const fromBeforeTo = () => {
-                var expFrom = document.getElementById("expFrom");
-                var eduFrom = document.getElementById("eduFrom");
-                var courseFrom = document.getElementById("courseFrom");
+                if (document.getElementById("expFrom")) {
+                    var expFrom = document.getElementById("expFrom");
+                    expFrom.onchange = function () {
+                        var expTo = document.getElementById("expTo");
+                        expTo.setAttribute("min", this.value);
+                    };
+                }
 
-                expFrom.onchange = function () {
-                    var expTo = document.getElementById("expTo");
-                    expTo.setAttribute("min", this.value);
-                };
+                if (document.getElementById("eduFrom")) {
+                    var eduFrom = document.getElementById("eduFrom");
+                    eduFrom.onchange = function () {
+                        var eduTo = document.getElementById("eduTo");
+                        eduTo.setAttribute("min", this.value);
+                    };
+                }
 
-                eduFrom.onchange = function () {
-                    var eduTo = document.getElementById("eduTo");
-                    eduTo.setAttribute("min", this.value);
-                };
-
-                courseFrom.onchange = function () {
-                    var courseTo = document.getElementById("courseTo");
-                    courseTo.setAttribute("min", this.value);
-                };
+                if (document.getElementById("courseFrom")) {
+                    var courseFrom = document.getElementById("courseFrom");
+                    courseFrom.onchange = function () {
+                        var courseTo = document.getElementById("courseTo");
+                        courseTo.setAttribute("min", this.value);
+                    };
+                }
             };
             fromBeforeTo();
 
