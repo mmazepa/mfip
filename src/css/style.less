@@ -235,11 +235,14 @@ html {
             .helper > .size(100%, auto);
             display: none;
 
+            tr:first-child {
+              background-color: lighten(silver, 10%);
+            }
+
             th, td {
               padding: 8px;
               text-align: left;
               border-bottom: 1px solid #ddd;
-
             }
 
             tr td:first-child {
@@ -248,10 +251,8 @@ html {
               .helper > .size(200px, auto);
             }
 
-            tr {
-              &:hover:not(:first-child) {
-                background-color: lighten(black, 75%);
-              }
+            tbody:hover td[rowspan], tr:hover td {
+               background-color: lighten(lightgreen, 15%);
             }
           }
         }

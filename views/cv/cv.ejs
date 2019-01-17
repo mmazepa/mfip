@@ -37,26 +37,22 @@
                         <th>Foto</th>
                       </tr>
                       <tr>
-                        <td>Imię</td>
-                        <td><%= user.first_name %></td>
-                        <td rowspan="6">
-                            <%
-                                if (user.image != null) {
-                            %>
-                                <img    src="data:image/jpeg;base64,<%= user.image %>"
-                                        width="300">
-                            <%
-                                } else {
-                            %>
-                            <img src="/images/employee.jpg" width="200">
-                            <%
-                                }
-                            %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Nazwisko</td>
-                        <td><%= user.last_name %></td>
+                          <td>Imię i Nazwisko</td>
+                          <td><%= user.first_name %> <%= user.last_name %></td>
+                          <td rowspan="5">
+                              <%
+                                  if (user.image != null) {
+                              %>
+                                  <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                          width="300">
+                              <%
+                                  } else {
+                              %>
+                              <img src="/images/employee.jpg" width="200">
+                              <%
+                                  }
+                              %>
+                          </td>
                       </tr>
                       <tr>
                         <td>Data urodzenia</td>
@@ -124,7 +120,7 @@
                         if (expCount == 0) {
                     %>
                             <tr>
-                                <td colspan=2 style="text-align:center;font-weight:normal;">
+                                <td colspan=3 style="text-align:center;font-weight:normal;">
                                     Brak informacji o doświadczeniu zawodowym.
                                 </td>
                             </tr>
@@ -210,7 +206,7 @@
                             if (eduCount == 0) {
                         %>
                                 <tr>
-                                    <td colspan=3 style="text-align:center;font-weight:normal;">
+                                    <td colspan=4 style="text-align:center;font-weight:normal;">
                                         Brak informacji o wykształceniu.
                                     </td>
                                 </tr>
@@ -292,7 +288,7 @@
                             if (langCount == 0) {
                         %>
                                 <tr>
-                                    <td colspan=2 style="text-align:center;font-weight:normal;">
+                                    <td colspan=3 style="text-align:center;font-weight:normal;">
                                         Brak informacji o językach.
                                     </td>
                                 </tr>
@@ -369,7 +365,7 @@
                             if (skillCount == 0) {
                         %>
                                 <tr>
-                                    <td colspan=3 style="text-align:center;font-weight:normal;">
+                                    <td colspan=4 style="text-align:center;font-weight:normal;">
                                         Brak informacji o posiadanych umiejętnościach.
                                     </td>
                                 </tr>
@@ -443,7 +439,7 @@
                             if (courseCertCount == 0) {
                         %>
                                 <tr>
-                                    <td colspan=3 style="text-align:center;font-weight:normal;">
+                                    <td colspan=4 style="text-align:center;font-weight:normal;">
                                         Brak informacji o ukończonych kursach
                                         i/lub zdobytych certyfikatach.
                                     </td>
@@ -530,7 +526,7 @@
                             if (intCount == 0) {
                         %>
                                 <tr>
-                                    <td colspan=3 style="text-align:center;font-weight:normal;">
+                                    <td colspan=4 style="text-align:center;font-weight:normal;">
                                         Brak informacji o zainteresowaniach.
                                     </td>
                                 </tr>
