@@ -186,7 +186,7 @@ document.onreadystatechange = () => {
                     changeHeadersND("-", "Opis");
                     connectDates();
                     disabilityAndClearing(false, true, true, false);
-                    from.addEventListener("change", dateEventListener);
+                    from.addEventListener("change", connectDates);
                 } else if (type == "int") {
                     changeHeadersFT("-", "-");
                     changeHeadersND("-", "Opis");
@@ -195,6 +195,28 @@ document.onreadystatechange = () => {
             });
 
             // --- OBSŁUGA DAT -------------------------------------------------
+
+            const fromBeforeTo = () => {
+                var expFrom = document.getElementById("expFrom");
+                var eduFrom = document.getElementById("eduFrom");
+                var courseFrom = document.getElementById("courseFrom");
+
+                expFrom.onchange = function () {
+                    var expTo = document.getElementById("expTo");
+                    expTo.setAttribute("min", this.value);
+                };
+
+                eduFrom.onchange = function () {
+                    var eduTo = document.getElementById("eduTo");
+                    eduTo.setAttribute("min", this.value);
+                };
+
+                courseFrom.onchange = function () {
+                    var courseTo = document.getElementById("courseTo");
+                    courseTo.setAttribute("min", this.value);
+                };
+            };
+            fromBeforeTo();
 
             const repairDates = () => {
                 let dates = document.getElementsByClassName("date");

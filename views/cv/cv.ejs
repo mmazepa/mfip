@@ -143,8 +143,18 @@
                                 </tr>
                                 <tr>
                                     <input name="type" type="text" value="Experience" hidden/>
-                                    <td><input name="from" type="date"/></td>
-                                    <td><input name="to" type="date"/></td>
+                                    <td>
+                                        <input  id="expFrom"
+                                                name="from"
+                                                type="date"
+                                                max="<%= new Date().toISOString().split("T")[0] %>"/>
+                                    </td>
+                                    <td>
+                                        <input  id="expTo"
+                                                name="to"
+                                                type="date"
+                                                max="<%= new Date().toISOString().split("T")[0] %>"/>
+                                    </td>
                                     <td><input name="name" type="text"/></td>
                                     <td>
                                         <button class="btn btn-primary">
@@ -220,8 +230,18 @@
                                 </tr>
                                 <tr>
                                     <input name="type" type="text" value="Education" hidden/>
-                                    <td><input name="from" type="date"/></td>
-                                    <td><input name="to" type="date"/></td>
+                                    <td>
+                                        <input  id="eduFrom"
+                                                name="from"
+                                                type="date"
+                                                max="<%= new Date().toISOString().split("T")[0] %>"/>
+                                    </td>
+                                    <td>
+                                        <input  id="eduTo"
+                                                name="to"
+                                                type="date"
+                                                max="<%= new Date().toISOString().split("T")[0] %>"/>
+                                    </td>
                                     <td><input name="name" type="text"/></td>
                                     <td><input name="description" type="text"/></td>
                                     <td>
@@ -450,8 +470,18 @@
                                             <option>Certificate</option>
                                         </select>
                                     </td>
-                                    <td><input name="from" type="date"/></td>
-                                    <td><input name="to" type="date"/></td>
+                                    <td>
+                                        <input  id="courseFrom"
+                                                name="from"
+                                                type="date"
+                                                max="<%= new Date().toISOString().split("T")[0] %>"/>
+                                    </td>
+                                    <td>
+                                        <input  id="courseTo"
+                                                name="to"
+                                                type="date"
+                                                max="<%= new Date().toISOString().split("T")[0] %>"/>
+                                    </td>
                                     <td><input name="name" type="text"/></td>
                                     <td><input name="description" type="text"/></td>
                                     <td>
