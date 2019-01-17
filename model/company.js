@@ -123,11 +123,3 @@ Company.remove = (id) => {
     const removeQuery = 'DELETE FROM "Company" WHERE id=' + id;
     return db.result(removeQuery);
 };
-
-// bcrypt.compare('somePassword', hash, function(err, res) {
-//     if(res) {
-//      // Passwords match
-//     } else {
-//      // Passwords don't match
-//     }
-// });

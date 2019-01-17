@@ -32,16 +32,7 @@ Employee.findAll = () => {
 Employee.findById = (id) => {
     return db.one(
         'SELECT * FROM "Employee" AS "e" ' +
-        'WHERE e.id = $1',
-        id);
-    // return db.any(
-    //     'SELECT e.first_name, e.last_name, e.birth, e.phone_number, e.email, ' +
-    //     'e.password, a.country, a.city, a.street, a.house_number, a.zip_code, ' +
-    //     'c.name AS company_name, c.specialization, wh.from, wh.to, wh.description ' +
-    //     'FROM "Work_History" AS "wh" INNER JOIN "Company" AS "c" ' +
-    //     'ON wh.id_workstation = c.id INNER JOIN "Employee" AS "e" ' +
-    //     'ON wh.id_employee = e.id INNER JOIN "Adres" AS a ' +
-    //     'ON e.id_adres = a.id WHERE e.id=$1', [id]);
+        'WHERE e.id = $1', id);
 };
 
 Employee.findByName = (last_name) => {

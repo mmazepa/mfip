@@ -20,6 +20,5 @@ Workstation.findAll = () => {
 Workstation.findById = (id) => {
     return db.one(
         'SELECT * FROM "Workstation" AS "w" ' +
-        'WHERE w.id = $1',
-        id);
+        'WHERE w.id = $1', id);
 };

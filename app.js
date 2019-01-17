@@ -72,18 +72,21 @@ passport.deserializeUser(function (obj, done) {
 
 app.use('/login',
     passport.authenticate('local', { failureRedirect: '/', failureFlash: true }),
-    (req,res) => {
-        console.log("SUCESS");
-        // cooki
+    (req, res) => {
+        console.log("[INFO]: SUCCESS");
+        // cookie
         let minute = 60000;
         res.cookie('remember', req.session.passport.user);
 
         global.user = req.session.passport.user;
         if (global.user.type === "worker") {
+            console.log("[INFO]: Now you are logged in as a WORKER.");
             res.redirect('/worker');
         } else {
+            console.log("[INFO]: Now you are logged in as a COMPANY.");
             res.redirect('/firm');
         }
+        // res.redirect("/".concat(global.user.type));
     }
 );
 

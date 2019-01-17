@@ -28,11 +28,6 @@ indexController.firm = (req, res) => {
 indexController.worker = (req, res) => {
     var user = req.session.passport.user || user;
 
-    // console.log("req.session");
-    // console.log(req.session);
-    // console.log("req.session.passport.user");
-    // console.log(req.session.passport.user);
-
     const userString = 'SELECT id, id_adres, id_list_skills, first_name, last_name, ' +
                         'birth, phone_number, image, ' +
                         'email, password FROM "Employee" WHERE id=' + user.id;
@@ -151,20 +146,9 @@ indexController.signup_post = (req, res) => {
     console.log("req.body");
     console.log(req.body);
 
-    // req.checkBody('email', 'Invalid email').isEmail();
-    // let errors = req.validationErrors();
-    // if (errors) {
-    //     res.render('login', {
-    //         errors: errors
-    //     });}
-
     if (req.body.type  === 'worker') {
         Employee.getHashByEmail(req.body.email).then((data) => {
-            console.log('email is already exists');
-            // res.render('signup.ejs', {
-            //     message: req.flash('email is already exists')
-            // });
-
+            console.log('email already exists');
         }).catch((error) => {
             if(error.code === 0) {
                 req.body.birth = new Date('01/01/1970');
@@ -174,12 +158,7 @@ indexController.signup_post = (req, res) => {
         });
     } else {
         Company.getHashByEmail(req.body.email).then((data) => {
-
-            console.log('email is already exists');
-            // res.render('signup.ejs', {
-            //     message: req.flash('email is already exists')
-            // });
-
+            console.log('email already exists');
         }).catch((error) => {
             if(error.code === 0) {
                 req.body.name = req.body.firmName;
