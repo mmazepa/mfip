@@ -196,30 +196,20 @@ document.onreadystatechange = () => {
 
             // --- OBSŁUGA DAT -------------------------------------------------
 
+            const dateRangeGuard = (id) => {
+                if (document.getElementById(id.concat("From"))) {
+                    var elemFrom = document.getElementById(id.concat("From"));
+                    elemFrom.onchange = function () {
+                        var elemTo = document.getElementById(id.concat("To"));
+                        elemTo.setAttribute("min", this.value);
+                    };
+                }
+            };
+
             const fromBeforeTo = () => {
-                if (document.getElementById("expFrom")) {
-                    var expFrom = document.getElementById("expFrom");
-                    expFrom.onchange = function () {
-                        var expTo = document.getElementById("expTo");
-                        expTo.setAttribute("min", this.value);
-                    };
-                }
-
-                if (document.getElementById("eduFrom")) {
-                    var eduFrom = document.getElementById("eduFrom");
-                    eduFrom.onchange = function () {
-                        var eduTo = document.getElementById("eduTo");
-                        eduTo.setAttribute("min", this.value);
-                    };
-                }
-
-                if (document.getElementById("courseFrom")) {
-                    var courseFrom = document.getElementById("courseFrom");
-                    courseFrom.onchange = function () {
-                        var courseTo = document.getElementById("courseTo");
-                        courseTo.setAttribute("min", this.value);
-                    };
-                }
+                dateRangeGuard("exp");
+                dateRangeGuard("edu");
+                dateRangeGuard("course");
             };
             fromBeforeTo();
 
