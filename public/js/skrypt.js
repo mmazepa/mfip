@@ -21,6 +21,11 @@ document.onreadystatechange = () => {
                 else location.replace("/" + this.id);
             });
 
+            $("#crudHeader").on("click", () => {
+                $("#crudGlyph").toggleClass("glyphicon-chevron-up glyphicon-chevron-down");
+                $("#crudList").toggleClass("hideMe");
+            });
+
             // --- AKCJE CV: LISTY ROZWIJALNE ----------------------------------
 
             const upperCaseFirstLetter = (string) => {
