@@ -25,9 +25,9 @@
                             <th>Stanowisko</th>
                             <th>Numer telefonu</th>
                             <th>E-mail</th>
-                            <th>Limit</th>
+                            <!-- <th>Limit</th> -->
                             <th>Opis</th>
-                            <th>Adres</th>
+                            <!-- <th>Adres</th> -->
                         </tr>
                     <%
                             for (w in workstations)
@@ -57,9 +57,9 @@
                                             <%= workstations[w].email %>
                                         </a>
                                     </td>
-                                    <td><%= workstations[w].limit %></td>
+                                    <!-- <td><%= workstations[w].limit %></td> -->
                                     <td><%= workstations[w].description %></td>
-                                    <td>
+                                    <!-- <td>
                                         <%=
                                             workstations[w].street + " " +
                                             workstations[w].house_number + ", " +
@@ -67,7 +67,7 @@
                                             workstations[w].city + ", " +
                                             workstations[w].country;
                                         %>
-                                    </td>
+                                    </td> -->
                                 </tr>
                     <%
                             }

@@ -9,4 +9,7 @@ var workstation = require("../controllers/workstationController.js");
 // C
 router.put('/workstation/create', workstation.workstationCreate);
 
+router.get('/workplaces', workstation.workplacesByCompanyId);
+router.post('/workplace/add', workstation.addWorkplace);
+
 module.exports = router;
