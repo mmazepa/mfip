@@ -25,10 +25,16 @@
                     <%
                         if (user.image != null) {
                     %>
-                         <img    src="data:image/jpeg;base64,<%= user.image %>"
-                                 width="375">
-                         <br/>
-                         <br/>
+                        <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                width="375">
+                        <br/>
+                        <br/>
+                    <%
+                        } else {
+                    %>
+                        <img src="/images/unknown/unknown_company.gif" width="200">
+                        <br/>
+                        <br/>
                     <%
                         }
                     %>
@@ -153,18 +159,15 @@
                                 <%
                                     if (user.image != null) {
                                 %>
-                                     <img    src="data:image/jpeg;base64,<%= user.image %>"
-                                             width="200">
-                                     <br/>
-                                     <br/>
+                                    <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                            width="200">
                                 <%
                                     } else {
                                 %>
-                                <img src="/images/company.png" width="200">
+                                    <img src="/images/unknown/unknown_company.gif" width="200">
                                 <%
                                     }
                                 %>
-
                             </td>
                             <td>
                                 <form action="/company/image/upload" method="POST" enctype="multipart/form-data">
@@ -233,8 +236,12 @@
                                     <%
                                         if (workers[w].image != null) {
                                     %>
-                                         <img    src="data:image/jpeg;base64,<%= workers[w].image %>"
-                                                 width="50">
+                                        <img    src="data:image/jpeg;base64,<%= workers[w].image %>"
+                                                width="50">
+                                    <%
+                                        } else {
+                                    %>
+                                        <img src="/images/unknown/unknown_employee.jpg" width="50">
                                     <%
                                         }
                                     %>

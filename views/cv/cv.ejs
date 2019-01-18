@@ -48,7 +48,7 @@
                               <%
                                   } else {
                               %>
-                              <img src="/images/employee.jpg" width="200">
+                                  <img src="/images/unknown/unknown_employee.jpg" width="200">
                               <%
                                   }
                               %>
@@ -60,7 +60,7 @@
                       </tr>
                       <tr>
                         <td>Telefon</td>
-                        <td><%= user.phone_number %></td>
+                        <td><%= user.phone_number == 0 ? "" : user.phone_number %></td>
                       </tr>
                       <tr>
                         <td>E-mail</td>

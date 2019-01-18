@@ -26,10 +26,16 @@
                     <%
                         if (user.image != null) {
                     %>
-                         <img    src="data:image/jpeg;base64,<%= user.image %>"
-                                 width="375">
-                         <br/>
-                         <br/>
+                        <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                width="300">
+                        <br/>
+                        <br/>
+                    <%
+                        } else {
+                    %>
+                        <img src="/images/unknown/unknown_employee.jpg" width="200">
+                        <br/>
+                        <br/>
                     <%
                         }
                     %>
@@ -64,7 +70,7 @@
                             <td><%= user.first_name %></td>
                             <td><%= user.last_name %></td>
                             <td class="date"><%= user.birth %></td>
-                            <td><%= user.phone_number %></td>
+                            <td><%= user.phone_number == 0 ? "" : user.phone_number %></td>
                             <td>
                                 <a href="mailto:<%= user.email %>">
                                     <%= user.email %>
@@ -102,7 +108,8 @@
                                             pattern="[A-Z]{1}[a-z]{2}[a-z]*"
                                             title="Jedna duża litera, reszta małe, minimum 3 znaki."
                                             value="<%= user.first_name %>"
-                                            style="width:100%;"/>
+                                            style="width:100%;"
+                                            required/>
                                 </td>
                                 <td>
                                     <input  type="text"
@@ -110,21 +117,37 @@
                                             pattern="[A-Z]{1}[a-z]{2}[a-z]*"
                                             title="Jedna duża litera, reszta małe, minimum 3 znaki."
                                             value="<%= user.last_name %>"
-                                            style="width:100%;"/>
+                                            style="width:100%;"
+                                            required/>
                                 </td>
                                 <td>
-                                    <input  type="date"
+                                    <%
+                                        if (user.birth != null) {
+                                    %>
+                                        <input  type="date"
                                             name="birth"
                                             value="<%= user.birth.getFullYear() %>-<%= ('0' + (user.birth.getMonth()+1)).slice(-2) %>-<%= ('0' + user.birth.getDate()).slice(-2) %>"
-                                            style="width:100%;"/>
+                                            style="width:100%;"
+                                            required/>
+                                    <%
+                                        } else {
+                                    %>
+                                        <input  type="date"
+                                            name="birth"
+                                            style="width:100%;"
+                                            required/>
+                                    <%
+                                        }
+                                    %>
                                 </td>
                                 <td>
                                     <input  type="text"
                                             name="phone_number"
                                             pattern="[0-9]{7,}"
                                             title="Tylko cyfry, minimum 7."
-                                            value="<%= user.phone_number %>"
-                                            style="width:100%;"/>
+                                            value="<%= user.phone_number == 0 ? "" : user.phone_number %>"
+                                            style="width:100%;"
+                                            required/>
                                 </td>
                                 <td>
                                     <input  type="email"
@@ -156,18 +179,17 @@
                                 <%
                                     if (user.image != null) {
                                 %>
-                                     <img    src="data:image/jpeg;base64,<%= user.image %>"
-                                             width="200">
-                                     <br/>
-                                     <br/>
+                                    <img    src="data:image/jpeg;base64,<%= user.image %>"
+                                            width="200">
+                                    <br/>
+                                    <br/>
                                 <%
                                     } else {
                                 %>
-                                <img src="/images/employee.jpg" width="200">
+                                    <img src="/images/unknown/unknown_employee.jpg" width="200">
                                 <%
                                     }
                                 %>
-
                             </td>
                             <td>
                                 <form action="/employee/image/upload" method="POST" enctype="multipart/form-data">
@@ -398,7 +420,7 @@
                         } else {
                     %>
                         <tr>
-                            <td colspan=6 style="text-align:center;">
+                            <td colspan=9 style="text-align:center;">
                                 Brak informacji o zatrudnieniu.
                             </td>
                         </tr>

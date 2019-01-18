@@ -151,8 +151,8 @@ indexController.signup_post = (req, res) => {
             console.log('email already exists');
         }).catch((error) => {
             if(error.code === 0) {
-                req.body.birth = new Date('01/01/1970');
-                req.body.phone_number = "+48720463920";
+                req.body.birth = null;
+                req.body.phone_number = 0;
                 Employee.createEmployee(req.body);
             }
         });
@@ -162,8 +162,8 @@ indexController.signup_post = (req, res) => {
         }).catch((error) => {
             if(error.code === 0) {
                 req.body.name = req.body.firmName;
-                req.body.specialization = "specialization for new company";
-                req.body.description = "description for new company";
+                req.body.specialization = "";
+                req.body.description = "";
 
                 Company.createCompany(req.body);
             }

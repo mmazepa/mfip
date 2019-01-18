@@ -25,8 +25,12 @@
                                         <%
                                             if (jobs[j].image != null) {
                                         %>
-                                             <img    src="data:image/jpeg;base64,<%= jobs[j].image %>"
-                                                     width="375px">
+                                            <img    src="data:image/jpeg;base64,<%= jobs[j].image %>"
+                                                    width="375">
+                                        <%
+                                            } else {
+                                        %>
+                                            <img src="/images/unknown/unknown_company.gif" width="375">
                                         <%
                                             }
                                         %>

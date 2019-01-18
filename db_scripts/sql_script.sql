@@ -36,8 +36,8 @@ CREATE TABLE "Company" (
         "password" varchar(60) NOT NULL,
         "name" varchar(50) NOT NULL,
         "email" varchar(30),
-        "specialization" varchar(100) NOT NULL,
-        "description" varchar(500) NOT NULL,
+        "specialization" varchar(100),
+        "description" varchar(500),
         "website" varchar(100),
         "image" bytea
 );
@@ -86,8 +86,8 @@ CREATE TABLE "Employee" (
         "password" varchar(60) NOT NULL,
         "first_name" varchar(20) NOT NULL,
         "last_name" varchar(20) NOT NULL,
-        "birth" date NOT NULL,
-        "phone_number" BIGSERIAL NOT NULL,
+        "birth" date,
+        "phone_number" BIGSERIAL,
         "email" varchar(30) NOT NULL,
         "image" bytea,
         FOREIGN KEY ("id_adres") REFERENCES "Adres"("id")--,
@@ -148,7 +148,7 @@ INSERT INTO public."Company"(
 
 INSERT INTO public."Company"(
   password, name, email, specialization, description, website)
-  VALUES ('$2b$15$LgEOo7hoj0eWpc8G/LWEeOtutvRTcJq4DizgkHOftxOq6BxVnU.Ae', 'Ubisoft', 'support@ubisoft.com', 'Game Development', 'French Company', 'www.ubisoft.com');
+  VALUES ('$2b$15$LgEOo7hoj0eWpc8G/LWEeOtutvRTcJq4DizgkHOftxOq6BxVnU.Ae', 'Ubisoft', 'ubisoft@gmail.com', 'Game Development', 'French Company', 'www.ubisoft.com');
 
 -- Skill
 INSERT INTO public."Skill"(

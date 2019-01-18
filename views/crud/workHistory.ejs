@@ -38,8 +38,12 @@
                                         <%
                                             if (workHistory[wh].employee_image != null) {
                                         %>
-                                             <img    src="data:image/jpeg;base64,<%= workHistory[wh].employee_image %>"
-                                                     width="50">
+                                            <img    src="data:image/jpeg;base64,<%= workHistory[wh].employee_image %>"
+                                                    width="50">
+                                        <%
+                                            } else {
+                                        %>
+                                            <img src="/images/unknown/unknown_employee.jpg" width="50">
                                         <%
                                             }
                                         %>
@@ -49,8 +53,12 @@
                                         <%
                                             if (workHistory[wh].company_image != null) {
                                         %>
-                                             <img    src="data:image/jpeg;base64,<%= workHistory[wh].company_image %>"
-                                                     width="50">
+                                            <img    src="data:image/jpeg;base64,<%= workHistory[wh].company_image %>"
+                                                    width="50">
+                                        <%
+                                            } else {
+                                        %>
+                                            <img src="/images/unknown/unknown_company.gif" width="50">
                                         <%
                                             }
                                         %>

@@ -39,8 +39,12 @@
                                         <%
                                             if (workstations[w].image != null) {
                                         %>
-                                             <img    src="data:image/jpeg;base64,<%= workstations[w].image %>"
-                                                     width="50">
+                                            <img    src="data:image/jpeg;base64,<%= workstations[w].image %>"
+                                                    width="50">
+                                        <%
+                                            } else {
+                                        %>
+                                            <img src="/images/unknown/unknown_company.gif" width="50">
                                         <%
                                             }
                                         %>

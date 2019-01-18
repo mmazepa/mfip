@@ -38,8 +38,12 @@
                                         <%
                                             if (employees[e].image != null) {
                                         %>
-                                             <img    src="data:image/jpeg;base64,<%= employees[e].image %>"
-                                                     width="50">
+                                            <img    src="data:image/jpeg;base64,<%= employees[e].image %>"
+                                                    width="50">
+                                        <%
+                                            } else {
+                                        %>
+                                            <img src="/images/unknown/unknown_employee.jpg" width="50">
                                         <%
                                             }
                                         %>
@@ -47,7 +51,7 @@
                                     <td><%= employees[e].first_name %></td>
                                     <td><%= employees[e].last_name %></td>
                                     <td class="date"><%= employees[e].birth %></td>
-                                    <td><%= employees[e].phone_number %></td>
+                                    <td><%= employees[e].phone_number == 0 ? "" : employees[e].phone_number %></td>
                                     <td>
                                         <a href="mailto:<%= employees[e].email %>">
                                             <%= employees[e].email %>
